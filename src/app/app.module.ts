@@ -22,7 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //My Service imports
 import { AuthService } from './services/auth-service/auth.service';
-import { Http } from '@angular/http';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+
 
 
 //Routes Configuration
@@ -49,12 +50,13 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+    
   ],
   providers: [
     FlashMessagesService,
-    AuthService,
-    Http
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

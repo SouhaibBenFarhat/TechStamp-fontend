@@ -9,7 +9,7 @@ import { User } from '../../models/user';
 })
 export class LoginComponent implements OnInit {
 
-  user: {
+  user={
     email: "souhaib.benfarhat@esprit.tn",
     password: "rootroot"
   };
