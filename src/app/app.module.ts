@@ -22,7 +22,9 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //My Service imports
 import { AuthService } from './services/auth-service/auth.service';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Globals } from './utils/global';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +55,12 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     FormsModule,
     HttpClientModule
-    
+
   ],
   providers: [
     FlashMessagesService,
-    AuthService
+    AuthService,
+    Globals
   ],
   bootstrap: [AppComponent]
 })

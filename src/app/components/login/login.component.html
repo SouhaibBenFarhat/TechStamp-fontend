@@ -1,31 +1,25 @@
+<h3> Login</h3>
+<hr class="soft" />
 <div class="row">
-  <div class="offset-sm-3 col-md-6">
-    <div class="card">
-      <h4 class="card-header">Login</h4>
-      <div class="card-block">
-        <p class="card-text"></p>
-        <div class="container">
-          <form>
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-              <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="offset-sm-2 col-sm-10">
-                <button type="submit" (click)="onLoginClicked()" class="btn btn-primary">Login</button>
-              </div>
-            </div>
-          </form>
+  <div class="span4">
+    <div class="well">
+      <h5>CREATE YOUR ACCOUNT</h5>
+      <br/> Enter your e-mail address to create an account.
+      <br/>
+      <br/>
+      <br/>
+      <form>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">E-mail address</label>
+          <div class="controls">
+            <input class="span3" type="text" placeholder="Email">
+          </div>
         </div>
-      </div>
+        <div class="controls">
+          <button type="submit" class="btn block">Create Your Account</button>
+        </div>
+      </form>
     </div>
   </div>
+<app-register></app-register>
 </div>
