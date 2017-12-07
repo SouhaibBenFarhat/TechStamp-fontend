@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -9,12 +11,12 @@ import { User } from '../../models/user';
 })
 export class LoginComponent implements OnInit {
 
-  user={
+  user = {
     email: "souhaib.benfarhat@esprit.tn",
     password: "rootroot"
   };
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
 
   onLoginClicked() {
     console.log("zab");
-    this.authService.login(this.user);
+    this.router.navigate(['']);
+
   }
 
 }

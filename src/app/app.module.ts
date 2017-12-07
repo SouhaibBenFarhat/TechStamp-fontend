@@ -25,6 +25,7 @@ import { AuthService } from './services/auth-service/auth.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
+import { HighlightComponent } from './components/highlight/highlight.component';
 
 
 
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    HighlightComponent
   ],
   imports: [
     BrowserModule,
