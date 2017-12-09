@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Converters } from '../../utils/converters';
+import {CacheService} from '../../services/cache/cache.service';
 
 
 @Component({
@@ -11,12 +13,9 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user = {
-    email: "souhaib.benfarhat@esprit.tn",
-    password: "rootroot"
-  };
+  user: User = new User();
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private converter: Converters, private cacheService : CacheService) { }
 
   ngOnInit() {
   }
@@ -24,8 +23,14 @@ export class LoginComponent implements OnInit {
 
 
   onLoginClicked() {
-    console.log("zab");
-    this.router.navigate(['']);
+    this.user.email = "souhaib.benfarhat@esprit.tn";
+    this.user.password = "rootroot";
+    this.authService.login(this.user).then((data) => {
+      this.router.navigate(['']);
+    }).catch((err) => {
+      console.log(err);
+    });
+
 
   }
 

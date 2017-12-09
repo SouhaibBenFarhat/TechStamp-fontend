@@ -26,6 +26,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
 import { HighlightComponent } from './components/highlight/highlight.component';
+import { Converters } from './utils/converters';
 
 
 
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
   providers: [
     FlashMessagesService,
     AuthService,
-    Globals
+    Globals,
+    Converters
   ],
   bootstrap: [AppComponent]
 })

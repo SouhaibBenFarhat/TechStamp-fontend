@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../models/user';
+import {CacheService} from '../../services/cache/cache.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cacherService:CacheService) { }
 
   ngOnInit() {
+    console.log(this.cacherService.getCurrentUser());
   }
 
 }
