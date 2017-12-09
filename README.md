@@ -28,5 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # TechStamp-fontend
 
 
-##  User Authenfication Workflow:
+### User Authenfication Workflow:
 https://coggle.it/diagram/Witk6h00jQABFQ8I
