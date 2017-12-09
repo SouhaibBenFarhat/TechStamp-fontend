@@ -33,7 +33,7 @@ export class AuthService {
     });
 
   }
-  getUserByToken(token: string): any {
+  private getUserByToken(token: string): any {
     var headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + token });
 
