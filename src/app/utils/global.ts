@@ -6,6 +6,7 @@ export class Globals {
 
     TOKEN_KEY = "TOKEN";
     CURRENT_USER = "CURRENT_USER";
+    TOKEN_LENGTH = 273;
 
 
 

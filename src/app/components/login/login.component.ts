@@ -3,7 +3,6 @@ import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { Converters } from '../../utils/converters';
-import {CacheService} from '../../services/cache/cache.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   user: User = new User();
 
-  constructor(private authService: AuthService, private router: Router, private converter: Converters, private cacheService : CacheService) { }
+  constructor(private authService: AuthService, private router: Router, private converter: Converters) { }
 
   ngOnInit() {
   }
