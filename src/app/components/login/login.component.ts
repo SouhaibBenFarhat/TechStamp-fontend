@@ -4,7 +4,7 @@ import { User } from '../../models/user';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { Converters } from '../../utils/converters';
 import { Globals } from '../../utils/global';
-import {ErrorHandlerService} from '../../services/error-handler.service';
+import { ErrorHandlerService } from '../../services/error-handler.service';
 
 
 @Component({
@@ -28,13 +28,18 @@ export class LoginComponent implements OnInit {
 
 
 
-  onLoginClicked() {
-    this.authService.login(this.user).then((data) => {
-      this.router.navigate(['']);
-    }).catch((err) => {
+  onLoginSubmitted({ value, valid }: { value: User, valid: boolean }) {
+    if(valid){
+      this.authService.login(this.user).then((data) => {
+        this.router.navigate(['']);
+      }).catch((err) => {
+        this.error = true;
+        this.errorText = this.errorHandlerService.handelError(err);
+      });
+    }else{
       this.error = true;
-       this.errorText = this.errorHandlerService.handelError(err);
-    });
+      this.errorText = "Please put a valid data";
+    }
 
 
   }
