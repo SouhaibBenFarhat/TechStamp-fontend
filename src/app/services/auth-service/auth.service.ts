@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
 
-  private currentUser: User;
+  public currentUser: User;
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private router: Router) { }
 
   login(user: User): any {
@@ -21,6 +21,7 @@ export class AuthService {
           this.converter.userJsonToObject(data).then((data: User) => {
             this.setCurrentUser(data);
             this.persistToken(data.token);
+            localStorage.setItem(this.global.IS_LOGGED_IN, 'true');
             resolve(data);
           });
         } else {
@@ -32,6 +33,14 @@ export class AuthService {
 
     });
 
+  }
+
+  logout() {
+    return new Promise((resolve, reject) => {
+      this.currentUser = null;
+      localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
+      resolve();
+    });
   }
   private getUserByToken(token: string): any {
     var headers = new HttpHeaders(

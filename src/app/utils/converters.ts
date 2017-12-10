@@ -14,7 +14,7 @@ export class Converters {
             this.user.email = data.data.email;
             this.user.firstname = data.data.firstname;
             this.user.lastname = data.data.lastname;
-            this.user.firstime = data.data.firstime;
+            this.user.firstTime = data.data.firstTime;
             this.user.description = data.data.description;
             this.user.countryCode = data.data.countryCode;
             this.user.role = data.data.role;

@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { Converters } from '../../utils/converters';
+import { Globals } from '../../utils/global';
+import {ErrorHandlerService} from '../../services/error-handler.service';
 
 
 @Component({
@@ -13,21 +15,25 @@ import { Converters } from '../../utils/converters';
 export class LoginComponent implements OnInit {
 
   user: User = new User();
+  error: boolean = false;
+  errorText: string = "";
 
-  constructor(private authService: AuthService, private router: Router, private converter: Converters) { }
+  constructor(private authService: AuthService, private router: Router, private converter: Converters, private global: Globals, private errorHandlerService: ErrorHandlerService) {
+
+  }
 
   ngOnInit() {
+    localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
   }
 
 
 
   onLoginClicked() {
-    this.user.email = "souhaib.benfarhat@esprit.tn";
-    this.user.password = "rootroot";
     this.authService.login(this.user).then((data) => {
       this.router.navigate(['']);
     }).catch((err) => {
-      console.log(err);
+      this.error = true;
+       this.errorText = this.errorHandlerService.handelError(err);
     });
 
 

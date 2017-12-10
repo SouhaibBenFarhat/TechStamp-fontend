@@ -85,15 +85,14 @@
                     <button type="submit" class="shopBtn btn-block">Sign in</button>
                   </div>
                 </form>
-                <form *ngIf="isLoggedIn" class="form-horizontal loginFrm">
+                <div *ngIf="isLoggedIn" class="form-horizontal loginFrm">
                   <div class="control-group">
-                    <button type="submit" class="shopBtn btn-block">Yes</button>
+                    <button (click)="onLogoutClicked()" class="shopBtn btn-block">Yes</button>
                   </div>
                   <div class="control-group">
-                    <button type="submit" class="shopBtn btn-block">No</button>
+                    <button class="shopBtn btn-block">No</button>
                   </div>
-
-                </form>
+                </div>
               </div>
             </li>
           </ul>

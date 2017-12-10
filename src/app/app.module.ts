@@ -27,6 +27,8 @@ import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
 import { HighlightComponent } from './components/highlight/highlight.component';
 import { Converters } from './utils/converters';
+import { ErrorHandlerService } from './services/error-handler.service';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -34,7 +36,7 @@ import { Converters } from './utils/converters';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
 ]
 
@@ -64,7 +66,9 @@ const appRoutes: Routes = [
     FlashMessagesService,
     AuthService,
     Globals,
-    Converters
+    Converters,
+    ErrorHandlerService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

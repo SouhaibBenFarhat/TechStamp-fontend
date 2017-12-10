@@ -10,7 +10,7 @@ export class User {
     role: string;
     countryCode: string;
     description: string;
-    firstime: string;
+    firstTime: boolean;
 
     constructor(){}
 }
