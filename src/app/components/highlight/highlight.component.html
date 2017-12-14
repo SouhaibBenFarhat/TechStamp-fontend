@@ -1,39 +1,12 @@
 <div class="well np">
   <div id="myCarousel" class="carousel slide homCar">
     <div class="carousel-inner">
-      <div class="item">
-        <img style="width:100%" src="assets/img/bootstrap_free-ecommerce.png" alt="bootstrap ecommerce templates">
+      <div class="item" [class.active]="i==0" *ngFor="let product of topProducts; let i = index">
+        <img style="width:100%" src="{{product.largeImage}}" alt="bootstrap templates">
         <div class="carousel-caption">
-          <h4>Bootstrap shopping cart</h4>
+          <h4>{{product.name}}</h4>
           <p>
-            <span>Very clean simple to use</span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <img style="width:100%" src="assets/img/carousel1.png" alt="bootstrap ecommerce templates">
-        <div class="carousel-caption">
-          <h4>Bootstrap Ecommerce template</h4>
-          <p>
-            <span>Highly Google seo friendly</span>
-          </p>
-        </div>
-      </div>
-      <div class="item active">
-        <img style="width:100%" src="assets/img/carousel3.png" alt="bootstrap ecommerce templates">
-        <div class="carousel-caption">
-          <h4>Twitter Bootstrap cart</h4>
-          <p>
-            <span>Very easy to integrate and expand.</span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <img style="width:100%" src="assets/img/bootstrap-templates.png" alt="bootstrap templates">
-        <div class="carousel-caption">
-          <h4>Bootstrap templates integration</h4>
-          <p>
-            <span>Compitable to many more opensource cart</span>
+            <span>{{product.secondName}}</span>
           </p>
         </div>
       </div>

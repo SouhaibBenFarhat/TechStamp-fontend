@@ -35,6 +35,25 @@ export class AuthService {
 
   }
 
+  register(user: User) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
+        if (data != null) {
+          this.converter.userJsonToObject(data).then((data: User) => {
+            this.setCurrentUser(data);
+            this.persistToken(data.token);
+            localStorage.setItem(this.global.IS_LOGGED_IN, 'true');
+            resolve(data);
+          });
+        } else {
+          reject('Error has occure...');
+        }
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
+
   logout() {
     return new Promise((resolve, reject) => {
       this.currentUser = null;
@@ -99,7 +118,7 @@ export class AuthService {
       this.router.navigate(['/login']);
     }
   }
-  private getCurrentUserToken() {
+  public getCurrentUserToken() {
     return localStorage.getItem(this.global.TOKEN_KEY);
   }
 

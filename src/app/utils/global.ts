@@ -18,8 +18,12 @@ export class Globals {
     constructor() {
 
         this.urls['login'] = this.serverAddress + '/api/auth/login';
-        this.urls['register'] = this.serverAddress + 'register';
+        this.urls['register'] = this.serverAddress + '/api/auth/register';
         this.urls['info'] = this.serverAddress + '/api/auth/info';
+        this.urls['product'] = this.serverAddress + '/api/v1/product';
+        this.urls['topProduct'] = this.serverAddress + '/api/v1/product/';
+        
+
     }
 
 

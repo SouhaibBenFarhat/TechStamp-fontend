@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from "../../services/product-service/product.service";
+import { Product } from '../../models/product';
+import { ErrorHandlerService } from "../../services/error-handler.service";
 
 @Component({
   selector: 'app-highlight',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HighlightComponent implements OnInit {
 
-  constructor() { }
+  topProducts: Array<Product>;
+
+  constructor(private productService: ProductService, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.productService.getTopproducts("3").then((data) => {
+      this.topProducts = data;
+    }).catch((err) => {
+      this.errorHandler.handelError(err);
+    })
+
+
   }
 
 }

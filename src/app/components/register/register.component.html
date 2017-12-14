@@ -1,25 +1,39 @@
 <div class="span4">
   <div class="well">
+    <div *ngIf="error" class="alert alert-danger">
+      {{errorText}}
+    </div>
     <h5>QUICK REGISTRATION</h5>
     <br/> Enter your e-mail address and password to create an account.
     <br/>
     <br/>
     <br/>
-    <form>
+    <form novalidate #f="ngForm" (ngSubmit)="onRegisterSubmitted(f)">
       <div class="control-group">
-        <label class="control-label" for="inputEmail">E-mail address</label>
+        <label class="control-label" for="email">Email</label>
         <div class="controls">
-          <input class="span3" type="text" placeholder="Email">
+          <input class="span3" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" #userEmail="ngModel" required>
+          <div *ngIf="userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
+            Email is required...
+          </div>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input type="password" class="span3" [(ngModel)]="user.password" placeholder="Password" name="password" #userPassword="ngModel"
+            required>
+          <div *ngIf="userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
+            Password is required...
+          </div>
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="inputEmail">Password</label>
         <div class="controls">
-          <input class="span3" type="password" placeholder="password">
+          <button type="submit" class="defaultBtn">Sign in</button>
+          <a href="#">Forget password?</a>
         </div>
-      </div>
-      <div class="controls">
-        <button type="submit" class="btn block">Create Your Account</button>
       </div>
     </form>
   </div>

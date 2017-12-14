@@ -14,6 +14,9 @@ export class ErrorHandlerService {
       } else {
         return 'Connection refused';
       }
+    } else {
+      console.log(err);
+      return 'Connection refused';
     }
 
   }

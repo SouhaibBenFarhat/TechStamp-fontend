@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //My Service imports
 import { AuthService } from './services/auth-service/auth.service';
+import { ProductService } from './services/product-service/product.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     Globals,
     Converters,
     ErrorHandlerService,
-    AuthGuard
+    AuthGuard,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
