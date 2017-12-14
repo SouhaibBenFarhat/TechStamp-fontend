@@ -1,7 +1,6 @@
 # TechStamp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
-![Uploading Screen Shot 2017-12-14 at 7.45.58 AM.png…]()
 
 
 ## Development server
