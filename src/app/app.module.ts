@@ -30,6 +30,8 @@ import { HighlightComponent } from './components/highlight/highlight.component';
 import { Converters } from './utils/converters';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthGuard } from './guard/auth.guard';
+import { BrandService } from './services/brand-service/brand.service';
+
 
 
 
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     Converters,
     ErrorHandlerService,
     AuthGuard,
-    ProductService
+    ProductService,
+    BrandService
   ],
   bootstrap: [AppComponent]
 })

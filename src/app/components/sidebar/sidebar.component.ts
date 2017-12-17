@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BrandService } from '../../services/brand-service/brand.service';
+import { ErrorHandlerService } from "../../services/error-handler.service";
+import { Brand } from "../../models/brand";
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  brands: Array<Brand>;
+
+  constructor(private brandService: BrandService, private errorHandlerService: ErrorHandlerService) { }
 
   ngOnInit() {
+    this.brandService.getAllBrands().then((data) => {
+      this.brands = data;
+    }).catch((err) => {
+      console.log(err);
+      this.errorHandlerService.handelError(err);
+    });
+
   }
 
 }

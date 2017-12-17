@@ -17,11 +17,6 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService, private productService: ProductService, private errorHandelr: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.authService.getCurrentUser().then((data: User) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    });
 
     this.productService.getAllProducts().then((data) => {
       this.products = data;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Product } from '../models/product';
+import { Brand } from "../models/brand";
 
 @Injectable()
 export class Converters {
@@ -40,6 +41,22 @@ export class Converters {
             product.largeImage = data.largeImage;
             resolve(product);
         });
+    }
+
+    brandJsonToObject(data): any {
+        let brand = new Brand();
+        return new Promise((resolve, reject) => {
+            brand.id = data.id;
+            brand.date = data.date;
+            brand.description = data.description;
+            brand.image = data.image;
+            brand.name = data.name;
+            brand.logo = data.logo;
+            brand.productsNumber= data.productsNumber;
+            resolve(brand);
+        }
+        )
+
     }
 
 }

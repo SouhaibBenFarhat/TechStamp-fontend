@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from "../../models/product";
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Globals } from '../../utils/global';
 import { Converters } from '../../utils/converters';
-import { Router } from '@angular/router';
 import { AuthService } from "../auth-service/auth.service";
 import 'rxjs/add/operator/map';
 
@@ -15,7 +14,7 @@ export class ProductService {
   headers;
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private router: Router, private authService: AuthService) {
+  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
     this.headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
   }

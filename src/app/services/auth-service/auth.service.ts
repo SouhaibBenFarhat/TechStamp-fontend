@@ -86,10 +86,10 @@ export class AuthService {
 
   getCurrentUser(): any {
     return new Promise((resolve, reject) => {
-      if (this.currentUser !== null && this.currentUser !== undefined) {
+      if (this.currentUser !== null && this.currentUser !== undefined && localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
         resolve(this.currentUser);
       } else {
-        if (this.getCurrentUserToken() != null && this.getCurrentUserToken() != undefined) {
+        if (this.getCurrentUserToken() != null && this.getCurrentUserToken() != undefined && localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
           this.getUserByToken(this.getCurrentUserToken()).then((data: User) => {
             if (data != null && data != undefined) {
               this.setCurrentUser(data);
