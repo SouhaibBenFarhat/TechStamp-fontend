@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Product } from '../models/product';
 import { Brand } from "../models/brand";
+import { Category } from "../models/category";
 
 @Injectable()
 export class Converters {
@@ -52,10 +53,26 @@ export class Converters {
             brand.image = data.image;
             brand.name = data.name;
             brand.logo = data.logo;
-            brand.productsNumber= data.productsNumber;
+            brand.productsNumber = data.productsNumber;
             resolve(brand);
         }
         )
+
+    }
+
+    categoryJsonToObject(data): any {
+
+        let category = new Category();
+        return new Promise((resolve, reject) => {
+            category.id = data.id;
+            category.date = data.date;
+            category.description = data.description;
+            category.image = data.image;
+            category.logo = data.logo;
+            category.name = data.name;
+            category.productsNumber = data.productsNumber;
+            resolve(category);
+        });
 
     }
 

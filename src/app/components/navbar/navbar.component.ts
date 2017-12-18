@@ -3,6 +3,9 @@ import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Globals } from '../../utils/global';
+import { CategoryService } from "../../services/category-service/category.service";
+import { Category } from "../../models/category";
+import { ErrorHandlerService } from "../../services/error-handler.service";
 
 
 @Component({
@@ -13,8 +16,9 @@ import { Globals } from '../../utils/global';
 export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
+  categories: Array<Category>;
 
-  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals) {
+  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals, private categoryService: CategoryService, private errorHandler: ErrorHandlerService) {
 
   }
 
@@ -28,6 +32,17 @@ export class NavbarComponent implements OnInit {
         }
       }
     });
+
+    this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
+      if (data) {
+        this.categories = data;
+        console.log(this.categories);
+      }
+    }).catch((err) => {
+      this.errorHandler.handelError(err);
+    })
+
+
   }
 
 

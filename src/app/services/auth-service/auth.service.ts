@@ -119,7 +119,11 @@ export class AuthService {
     }
   }
   public getCurrentUserToken() {
-    return localStorage.getItem(this.global.TOKEN_KEY);
+    if (localStorage.getItem(this.global.TOKEN_KEY)) {
+      return localStorage.getItem(this.global.TOKEN_KEY);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   setCurrentUser(user: User) {

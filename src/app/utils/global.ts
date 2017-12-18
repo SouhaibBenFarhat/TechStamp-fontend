@@ -23,7 +23,7 @@ export class Globals {
         this.urls['product'] = this.serverAddress + '/api/v1/product';
         this.urls['topProduct'] = this.serverAddress + '/api/v1/product/';
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';
-
+        this.urls['category'] = this.serverAddress + '/api/v1/category';
 
     }
 

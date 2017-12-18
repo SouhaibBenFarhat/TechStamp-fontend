@@ -31,6 +31,7 @@ import { Converters } from './utils/converters';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthGuard } from './guard/auth.guard';
 import { BrandService } from './services/brand-service/brand.service';
+import { CategoryService } from './services/category-service/category.service';
 
 
 
@@ -73,7 +74,8 @@ const appRoutes: Routes = [
     ErrorHandlerService,
     AuthGuard,
     ProductService,
-    BrandService
+    BrandService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
