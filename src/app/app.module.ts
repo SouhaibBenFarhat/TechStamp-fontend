@@ -32,6 +32,7 @@ import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthGuard } from './guard/auth.guard';
 import { BrandService } from './services/brand-service/brand.service';
 import { CategoryService } from './services/category-service/category.service';
+import { CategoryComponent } from './components/category/category/category.component';
 
 
 
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
+  { path: 'category/:id', component: CategoryComponent }
 ]
 
 
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     SidebarComponent,
     FooterComponent,
     HeaderComponent,
-    HighlightComponent
+    HighlightComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

@@ -45,7 +45,7 @@
               <a href="index.html">Home </a>
             </li>
             <li class="" *ngFor="let category of categories">
-              <a href="list-view.html">{{category.name}}</a>
+              <a [routerLink]="['/category/'+category.id]">{{category.name}}</a>
             </li>
             <li class="">
               <a href="list-view.html">...</a>

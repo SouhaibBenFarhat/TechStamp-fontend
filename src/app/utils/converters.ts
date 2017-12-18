@@ -47,7 +47,7 @@ export class Converters {
     brandJsonToObject(data): any {
         let brand = new Brand();
         return new Promise((resolve, reject) => {
-            brand.id = data.id;
+            brand.id = data._id;
             brand.date = data.date;
             brand.description = data.description;
             brand.image = data.image;
@@ -64,7 +64,7 @@ export class Converters {
 
         let category = new Category();
         return new Promise((resolve, reject) => {
-            category.id = data.id;
+            category.id = data._id;
             category.date = data.date;
             category.description = data.description;
             category.image = data.image;
