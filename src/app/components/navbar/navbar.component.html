@@ -41,10 +41,10 @@
         </a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active">
-              <a href="index.html">Home </a>
+            <li class="" [ngClass]="{'active': navClicked==='home'}" (click)="navClicked='home'" >
+              <a [routerLink]="['']">Home </a>
             </li>
-            <li class="" *ngFor="let category of categories">
+            <li class="" [ngClass]="{'active': navClicked=== category.name}" (click)="navClicked=category.name" *ngFor="let category of categories">
               <a [routerLink]="['/category/'+category.id]">{{category.name}}</a>
             </li>
             <li class="">
@@ -52,7 +52,7 @@
             </li>
 
           </ul>
-          <form action="#" class="navbar-search pull-left" >
+          <form action="#" class="navbar-search pull-left">
             <input type="text" placeholder="Search" class="search-query span1">
           </form>
           <ul class="nav pull-right">

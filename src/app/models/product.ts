@@ -10,5 +10,8 @@ export class Product {
     newPrice: number;
     currency: string;
     largeImage: string;
+    categoryId: string;
+
+    constructor() { }
 
 }

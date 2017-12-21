@@ -40,6 +40,7 @@ export class Converters {
             product.currency = data.currency;
             product.date = data.date;
             product.largeImage = data.largeImage;
+            product.categoryId = data.categoryId;
             resolve(product);
         });
     }

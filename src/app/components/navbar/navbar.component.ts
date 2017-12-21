@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   categories: Array<Category>;
+  navClicked: string = 'home';
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals, private categoryService: CategoryService, private errorHandler: ErrorHandlerService) {
 
@@ -36,7 +37,6 @@ export class NavbarComponent implements OnInit {
     this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
       if (data) {
         this.categories = data;
-        console.log(this.categories);
       }
     }).catch((err) => {
       this.errorHandler.handelError(err);

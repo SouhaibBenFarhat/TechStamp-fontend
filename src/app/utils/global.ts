@@ -28,6 +28,15 @@ export class Globals {
     }
 
 
+    singleQuaryParamBuilder(attribute: string, data: string) {
+        return '?' + attribute + '=' + data;
+    }
+    multipleQueryParamsBuilder(attributes: Array<string>, data: Array<string>) {
+        //TODO LATER
+    }
+
+
+
 }
 
 interface IDictionary {
