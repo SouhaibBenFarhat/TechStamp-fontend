@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
-import { AuthService } from '../../services/auth-service/auth.service';
 import { ProductService } from "../../services/product-service/product.service";
 import { Product } from '../../models/product';
 import { ErrorHandlerService } from "../../services/error-handler.service";
@@ -14,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   products: Array<Product>;
 
-  constructor(private authService: AuthService, private productService: ProductService, private errorHandelr: ErrorHandlerService) { }
+  constructor(private productService: ProductService, private errorHandelr: ErrorHandlerService) { }
 
   ngOnInit() {
 

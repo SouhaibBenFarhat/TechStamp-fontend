@@ -38,6 +38,18 @@ export class ProductService {
 
   }
 
+  getProductById(id: string): any {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('productId', id), { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+        this.converter.productJsonToObject(data).then((product: Product) => {
+          resolve(product);
+        });
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
+
   getPorductByCategoryId(categoryId: string): any {
     let products = Array<Product>();
     return new Promise((resolve, reject) => {

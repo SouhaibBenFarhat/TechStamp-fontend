@@ -33,6 +33,7 @@ import { AuthGuard } from './guard/auth.guard';
 import { BrandService } from './services/brand-service/brand.service';
 import { CategoryService } from './services/category-service/category.service';
 import { CategoryComponent } from './components/category/category/category.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
-  { path: 'category/:id', component: CategoryComponent }
+  { path: 'category/:id', component: CategoryComponent },
+  { path: 'product/:id', component: ProductDetailComponent }
 ]
 
 
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     FooterComponent,
     HeaderComponent,
     HighlightComponent,
-    CategoryComponent
+    CategoryComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
