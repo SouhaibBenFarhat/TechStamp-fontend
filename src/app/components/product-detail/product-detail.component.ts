@@ -14,6 +14,8 @@ export class ProductDetailComponent implements OnInit {
 
   product: Product = new Product();
   relatedProducts: Array<Product> = new Array<Product>();
+  visibleImages = new Array<string>();
+  invisibleImages = new Array<string>();
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private errorHandler: ErrorHandlerService) { }
 
@@ -22,6 +24,15 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.productService.getProductById(params.id).then((data) => {
         this.product = data;
+        for (let i = 0; i < this.product.images.length; i++) {
+          if (i < 4) {
+            this.visibleImages.push(this.product.images[i]);
+          } else {
+            this.invisibleImages.push(this.product.images[i]);
+
+          }
+        }
+
         this.productService.getPorductByCategoryIdWithLimit(this.product.categoryId).then((data) => {
           this.relatedProducts = data;
           console.log(this.relatedProducts);
@@ -34,5 +45,9 @@ export class ProductDetailComponent implements OnInit {
 
     });
   }
+
+
+
+
 
 }

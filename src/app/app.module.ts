@@ -36,6 +36,8 @@ import { CategoryComponent } from './components/category/category/category.compo
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RelatedProductComponentComponent } from './components/related-product-component/related-product-component.component';
 import { ProductItemComponentComponent } from './components/product-item-component/product-item-component.component';
+import { ResetPasswordComponent } from './components/reset-password-component/reset-password-component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 
@@ -45,9 +47,11 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'category/:id', component: CategoryComponent },
-  { path: 'product/:id', component: ProductDetailComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
+  { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'contact', component: ContactComponent }
 ]
 
 
@@ -66,7 +70,9 @@ const appRoutes: Routes = [
     CategoryComponent,
     ProductDetailComponent,
     RelatedProductComponentComponent,
-    ProductItemComponentComponent
+    ProductItemComponentComponent,
+    ResetPasswordComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

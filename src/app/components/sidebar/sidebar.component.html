@@ -1,41 +1,43 @@
+<div id="sidebar" class="span3" style="margin-right: 20px; ">
+  <div class="well well-small">
+    <ul class="nav nav-list">
+      <li *ngFor="let brand of brands">
+        <a class="totalInCart" href="cart.html">
+          {{brand.name}}
+          <span class="badge badge-warning pull-right" style="line-height:18px; background-color: #777777">{{brand.productsNumber}}</span>
 
-  <div id="sidebar" class="span3" style="margin-right: 20px; ">
-    <div class="well well-small">
-      <ul class="nav nav-list">
-        <li *ngFor="let brand of brands">
-          <a class="totalInCart" href="cart.html">
-            {{brand.name}}
-              <span class="badge badge-warning pull-right" style="line-height:18px; background-color: #777777">{{brand.productsNumber}}</span>
-            
-          </a>
-        </li>
-        <li style="border:0"> &nbsp;</li>
-        <li>
-          <a class="totalInCart" href="cart.html">
-            <strong>Total Amount
-              <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span>
-            </strong>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="well well-small">
-        <a href="#">
         </a>
-      </div>
-
-    <div class="well well-small">
-      <a href="#">
-        <img src="assets/img/paypal.jpg" alt="payment method paypal">
-      </a>
-    </div>
-    <div class="well well-small">
-      <a href="#">
-      </a>
-    </div>
-    <div class="well well-small">
-      <a href="#">
-      </a>
-    </div>
+      </li>
+      <li style="border:0"> &nbsp;</li>
+      <li>
+        <a class="totalInCart" href="cart.html">
+          <strong>Total Amount
+            <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span>
+          </strong>
+        </a>
+      </li>
+    </ul>
   </div>
+
+  <div class="well well-small">
+    <ul class="nav nav-list">
+      <li>
+          <a class="totalInCart" href="cart.html">
+              <strong>Wish list
+                <span class="badge badge-warning pull-right" style="line-height:18px;">0</span>
+              </strong>
+            </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="well well-small">
+    <a href="#">
+      <img src="assets/img/paypal.jpg" alt="payment method paypal">
+    </a>
+  </div>
+  <div class="well well-small">
+    <a href="#">
+    </a>
+  </div>
+</div>
