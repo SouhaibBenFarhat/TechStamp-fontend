@@ -34,6 +34,8 @@ import { BrandService } from './services/brand-service/brand.service';
 import { CategoryService } from './services/category-service/category.service';
 import { CategoryComponent } from './components/category/category/category.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { RelatedProductComponentComponent } from './components/related-product-component/related-product-component.component';
+import { ProductItemComponentComponent } from './components/product-item-component/product-item-component.component';
 
 
 
@@ -62,7 +64,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     HighlightComponent,
     CategoryComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    RelatedProductComponentComponent,
+    ProductItemComponentComponent
   ],
   imports: [
     BrowserModule,

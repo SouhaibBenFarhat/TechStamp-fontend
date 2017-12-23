@@ -1,3 +1,5 @@
+import { Property } from "./property";
+
 export class Product {
     id: string;
     name: string;
@@ -11,7 +13,12 @@ export class Product {
     currency: string;
     largeImage: string;
     categoryId: string;
+    properties: Array<Property>;
+    images: Array<string>;
 
-    constructor() { }
+    constructor() {
+        this.properties = new Array<Property>()
+        this.images = new Array<string>();
+    }
 
 }

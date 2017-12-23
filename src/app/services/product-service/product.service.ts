@@ -22,7 +22,7 @@ export class ProductService {
 
 
   getAllProducts(): any {
-    let products = Array<Product>();
+    let products = new Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
         for (let i = 0; i < data.length; i++) {
@@ -54,6 +54,21 @@ export class ProductService {
     let products = Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('categoryId', categoryId), { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+        for (let i = 0; i < data.length; i++) {
+          this.converter.productJsonToObject(data[i]).then((product: Product) => {
+            products.push(product);
+          });
+        }
+        resolve(products);
+      }, (err) => {
+        reject(err);
+      })
+    });
+  }
+  getPorductByCategoryIdWithLimit(categoryId: string): any {
+    let products = Array<Product>();
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('categoryId', categoryId) + '&limit=10', { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
         for (let i = 0; i < data.length; i++) {
           this.converter.productJsonToObject(data[i]).then((product: Product) => {
             products.push(product);

@@ -1,0 +1,23 @@
+<li class="span2">
+    <div class="thumbnail">
+      <a class="zoomTool" [routerLink]="['/product/'+product.id]" title="add to cart">
+        <span class="icon-search"></span> QUICK VIEW</a>
+      <a  [routerLink]="['/product/'+product.id]">
+        <img src="{{product.image}}" alt="" style="height: 100px;">
+      </a>
+      <div class="caption cntr">
+        <p>{{product.name}}</p>
+        <p>
+          <strong> {{product.price}} | TDN</strong>
+        </p>
+        <h4>
+          <a class="shopBtn" href="#" title="add to cart"> Add to cart </a>
+        </h4>
+        <div class="actionList">
+          <a class="pull-left" href="#">Add to Wish List </a>
+          <a class="pull-left" href="#"> Add to Compare </a>
+        </div>
+        <br class="clr">
+      </div>
+    </div>
+  </li>

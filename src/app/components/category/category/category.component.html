@@ -1,28 +1,5 @@
 <div class="span8">
   <ul class="thumbnails">
-    <li class="span2" *ngFor="let product of products">
-      <div class="thumbnail">
-        <a href="product_details.html" class="overlay"></a>
-        <a class="zoomTool" href="product_details.html" title="add to cart">
-          <span class="icon-search"></span> QUICK VIEW</a>
-        <a href="product_details.html">
-          <img src="{{product.image}}" alt="">
-        </a>
-        <div class="caption cntr">
-          <p>{{product.name}}</p>
-          <p>
-            <strong> {{product.price}} | TDN</strong>
-          </p>
-          <h4>
-            <a class="shopBtn" href="#" title="add to cart"> Add to cart </a>
-          </h4>
-          <div class="actionList">
-            <a class="pull-left" href="#">Add to Wish List </a>
-            <a class="pull-left" href="#"> Add to Compare </a>
-          </div>
-          <br class="clr">
-        </div>
-      </div>
-    </li>
+      <app-product-item-component *ngFor="let product of products" [product]="product"></app-product-item-component>      
   </ul>
 </div>

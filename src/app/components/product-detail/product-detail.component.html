@@ -1,4 +1,4 @@
-<div class="span8">
+<div class="span8" *ngIf="product">
   <div class="well well-small">
     <div class="row-fluid">
       <div class="span5">
@@ -91,178 +91,27 @@
         <h4>Product Information</h4>
         <table class="table table-striped">
           <tbody>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Color:</td>
-              <td class="techSpecTD2">Black</td>
-            </tr>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Style:</td>
-              <td class="techSpecTD2">Apparel,Sports</td>
-            </tr>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Season:</td>
-              <td class="techSpecTD2">spring/summer</td>
-            </tr>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Usage:</td>
-              <td class="techSpecTD2">fitness</td>
-            </tr>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Sport:</td>
-              <td class="techSpecTD2">122855031</td>
-            </tr>
-            <tr class="techSpecRow">
-              <td class="techSpecTD1">Brand:</td>
-              <td class="techSpecTD2">Shock Absorber</td>
+            <tr class="techSpecRow" *ngFor="let prop of product.properties">
+              <td class="techSpecTD1">{{prop.key}}:</td>
+              <td class="techSpecTD2">{{prop.value}}</td>
             </tr>
           </tbody>
         </table>
         <p>{{product.description}}</p>
-        
+
 
       </div>
       <div class="tab-pane fade" id="profile">
-        <div class="row-fluid">
-          <div class="span2">
-            <img src="assets/img/d.jpg" alt="">
-          </div>
-          <div class="span6">
-            <h5>Product Name </h5>
-            <p>
-              Nowadays the lingerie industry is one of the most successful business spheres. We always stay in touch with the latest fashion
-              tendencies - that is why our goods are so popular..
-            </p>
-          </div>
-          <div class="span4 alignR">
-            <form class="form-horizontal qtyFrm">
-              <h3> $140.00</h3>
-              <label class="checkbox">
-                <input type="checkbox"> Adds product to compair
-              </label>
-              <br>
-              <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn">
-                  <span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a href="product_details.html" class="shopBtn">VIEW</a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <hr class="soft">
-        <div class="row-fluid">
-          <div class="span2">
-            <img src="assets/img/d.jpg" alt="">
-          </div>
-          <div class="span6">
-            <h5>Product Name </h5>
-            <p>
-              Nowadays the lingerie industry is one of the most successful business spheres. We always stay in touch with the latest fashion
-              tendencies - that is why our goods are so popular..
-            </p>
-          </div>
-          <div class="span4 alignR">
-            <form class="form-horizontal qtyFrm">
-              <h3> $140.00</h3>
-              <label class="checkbox">
-                <input type="checkbox"> Adds product to compair
-              </label>
-              <br>
-              <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn">
-                  <span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a href="product_details.html" class="shopBtn">VIEW</a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <hr class="soft" />
-        <div class="row-fluid">
-          <div class="span2">
-            <img src="assets/img/d.jpg" alt="">
-          </div>
-          <div class="span6">
-            <h5>Product Name </h5>
-            <p>
-              Nowadays the lingerie industry is one of the most successful business spheres. We always stay in touch with the latest fashion
-              tendencies - that is why our goods are so popular..
-            </p>
-          </div>
-          <div class="span4 alignR">
-            <form class="form-horizontal qtyFrm">
-              <h3> $140.00</h3>
-              <label class="checkbox">
-                <input type="checkbox"> Adds product to compair
-              </label>
-              <br>
-              <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn">
-                  <span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a href="product_details.html" class="shopBtn">VIEW</a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <hr class="soft" />
-        <div class="row-fluid">
-          <div class="span2">
-            <img src="assets/img/d.jpg" alt="">
-          </div>
-          <div class="span6">
-            <h5>Product Name </h5>
-            <p>
-              Nowadays the lingerie industry is one of the most successful business spheres. We always stay in touch with the latest fashion
-              tendencies - that is why our goods are so popular..
-            </p>
-          </div>
-          <div class="span4 alignR">
-            <form class="form-horizontal qtyFrm">
-              <h3> $140.00</h3>
-              <label class="checkbox">
-                <input type="checkbox"> Adds product to compair
-              </label>
-              <br>
-              <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn">
-                  <span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a href="product_details.html" class="shopBtn">VIEW</a>
-              </div>
-            </form>
-          </div>
-        </div>
-        <hr class="soften" />
-        <div class="row-fluid">
-          <div class="span2">
-            <img src="assets/img/d.jpg" alt="">
-          </div>
-          <div class="span6">
-            <h5>Product Name </h5>
-            <p>
-              Nowadays the lingerie industry is one of the most successful business spheres. We always stay in touch with the latest fashion
-              tendencies - that is why our goods are so popular..
-            </p>
-          </div>
-          <div class="span4 alignR">
-            <form class="form-horizontal qtyFrm">
-              <h3> $140.00</h3>
-              <label class="checkbox">
-                <input type="checkbox"> Adds product to compair
-              </label>
-              <br>
-              <div class="btn-group">
-                <a href="product_details.html" class="defaultBtn">
-                  <span class=" icon-shopping-cart"></span> Add to cart</a>
-                <a href="product_details.html" class="shopBtn">VIEW</a>
-              </div>
-            </form>
-          </div>
-        </div>
+          <app-related-product-component  *ngFor="let rp of relatedProducts" [relatedProduct]="rp"></app-related-product-component>
       </div>
       <div class="tab-pane fade" id="cat1">
-        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi
-          farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles
-          etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg
-          banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably
-          haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack
+          lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore
+          carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+          Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester
+          cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray
+          yr.
+        </p>
         <br>
         <br>
         <div class="row-fluid">

@@ -41,6 +41,16 @@ export class Converters {
             product.date = data.date;
             product.largeImage = data.largeImage;
             product.categoryId = data.categoryId;
+            if (data.properties != undefined) {
+                for (let i = 0; i < data.properties.length; i++) {
+                    product.properties.push(data.properties[i]);
+                }
+            }
+            if (data.images != undefined) {
+                for (let i = 0; i < data.images.length; i++) {
+                    product.images.push(data.images[i]);
+                }
+            }
             resolve(product);
         });
     }

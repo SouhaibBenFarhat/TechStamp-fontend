@@ -12,7 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product;
+  product: Product = new Product();
+  relatedProducts: Array<Product> = new Array<Product>();
 
   constructor(private route: ActivatedRoute, private productService: ProductService, private errorHandler: ErrorHandlerService) { }
 
@@ -21,9 +22,14 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.productService.getProductById(params.id).then((data) => {
         this.product = data;
-        console.log(this.product);
+        this.productService.getPorductByCategoryIdWithLimit(this.product.categoryId).then((data) => {
+          this.relatedProducts = data;
+          console.log(this.relatedProducts);
+        }).catch((err) => {
+          //Handle error
+        })
       }).catch((err) => {
-
+        //Handel Error
       });
 
     });
