@@ -38,20 +38,28 @@ import { RelatedProductComponentComponent } from './components/related-product-c
 import { ProductItemComponentComponent } from './components/product-item-component/product-item-component.component';
 import { ResetPasswordComponent } from './components/reset-password-component/reset-password-component';
 import { ContactComponent } from './components/contact/contact.component';
+import { BrandItemComponent } from './components/brand-item/brand-item.component';
+import { BrandsComponent } from './components/brands/brands.component';
 
 
 
 
 //Routes Configuration
 const appRoutes: Routes = [
+
+  //Public
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'contact', component: ContactComponent },
+
+  // Secure
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] }
+
 ]
 
 
@@ -72,7 +80,9 @@ const appRoutes: Routes = [
     RelatedProductComponentComponent,
     ProductItemComponentComponent,
     ResetPasswordComponent,
-    ContactComponent
+    ContactComponent,
+    BrandItemComponent,
+    BrandsComponent
   ],
   imports: [
     BrowserModule,

@@ -36,4 +36,23 @@ export class BrandService {
     });
   }
 
+  getTopBrands(): any {
+    let brands = Array<Brand>();
+    return new Promise((resolve, reject) => {
+
+      this.http.get(this.global.urls['top-brands'], { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
+        for (let i = 0; i < data.length; i++) {
+          this.converter.brandJsonToObject(data[i]).then((brand: Brand) => {
+            brands.push(brand);
+          });
+        }
+        resolve(brands);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
+
+
 }

@@ -15,7 +15,7 @@ export class SidebarComponent implements OnInit {
   constructor(private brandService: BrandService, private errorHandlerService: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.brandService.getAllBrands().then((data) => {
+    this.brandService.getTopBrands().then((data) => {
       this.brands = data;
     }).catch((err) => {
       console.log(err);
