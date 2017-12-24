@@ -1,0 +1,20 @@
+<div id="sidebar" class="span3" *ngIf="articles.length > 0">
+  <div class="well well-small">
+    <ul class="nav nav-list promowrapper">
+      <li *ngFor="let article of articles" style="margin-bottom: 20px;">
+        <div class="thumbnail">
+          <a class="zoomTool" href="product_details.html" title="add to cart">
+            <span class="icon-search"></span> MORE DETAIL</a>
+          <img src="{{article.urlToImage}}" alt="shopping cart template">
+          <div class="caption">
+            <h5>
+            </h5>
+          </div>
+          <span class="pull-left"><b> {{(article.author.length>10)? (article.author | slice:0:10)+'...':(article.author)}} </b></span> <br>         
+          <p> {{(article.description.length>100)? (article.description | slice:0:100)+'...':(article.description)}}</p>
+          
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { Globals } from '../../utils/global';
 import { Converters } from '../../utils/converters';
 import { AuthService } from "../auth-service/auth.service";
 import 'rxjs/add/operator/map';
+import { reject } from 'q';
 
 
 @Injectable()
@@ -65,6 +66,23 @@ export class ProductService {
       })
     });
   }
+
+  getProductByBrandId(brandId: string): any {
+    let products = Array<Product>();
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['product-by-brand'] + brandId, { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
+        for (let i = 0; i < data.length; i++) {
+          this.converter.productJsonToObject(data[i]).then((product: Product) => {
+            products.push(product);
+          })
+        }
+        resolve(products);
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
+
   getPorductByCategoryIdWithLimit(categoryId: string): any {
     let products = Array<Product>();
     return new Promise((resolve, reject) => {

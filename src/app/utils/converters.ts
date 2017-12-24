@@ -3,6 +3,7 @@ import { User } from '../models/user';
 import { Product } from '../models/product';
 import { Brand } from "../models/brand";
 import { Category } from "../models/category";
+import { Article } from "../models/article";
 
 @Injectable()
 export class Converters {
@@ -51,7 +52,7 @@ export class Converters {
                     product.images.push(data.images[i]);
                 }
             }
-            this.brandJsonToObject(data.brand).then((data)=>{
+            this.brandJsonToObject(data.brand).then((data) => {
                 product.brand = data;
             });
             resolve(product);
@@ -88,6 +89,22 @@ export class Converters {
             resolve(category);
         });
 
+    }
+
+    articleJsonToObject(data): any {
+        let article = new Article();
+        return new Promise((resolve, reject) => {
+            article.source.id = data.source.id;
+            article.source.name = data.source.name;
+            article.author = data.author;
+            article.title = data.title;
+            article.description = data.description;
+            article.url = data.url;
+            article.urlToImage = data.urlToImage;
+            article.publishedAt = data.publishedAt
+
+            resolve(article);
+        });
     }
 
 }

@@ -40,6 +40,9 @@ import { ResetPasswordComponent } from './components/reset-password-component/re
 import { ContactComponent } from './components/contact/contact.component';
 import { BrandItemComponent } from './components/brand-item/brand-item.component';
 import { BrandsComponent } from './components/brands/brands.component';
+import { BrandDetailComponent } from './components/brand-detail/brand-detail.component';
+import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.component';
+import { NewsService } from './services/news-service/news.service';
 
 
 
@@ -58,7 +61,8 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
-  { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] }
+  { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
+  { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] }
 
 ]
 
@@ -82,7 +86,9 @@ const appRoutes: Routes = [
     ResetPasswordComponent,
     ContactComponent,
     BrandItemComponent,
-    BrandsComponent
+    BrandsComponent,
+    BrandDetailComponent,
+    RightSidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +107,8 @@ const appRoutes: Routes = [
     AuthGuard,
     ProductService,
     BrandService,
-    CategoryService
+    CategoryService,
+    NewsService
   ],
   bootstrap: [AppComponent]
 })

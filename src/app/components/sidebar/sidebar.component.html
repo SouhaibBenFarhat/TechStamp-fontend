@@ -2,7 +2,7 @@
   <div class="well well-small">
     <ul class="nav nav-list">
       <li *ngFor="let brand of brands">
-        <a class="totalInCart" href="cart.html">
+        <a class="totalInCart" href="#" [routerLink]="['/brand/'+brand.id]">
           {{brand.name}}
           <span class="badge badge-warning pull-right" style="line-height:18px; background-color: #777777">{{brand.productsNumber}}</span>
 
