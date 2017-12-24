@@ -13,6 +13,7 @@ export class BrandItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.brand.id); 
   }
 
 }

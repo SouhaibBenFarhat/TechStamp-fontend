@@ -15,7 +15,7 @@ export class HighlightComponent implements OnInit {
   constructor(private productService: ProductService, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.productService.getTopproducts("3").then((data) => {
+    this.productService.getTopproducts("10").then((data) => {
       this.topProducts = data;
     }).catch((err) => {
       this.errorHandler.handelError(err);

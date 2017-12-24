@@ -51,6 +51,9 @@ export class Converters {
                     product.images.push(data.images[i]);
                 }
             }
+            this.brandJsonToObject(data.brand).then((data)=>{
+                product.brand = data;
+            });
             resolve(product);
         });
     }

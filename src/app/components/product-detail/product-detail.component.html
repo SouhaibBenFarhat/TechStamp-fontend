@@ -19,7 +19,7 @@
         <hr class="soft" />
 
         <form class="form-horizontal qtyFrm">
-     
+
 
           <div class="control-group">
             <label class="control-label">
@@ -47,18 +47,23 @@
               </select>
             </div>
           </div>
-          <h4>100 items in stock</h4>
-          <p>{{product.secondName}}
-            <p>
-              <button type="submit" class="shopBtn">
-                <span class=" icon-shopping-cart"></span> Add to cart</button>
+          <h4>100 items in stock</h4>          
+          <p>{{product.description}}</p>
+          <div class="pull-right">
+                <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart</button>
+          </div>
+          
         </form>
+        <br><br>
       </div>
     </div>
+    <br>
+    <app-brand-item [brand]="product.brand"></app-brand-item>
+    
     <hr class="softn clr" />
     <div class="row-fluid" *ngIf="product.images.length > 0">
       <div id="newProductCar" class="carousel slide">
-        <div class="carousel-inner" >
+        <div class="carousel-inner">
           <div class="item active">
             <ul class="thumbnails">
               <li class="span3" *ngFor="let image of visibleImages; let i = index;">
@@ -70,12 +75,12 @@
               </li>
             </ul>
           </div>
-          <div class="item">
+          <div class="item" *ngIf="invisibleImages.length >0">
             <ul class="thumbnails">
               <li class="span3" *ngFor="let image of invisibleImages; let i = index;">
                 <div class="thumbnail">
                   <a href="#">
-                    <img src="{{image}}" alt="bootstrap-ring"  style="height: 100px;">
+                    <img src="{{image}}" alt="bootstrap-ring" style="height: 100px;">
                   </a>
                 </div>
               </li>

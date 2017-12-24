@@ -1,4 +1,5 @@
 import { Property } from "./property";
+import { Brand } from "./brand";
 
 export class Product {
     id: string;
@@ -15,10 +16,12 @@ export class Product {
     categoryId: string;
     properties: Array<Property>;
     images: Array<string>;
+    brand: Brand;
 
     constructor() {
         this.properties = new Array<Property>()
         this.images = new Array<string>();
+        this.brand = new Brand();
     }
 
 }

@@ -24,12 +24,14 @@ export class ProductDetailComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.productService.getProductById(params.id).then((data) => {
         this.product = data;
-        for (let i = 0; i < this.product.images.length; i++) {
-          if (i < 4) {
-            this.visibleImages.push(this.product.images[i]);
-          } else {
-            this.invisibleImages.push(this.product.images[i]);
+        if (this.product.images.length > 0) {
+          for (let i = 0; i < this.product.images.length; i++) {
+            if (i <= 4) {
+              this.visibleImages.push(this.product.images[i]);
+            } else {
+              this.invisibleImages.push(this.product.images[i]);
 
+            }
           }
         }
 
