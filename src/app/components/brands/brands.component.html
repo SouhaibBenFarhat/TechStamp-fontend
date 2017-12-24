@@ -1,3 +1,5 @@
-<p>
-  brands works!
-</p>
+<div class="span12">
+  <div class="well well-small">
+    <app-brand-item *ngFor="let brand of brands" [brand]="brand" style="margin-bottom: 10px;"></app-brand-item>
+  </div>
+</div>
