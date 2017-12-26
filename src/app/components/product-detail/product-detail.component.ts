@@ -26,7 +26,7 @@ export class ProductDetailComponent implements OnInit {
         this.product = data;
         if (this.product.images.length > 0) {
           for (let i = 0; i < this.product.images.length; i++) {
-            if (i <= 4) {
+            if (i < 4) {
               this.visibleImages.push(this.product.images[i]);
             } else {
               this.invisibleImages.push(this.product.images[i]);

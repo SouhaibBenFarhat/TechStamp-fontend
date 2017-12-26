@@ -43,6 +43,9 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { BrandDetailComponent } from './components/brand-detail/brand-detail.component';
 import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.component';
 import { NewsService } from './services/news-service/news.service';
+import { WishListService } from "./services/wish-list-service/wish-list.service";
+import { WishListComponent } from './components/wish-list/wish-list.component';
+import { WishListItemComponent } from './components/wish-list-item/wish-list-item.component';
 
 
 
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
   { path: 'category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
   { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
-  { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] }
+  { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] },
+  { path: 'wish-list', component: WishListComponent, canActivate: [AuthGuard] }
 
 ]
 
@@ -88,7 +92,9 @@ const appRoutes: Routes = [
     BrandItemComponent,
     BrandsComponent,
     BrandDetailComponent,
-    RightSidebarComponent
+    RightSidebarComponent,
+    WishListComponent,
+    WishListItemComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +114,8 @@ const appRoutes: Routes = [
     ProductService,
     BrandService,
     CategoryService,
-    NewsService
+    NewsService,
+    WishListService
   ],
   bootstrap: [AppComponent]
 })

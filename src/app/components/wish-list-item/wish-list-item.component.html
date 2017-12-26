@@ -1,0 +1,20 @@
+<div class="row-fluid" style="margin-bottom: 20px;">
+  <div class="span2">
+    <img src="{{product.image}}" alt="" style="background-color: white">
+  </div>
+  <div class="span8">
+    <h5>{{product.name}} </h5>
+    <p>
+      {{product.description}}
+    </p>
+  </div>
+  <div class="span2 alignR">
+    <form class="form-horizontal qtyFrm">
+      <h3></h3>
+      <br>
+      <div class="btn-group">
+        <a href="#" [routerLink]="['/product/'+product.id]" class="shopBtn">VIEW</a>
+      </div>
+    </form>
+  </div>
+</div>

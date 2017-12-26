@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (event.url.indexOf("contact") >= 0) {
-          this.show = false;
+          this.show = true;
         } else {
           this.show = true;
         }

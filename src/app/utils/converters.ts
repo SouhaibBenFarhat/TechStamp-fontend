@@ -4,6 +4,7 @@ import { Product } from '../models/product';
 import { Brand } from "../models/brand";
 import { Category } from "../models/category";
 import { Article } from "../models/article";
+import { WishList } from "../models/wishList";
 
 @Injectable()
 export class Converters {
@@ -104,6 +105,16 @@ export class Converters {
             article.publishedAt = data.publishedAt
 
             resolve(article);
+        });
+    }
+
+    wishListJsonToObject(data): any {
+        let wishList = new WishList();
+        return new Promise((resolve, reject) => {
+            wishList.id = data._id;
+            wishList.productId = data.productId;
+            wishList.userId = data.userId;
+            resolve(wishList);
         });
     }
 

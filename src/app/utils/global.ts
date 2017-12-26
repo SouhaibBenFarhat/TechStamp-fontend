@@ -32,6 +32,7 @@ export class Globals {
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';
         this.urls['category'] = this.serverAddress + '/api/v1/category';
         this.urls['product-by-brand'] = this.serverAddress + '/api/v1/product/by-brand/';
+        this.urls['wish-list'] = this.serverAddress + '/api/v1/wish-list';
 
     }
 

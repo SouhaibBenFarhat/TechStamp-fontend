@@ -21,7 +21,9 @@ export class NewsService {
           for (let i = 0; i < data.length; i++) {
             if (data[i].author) {
               this.converter.articleJsonToObject(data[i]).then((article) => {
-                this.articles.push(article);
+                if(i<=4){
+                  this.articles.push(article);
+                }
               });
             }
           }
