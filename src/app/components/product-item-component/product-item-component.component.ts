@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WishListService } from "../../services/wish-list-service/wish-list.service";
 import { Product } from '../../models/product';
 
 @Component({
@@ -9,9 +10,15 @@ import { Product } from '../../models/product';
 export class ProductItemComponentComponent implements OnInit {
 
   @Input() product: Product;
-  constructor() { }
+  constructor(private wishListService: WishListService) { }
 
   ngOnInit() {
+  }
+
+  addToWishList() {
+    this.wishListService.addToWishList(this.product.id).then((data) => {
+
+    });
   }
 
 }

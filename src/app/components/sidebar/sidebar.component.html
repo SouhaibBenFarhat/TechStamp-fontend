@@ -9,8 +9,8 @@
         </a>
       </li>
       <li>
-          <a href=""  [routerLink]="['brands']">
-              <span class="icon-chevron-right"></span> More</a>
+        <a href="" [routerLink]="['brands']">
+          <span class="icon-chevron-right"></span> More</a>
       </li>
       <li style="border:0"> &nbsp;</li>
       <li>
@@ -25,12 +25,24 @@
 
   <div class="well well-small">
     <ul class="nav nav-list">
-      <li>
-          <a class="totalInCart" href="#" [routerLink]="['/wish-list']">
-              <strong>Wish list
-                <span class="badge badge-warning pull-right" style="line-height:18px;">0</span>
-              </strong>
-            </a>
+
+      <li *ngIf="loading">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </li>
+
+
+      <li *ngIf="!loading">
+        <a class="totalInCart" href="#" [routerLink]="['/wish-list']">
+          <strong>Wish list
+            <span class="badge badge-warning pull-right" style="line-height:18px;">{{wishListNumber}}</span>
+          </strong>
+        </a>
       </li>
     </ul>
   </div>

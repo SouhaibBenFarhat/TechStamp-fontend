@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Product } from "../../models/product";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,34 +7,63 @@ import { Globals } from '../../utils/global';
 import { Converters } from '../../utils/converters';
 import { AuthService } from "../auth-service/auth.service";
 import 'rxjs/add/operator/map';
-import { reject } from 'q';
 
 @Injectable()
 export class WishListService {
 
   headers;
-  
-  
-    constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-      this.headers = new HttpHeaders(
-        { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
-    }
+  wishLists = new Array<WishList>();
+  wishListNumber = new EventEmitter<any>();
 
-    getAllWishList(): any {
-      let wishLists = new Array<WishList>();
-      return new Promise((resolve, reject) => {
-        this.http.get(this.global.urls['wish-list'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
-          for (let i = 0; i < data.length; i++) {
-            this.converter.wishListJsonToObject(data[i]).then((wishList: WishList) => {
-              wishLists.push(wishList);
-            });
-          }
-          resolve(wishLists);
-        }, (error) => {
-          reject(error);
-        });
+
+  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+  }
+
+
+
+  getAllWishList(): any {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['wish-list'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+        this.wishLists = [];
+        for (let i = 0; i < data.length; i++) {
+          this.converter.wishListJsonToObject(data[i]).then((wishList: WishList) => {
+            this.wishLists.push(wishList);
+          });
+        }
+        resolve(this.wishLists);
+      }, (error) => {
+        reject(error);
       });
-  
-    }
+    });
+
+  }
+  addToWishList(productId: string): any {
+    let wishList = new WishList();
+    return new Promise((resolve, reject) => {
+      this.authService.getCurrentUser().then((data) => {
+        wishList.productId = productId;
+        wishList.userId = data._id;
+        console.log(wishList);
+        this.http.post(this.global.urls['wish-list'], { productId: wishList.productId, userId: wishList.userId }, { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+          this.converter.wishListJsonToObject(data).then((wishList: WishList) => {
+            this.wishLists.push(wishList);
+            this.wishListNumber.emit(this.wishLists.length);
+            resolve();
+          })
+        }, (err) => {
+          reject(err);
+          console.log(err);
+        })
+
+
+      }).catch((err) => {
+        reject(err);
+      })
+
+
+    })
+  }
 
 }

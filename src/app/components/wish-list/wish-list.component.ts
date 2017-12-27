@@ -17,7 +17,7 @@ export class WishListComponent implements OnInit {
   ngOnInit() {
     this.wishListService.getAllWishList().then((data) => {
       this.wishLists = data;
-    }).Catch((err) => {
+    }).catch((err) => {
       this.errorHandler.handelError(err);
     });
   }
