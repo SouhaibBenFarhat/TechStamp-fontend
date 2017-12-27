@@ -13,9 +13,15 @@
       <h4>
         <a class="shopBtn" href="#" title="add to cart"> Add to cart </a>
       </h4>
-      <div class="actionList" style="text-align: center"><br>
-        <a class="" href="#" (click)="addToWishList()">Add to Wish List </a><br>
-        <a class="" href="#"> Add to Compare </a>
+      <div class="actionList" style="text-align: center" style="margin-top: 10px;">
+        <p>
+          <a class="" (click)="addToWishList()" *ngIf="canAddToWishList">Add to Wish List </a>
+          <a class="" [routerLink]="['/wish-list']" style="color:#f89406" *ngIf="!canAddToWishList">Go to Wish List </a>
+          
+        </p>
+        <p>
+          <a class="" > Add to Compare </a>
+        </p>
       </div>
       <br class="clr">
     </div>

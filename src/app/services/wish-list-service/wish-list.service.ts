@@ -14,13 +14,18 @@ export class WishListService {
   headers;
   wishLists = new Array<WishList>();
   wishListNumber = new EventEmitter<any>();
+  onWishListChange = new EventEmitter<any>();
 
 
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
     this.headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
   }
 
+  getWishList(): any {
+
+  }
 
 
   getAllWishList(): any {
@@ -45,25 +50,55 @@ export class WishListService {
       this.authService.getCurrentUser().then((data) => {
         wishList.productId = productId;
         wishList.userId = data._id;
-        console.log(wishList);
         this.http.post(this.global.urls['wish-list'], { productId: wishList.productId, userId: wishList.userId }, { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
           this.converter.wishListJsonToObject(data).then((wishList: WishList) => {
             this.wishLists.push(wishList);
             this.wishListNumber.emit(this.wishLists.length);
+            this.onWishListChange.emit({ event: "add", productId: wishList.productId });
             resolve();
           })
         }, (err) => {
           reject(err);
           console.log(err);
         })
-
-
       }).catch((err) => {
         reject(err);
+      });
+    })
+  }
+  deleteFromWishList(productId: string, wishListId: string): any {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.global.urls['wish-list-delete'] + wishListId, { headers: this.headers }).subscribe(() => {
+        for (let i = 0; i < this.wishLists.length; i++) {
+          if (this.wishLists[i].id === wishListId) {
+            this.wishLists.splice(i, 1);
+          }
+        }
+        this.onWishListChange.emit({ event: "remove", productId: productId });
+        this.wishListNumber.emit(this.wishLists.length);
+        resolve();
+      }, (err) => {
+        reject(err);
+        console.log(err);
       })
-
-
     })
   }
 
+  doesProductExistInWishList(productId: string): any {
+    if (this.wishLists.length > 0) {
+      for (let i = 0; i < this.wishLists.length; i++) {
+        if (this.wishLists[i].productId === productId) {
+          return true;
+        }
+      }
+    } else {
+      this.getAllWishList().then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].productId === productId) {
+            return true;
+          }
+        }
+      })
+    }
+  }
 }

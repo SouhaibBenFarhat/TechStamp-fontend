@@ -14,10 +14,8 @@ export class AuthGuard implements CanActivate {
 
         return new Promise((resolve, reject) => {
             if (this.authService.currentUser && localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
-                console.log('logged in');
                 resolve(true);
             } else {
-                console.log('not logged in');
                 if (localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
                     this.authService.getCurrentUser().then((data) => {
                         if (data) {

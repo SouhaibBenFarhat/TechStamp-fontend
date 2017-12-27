@@ -15,6 +15,17 @@ export class WishListComponent implements OnInit {
   constructor(private wishListService: WishListService, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
+
+    this.getAllWishList();
+    this.wishListService.onWishListChange.subscribe((data) => {
+      console.log('sorm ommek');      
+      this.wishLists = this.wishListService.wishLists;
+    })
+
+
+  }
+
+  getAllWishList() {
     this.wishListService.getAllWishList().then((data) => {
       this.wishLists = data;
     }).catch((err) => {
