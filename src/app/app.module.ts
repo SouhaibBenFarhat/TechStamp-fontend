@@ -46,6 +46,9 @@ import { NewsService } from './services/news-service/news.service';
 import { WishListService } from "./services/wish-list-service/wish-list.service";
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { WishListItemComponent } from './components/wish-list-item/wish-list-item.component';
+import { CompleteProfileComponent } from './components/complete-profile/complete-profile.component';
+import { AddressesComponent } from './components/addresses/addresses.component';
+import { PersonalDetailComponent } from './components/personal-detail/personal-detail.component';
 
 
 
@@ -94,7 +97,10 @@ const appRoutes: Routes = [
     BrandDetailComponent,
     RightSidebarComponent,
     WishListComponent,
-    WishListItemComponent
+    WishListItemComponent,
+    CompleteProfileComponent,
+    AddressesComponent,
+    PersonalDetailComponent
   ],
   imports: [
     BrowserModule,

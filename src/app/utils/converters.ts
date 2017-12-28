@@ -24,6 +24,20 @@ export class Converters {
             this.user.countryCode = data.data.countryCode;
             this.user.role = data.data.role;
             this.user.token = data.data.token;
+            this.user.profilePictureUrl = data.data.profilePictureUrl;
+            if ((data.data.personalDetail != null) && (data.data.personalDetail != undefined)) {
+                this.user.personalDetail.date = data.data.personalDetail.date;
+                this.user.personalDetail.day = data.data.personalDetail.day;
+                this.user.personalDetail.firstname = data.data.personalDetail.firstname;
+                this.user.personalDetail.gender = data.data.personalDetail.gender;
+                this.user.personalDetail.lastname = data.data.personalDetail.lastname;
+                this.user.personalDetail.month = data.data.personalDetail.month;
+                this.user.personalDetail.phone = data.data.personalDetail.phone;
+                this.user.personalDetail.year = data.data.personalDetail.year;
+            }
+
+            console.log(this.user);
+
             resolve(this.user);
         });
 

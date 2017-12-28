@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn: boolean = false;
   categories: Array<Category>;
-  navClicked: string = 'home';
+  navClicked: string = '';
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals, private categoryService: CategoryService, private errorHandler: ErrorHandlerService) {
 
