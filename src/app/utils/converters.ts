@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
+import { User, Address } from '../models/user';
 import { Product } from '../models/product';
 import { Brand } from "../models/brand";
 import { Category } from "../models/category";
@@ -17,8 +17,6 @@ export class Converters {
         return new Promise((resolve, reject) => {
             this.user._id = data.data._id;
             this.user.email = data.data.email;
-            this.user.firstname = data.data.firstname;
-            this.user.lastname = data.data.lastname;
             this.user.firstTime = data.data.firstTime;
             this.user.description = data.data.description;
             this.user.countryCode = data.data.countryCode;
@@ -34,6 +32,18 @@ export class Converters {
                 this.user.personalDetail.month = data.data.personalDetail.month;
                 this.user.personalDetail.phone = data.data.personalDetail.phone;
                 this.user.personalDetail.year = data.data.personalDetail.year;
+            }
+            if ((data.data.addresses != null) && (data.data.addresses != undefined) && (data.data.addresses.length > 0) && (Array.isArray(data.data.addresses))) {
+                this.user.addresses = new Array<Address>();
+                for (let i = 0; i < data.data.addresses.length; i++) {
+                    let address = new Address();
+                    address.address = data.data.addresses[i].address;
+                    address.code = data.data.addresses[i].code;
+                    address.indication = data.data.addresses[i].indication;
+                    address.region = data.data.addresses[i].region;
+                    address.state = data.data.addresses[i].state;
+                    this.user.addresses.push(address);
+                }
             }
 
             console.log(this.user);

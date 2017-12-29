@@ -1,23 +1,60 @@
 <div class="span12">
-    <div class="span11 well">
-        <div class="row">
-          <div class="span10">
-          <h3>Account Settings</h3>
-            <p>From your account, you can get the history of your orders and update your information. Please fill in your information to better navigate TechStamp.</p>
-          </div>
-        </div>
+  <div class="span11 well">
+    <div class="row">
+      <div class="span10">
+        <h3>Account Settings</h3>
+        <p>From your account, you can get the history of your orders and update your information. Please fill in your information
+          to better navigate TechStamp.</p>
       </div>
+    </div>
+  </div>
   <div class="span11 well" *ngIf="!currentUser.firstTime">
+    <div class="row">
+      <div class="span8">
+          <h3>Account Information</h3>
+          <br>          
+      </div>
+    </div>
     <div class="row">
       <div class="span3">
         <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
-          <img src="{{currentUser.profilePictureUrl}}" name="aboutme"
-            width="140" height="140" class="img-circle">
+          <img src="{{currentUser.profilePictureUrl}}" name="aboutme" width="140" height="140" class="img-circle">
         </a>
       </div>
       <div class="span8">
-        <h3>Joe Sixpack</h3>
-        <em>click my face for more</em>
+        <h4>{{currentUser.personalDetail.gender}}. {{currentUser.personalDetail.firstname}} {{currentUser.personalDetail.lastname}}</h4>
+        <em>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat a inventore voluptates laborum ipsam earum deleniti nesciunt soluta commodi minus hic velit cupiditate repellendus dignissimos excepturi aperiam, id quam amet.</em>
+        <hr>
+      </div>
+   
+    </div>
+    <div class="row">
+      <div class="span3">
+        <h3>Personal Detail</h3>
+        <h5>Phone:</h5>  <p>+{{currentUser.personalDetail.phone}}</p>
+        <h5>Birthday:</h5> <p> {{currentUser.personalDetail.day}}/{{currentUser.personalDetail.month}}/{{currentUser.personalDetail.year}}</p>
+        <h5>Email:</h5> <p> {{currentUser.email}}</p>
+        <a href="#" class="defaultBtn">Change password</a>
+        
+        
+      </div>
+      <div class="span8">
+        <h3>Address</h3>
+      <div class="row">
+        <div class="span8" *ngFor="let address of currentUser.addresses">
+            <div class="well well-small">
+                {{address.address}} {{address.indication}} 
+                <b>Region:</b> {{address.region}}<br>
+                 <b>State:</b> {{address.state}} <br>           
+                <b>Code:</b> {{address.code}}
+                <a class="btn btn-mini pull-right" href="#">View more
+                    <span class="icon-plus"></span>
+                  </a>
+              </div>
+        </div>
+      </div>
+      <a class="shopBtn" href="#" title="add to cart"> Add new address </a>
+      
       </div>
     </div>
   </div>
@@ -49,7 +86,8 @@
           <p class="text-left">
             <strong>Bio: </strong>
             <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel
-            tellus.</p>
+            tellus.
+          </p>
           <br>
         </div>
         <div class="modal-footer">

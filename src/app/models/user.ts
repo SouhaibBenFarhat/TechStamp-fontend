@@ -1,7 +1,5 @@
 export class User {
     _id: string;
-    firstname: string;
-    lastname: string;
     email: string;
     password: string;
     profilePictureUrl: string;
@@ -40,6 +38,7 @@ export class Address {
     indication: string;
     region: string;
     state: string;
+    code: string;
 
     constructor() { }
 }
