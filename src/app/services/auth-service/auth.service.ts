@@ -68,10 +68,10 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['info'], { headers: headers }).subscribe((data) => {
         if (data != null) {
-          this.converter.userJsonToObject(data).then((data: User) => {
-            this.setCurrentUser(data);
-            this.persistToken(data.token);
-            resolve(data);
+          this.converter.userJsonToObject(data).then((user: User) => {
+            this.setCurrentUser(user);
+            this.persistToken(user.token);
+            resolve(user);
           });
         } else {
           reject('This user is not defined');
@@ -126,7 +126,7 @@ export class AuthService {
     }
   }
 
-  setCurrentUser(user: User) {
+  setCurrentUser(user: User): void {
     this.currentUser = user;
   }
 

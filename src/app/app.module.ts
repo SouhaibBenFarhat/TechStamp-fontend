@@ -49,6 +49,8 @@ import { WishListItemComponent } from './components/wish-list-item/wish-list-ite
 import { CompleteProfileComponent } from './components/complete-profile/complete-profile.component';
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { PersonalDetailComponent } from './components/personal-detail/personal-detail.component';
+import { ProfilService } from "./services/profile-service/profil.service";
+
 
 
 
@@ -121,7 +123,8 @@ const appRoutes: Routes = [
     BrandService,
     CategoryService,
     NewsService,
-    WishListService
+    WishListService,
+    ProfilService
   ],
   bootstrap: [AppComponent]
 })

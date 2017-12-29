@@ -34,11 +34,12 @@ export class PersonalDetail {
 
 export class Address {
 
+    id: string;
     address: string;
     indication: string;
     region: string;
     state: string;
-    code: string;
+    code: number;
 
     constructor() { }
 }

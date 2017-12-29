@@ -35,8 +35,11 @@ export class Globals {
         this.urls['wish-list'] = this.serverAddress + '/api/v1/wish-list';
         this.urls['wish-list-exist'] = this.serverAddress + '/api/v1/wish-list/exist/';
         this.urls['wish-list-delete'] = this.serverAddress + '/api/v1/wish-list/';
-        
-        
+        this.urls['address'] = this.serverAddress + '/api/v1/user/address/';
+        this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
+
+
+
 
     }
 

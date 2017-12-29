@@ -37,6 +37,7 @@ export class Converters {
                 this.user.addresses = new Array<Address>();
                 for (let i = 0; i < data.data.addresses.length; i++) {
                     let address = new Address();
+                    address.id = data.data.addresses[i]._id;
                     address.address = data.data.addresses[i].address;
                     address.code = data.data.addresses[i].code;
                     address.indication = data.data.addresses[i].indication;

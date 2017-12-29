@@ -1,42 +1,82 @@
 <div class="well">
-    <form class="form-horizontal">
-      <h3>Your Address Details</h3>
-      <div class="control-group">
-        <label class="control-label">Fiels label
-          <sup>*</sup>
-        </label>
-        <div class="controls">
-          <input type="text" placeholder=" Field name">
-        </div>
+  <form class="form-horizontal" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <br>
+
+
+    <div class="control-group">
+      <label class="control-label">Address
+        <sup>*</sup>
+      </label>
+      <div class="controls">
+        <input type="text" placeholder="Address" name="address" (keyup)="error = false" #address="ngModel" [(ngModel)]="address.address"
+          required>
+        <span *ngIf="address.errors?.required && address.touched" class="help-inline" style="color:red; margin-top: 10px;">
+          address is required...
+        </span>
       </div>
-      <div class="control-group">
-        <label class="control-label">Fiels label
-          <sup>*</sup>
-        </label>
-        <div class="controls">
-          <input type="text" placeholder=" Field name">
-        </div>
+    </div>
+
+
+    <div class="control-group">
+      <label class="control-label">Region
+        <sup>*</sup>
+      </label>
+      <div class="controls">
+        <input type="text" placeholder="region" (keyup)="error = false" name="region" #region="ngModel" [(ngModel)]="address.region"
+          required>
+        <span *ngIf="region.errors?.required && region.touched" class="help-inline" style="color:red; margin-top: 10px;">
+          region is required...
+        </span>
       </div>
-      <div class="control-group">
-        <label class="control-label">Fiels label
-          <sup>*</sup>
-        </label>
-        <div class="controls">
-          <input type="text" placeholder=" Field name">
-        </div>
+    </div>
+
+
+    <div class="control-group">
+      <label class="control-label">State
+        <sup>*</sup>
+      </label>
+      <div class="controls">
+        <input type="text" placeholder="state" (keyup)="error = false" name="state" #state="ngModel" [(ngModel)]="address.state"
+          required>
+        <span *ngIf="state.errors?.required && state.touched" class="help-inline" style="color:red; margin-top: 10px;">
+          state is required...
+        </span>
       </div>
-      <div class="control-group">
-        <label class="control-label">Fiels label
-          <sup>*</sup>
-        </label>
-        <div class="controls">
-          <textarea></textarea>
-        </div>
+    </div>
+
+
+    <div class="control-group">
+      <label class="control-label">Postal Code
+        <sup>*</sup>
+      </label>
+      <div class="controls">
+        <input type="number" placeholder="postal code" (keyup)="error = false" name="code" #code="ngModel" [(ngModel)]="address.code"
+          required>
+        <span *ngIf="code.errors?.required && code.touched" class="help-inline" style="color:red; margin-top: 10px;">
+          code is required...
+        </span>
       </div>
-      <div class="control-group">
-        <div class="controls">
-          <input type="submit" name="submitAccount" value="Register" class="shopBtn exclusive">
-        </div>
+    </div>
+
+
+    <div class="control-group">
+      <label class="control-label">Indication
+      </label>
+      <div class="controls">
+        <textarea placeholder="Indication" [(ngModel)]="address.indication" (keyup)="error = false" name="indication"></textarea>
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="control-group">
+      <span *ngIf="error" class="help-inline" style="color:red; margin-top: 10px;">
+        Please make sure that you fill all required data...
+      </span>
+    </div>
+
+
+    <div class="control-group">
+      <div class="controls">
+        <input type="submit" name="submitAccount" value="Validate" class="shopBtn exclusive">
+      </div>
+    </div>
+  </form>
+</div>
