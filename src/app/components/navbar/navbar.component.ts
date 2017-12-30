@@ -6,6 +6,7 @@ import { Globals } from '../../utils/global';
 import { CategoryService } from "../../services/category-service/category.service";
 import { Category } from "../../models/category";
 import { ErrorHandlerService } from "../../services/error-handler.service";
+import { Observable } from 'rxjs/Rx';
 
 
 @Component({
@@ -18,12 +19,34 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   categories: Array<Category>;
   navClicked: string = '';
+  flash: boolean = true;
+  showMessage = false;
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals, private categoryService: CategoryService, private errorHandler: ErrorHandlerService) {
 
   }
 
+
+
   ngOnInit() {
+
+    this.authService.onUserLoggedIn.subscribe(() => {
+      if (this.authService.currentUser.firstTime) {
+        this.showMessage = true;
+        Observable.interval(700).subscribe(x => {
+          this.flash = !this.flash;
+        });
+      }
+    });
+
+    this.authService.onUserLogout.subscribe(() => {
+      this.showMessage = false;
+    })
+
+
+
+
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
@@ -34,13 +57,11 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    this.authService.getCurrentUser().then(() => {
+    this.authService.onUserLoggedIn.subscribe(() => {
       this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
         if (data) {
           this.categories = data;
         }
-      }).catch((err) => {
-        this.errorHandler.handelError(err);
       });
     });
 

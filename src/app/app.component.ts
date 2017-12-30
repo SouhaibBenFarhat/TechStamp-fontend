@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     this.authService.getCurrentUser().then((data: User) => {
+      this.authService.onUserLoggedIn.emit(0);
     }).catch((err) => {
       this.router.navigate(['/login']);
     });

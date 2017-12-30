@@ -1,18 +1,21 @@
 <div class="span12">
-  <div class="span11 well">
+  <div class="span11 well card-view  ">
     <div class="row">
-      <div class="span10">
+      <div class="span10 ">
         <h3>Account Settings</h3>
         <p>From your account, you can get the history of your orders and update your information. Please fill in your information
           to better navigate TechStamp.</p>
       </div>
     </div>
   </div>
-  <div class="span11 well" *ngIf="!currentUser.firstTime">
+  <div class="span11 well">
     <div class="row">
       <div class="span8">
         <h3>Account Information</h3>
         <br>
+      </div>
+      <div class="span2 pull-right">
+        <a [ngx-scroll-to]="'#personalDetail'" [ngx-scroll-to-offset]="450" (click)="showUpdateProfile = true" class="defaultBtn">Profile Settings</a>
       </div>
     </div>
     <div class="row">
@@ -22,7 +25,7 @@
         </a>
       </div>
       <div class="span8">
-        <h4>{{currentUser.personalDetail.gender}}. {{currentUser.personalDetail.firstname}} {{currentUser.personalDetail.lastname}}</h4>
+        <h4>{{currentUser.personalDetail.gender}} {{currentUser.personalDetail.firstname}} {{currentUser.personalDetail.lastname}}</h4>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat a inventore voluptates laborum ipsam earum deleniti
           nesciunt soluta commodi minus hic velit cupiditate repellendus dignissimos excepturi aperiam, id quam amet.</p>
         <hr>
@@ -31,15 +34,16 @@
     </div>
     <div class="row">
       <div class="span3">
-        <h3>Personal Detail</h3>
-        <h5>Phone:</h5>
-        <p>+{{currentUser.personalDetail.phone}}</p>
-        <h5>Birthday:</h5>
-        <p> {{currentUser.personalDetail.day}}/{{currentUser.personalDetail.month}}/{{currentUser.personalDetail.year}}</p>
-        <h5>Email:</h5>
-        <p> {{currentUser.email}}</p>
-        <a href="#" class="defaultBtn">Change password</a>
-
+        <div *ngIf="currentUser.personalDetail.length">
+          <h3>Personal Detail</h3>
+          <h5>Phone:</h5>
+          <p>+{{currentUser.personalDetail.phone}}</p>
+          <h5>Birthday:</h5>
+          <p> {{currentUser.personalDetail.day}}/{{currentUser.personalDetail.month}}/{{currentUser.personalDetail.year}}</p>
+          <h5>Email:</h5>
+          <p> {{currentUser.email}}</p>
+          <a href="#" class="defaultBtn">Change password</a>
+        </div>
 
       </div>
       <div class="span8">
@@ -56,12 +60,13 @@
               <a class="btn btn-mini pull-right" href="#">View more
                 <span class="icon-plus"></span>
               </a>
-              <a class="btn btn-mini pull-right" style="color: red"  (click)="dispalyDeleteAddressAlert(address.id)">
+              <a class="btn btn-mini pull-right" style="color: red" (click)="dispalyDeleteAddressAlert(address.id)">
                 <span class="icon-trash"></span>
               </a>
               <div *ngIf="addressToDeleteId===address.id" class="alert alert-info" style="margin-top: 20px;">
                 <p>Are you sure to delete this address..?</p>
-                <a  style="margin-right: 30px;" (click)="deleteAddress(address.id)">oui</a>  <a (click)="addressToDeleteId=''">non</a>
+                <a style="margin-right: 30px;" (click)="deleteAddress(address.id)">oui</a>
+                <a (click)="addressToDeleteId=''">non</a>
               </div>
 
             </div>
@@ -72,7 +77,12 @@
       </div>
     </div>
   </div>
-  <app-complete-profile></app-complete-profile>
+  <div id="personalDetail" *ngIf="currentUser.firstTime || showUpdateProfile">
+    <div class="span12">
+
+      <app-personal-detail [personalDetail]="currentUser.personalDetail"></app-personal-detail>
+    </div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -40,6 +40,7 @@ export class Address {
     region: string;
     state: string;
     code: number;
+    default: boolean;
 
     constructor() { }
 }

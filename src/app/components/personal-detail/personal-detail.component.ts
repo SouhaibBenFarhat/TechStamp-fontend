@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PersonalDetail } from "../../models/user";
+import { ProfilService } from "../../services/profile-service/profil.service";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-detail',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() personalDetail: PersonalDetail
+
+  days: Array<number> = new Array<number>();
+  months: Array<number> = new Array<number>();
+  years: Array<number> = new Array<number>();
+
+
+
+  constructor(private profileService: ProfilService) { }
 
   ngOnInit() {
+    for (let i = 1; i <= 31; i++) {
+      this.days.push(i);
+    }
+    for (let i = 1; i <= 12; i++) {
+      this.months.push(i);
+    }
+    var d = new Date();
+    var n = d.getFullYear();
+
+    for (let i = 1900; i <= n - 5; i++) {
+      this.years.push(i);
+    }
+
+
+  }
+
+  onSubmit(){
+
   }
 
 }

@@ -14,6 +14,7 @@ export class Converters {
     constructor() { }
 
     userJsonToObject(data): any {
+        this.user = new User();
         return new Promise((resolve, reject) => {
             this.user._id = data.data._id;
             this.user.email = data.data.email;
@@ -43,6 +44,7 @@ export class Converters {
                     address.indication = data.data.addresses[i].indication;
                     address.region = data.data.addresses[i].region;
                     address.state = data.data.addresses[i].state;
+                    address.default = data.data.addresses[i].default;
                     this.user.addresses.push(address);
                 }
             }

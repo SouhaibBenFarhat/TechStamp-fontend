@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FooterComponent } from './components/footer/footer.component';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 
@@ -109,7 +110,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ScrollToModule.forRoot()
+    
 
   ],
   providers: [
