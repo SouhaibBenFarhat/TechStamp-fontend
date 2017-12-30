@@ -18,8 +18,7 @@ export class WishListService {
 
 
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-    this.headers = new HttpHeaders(
-      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
 
   }
 
@@ -29,6 +28,10 @@ export class WishListService {
 
 
   getAllWishList(): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['wish-list'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
         this.wishLists = [];
@@ -39,12 +42,18 @@ export class WishListService {
         }
         resolve(this.wishLists);
       }, (error) => {
-        reject(error);
+        if (error.status == 401) {
+          reject(error);
+        }
       });
     });
 
   }
   addToWishList(productId: string): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
     let wishList = new WishList();
     return new Promise((resolve, reject) => {
       this.authService.getCurrentUser().then((data) => {
@@ -67,6 +76,10 @@ export class WishListService {
     })
   }
   deleteFromWishList(productId: string, wishListId: string): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
     return new Promise((resolve, reject) => {
       this.http.delete(this.global.urls['wish-list-delete'] + wishListId, { headers: this.headers }).subscribe(() => {
         for (let i = 0; i < this.wishLists.length; i++) {
@@ -85,6 +98,10 @@ export class WishListService {
   }
 
   doesProductExistInWishList(productId: string): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
     if (this.wishLists.length > 0) {
       for (let i = 0; i < this.wishLists.length; i++) {
         if (this.wishLists[i].productId === productId) {

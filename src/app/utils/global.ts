@@ -27,7 +27,7 @@ export class Globals {
         this.urls['register'] = this.serverAddress + '/api/auth/register';
         this.urls['info'] = this.serverAddress + '/api/auth/info';
         this.urls['product'] = this.serverAddress + '/api/v1/product';
-        this.urls['topProduct'] = this.serverAddress + '/api/v1/product/';
+        this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
         this.urls['top-brands'] = this.serverAddress + '/api/v1/brand/top-brands';
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';
         this.urls['category'] = this.serverAddress + '/api/v1/category';
@@ -36,6 +36,7 @@ export class Globals {
         this.urls['wish-list-exist'] = this.serverAddress + '/api/v1/wish-list/exist/';
         this.urls['wish-list-delete'] = this.serverAddress + '/api/v1/wish-list/';
         this.urls['address'] = this.serverAddress + '/api/v1/user/address/';
+        this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
 
 

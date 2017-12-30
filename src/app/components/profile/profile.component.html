@@ -56,6 +56,14 @@
               <a class="btn btn-mini pull-right" href="#">View more
                 <span class="icon-plus"></span>
               </a>
+              <a class="btn btn-mini pull-right" style="color: red"  (click)="dispalyDeleteAddressAlert(address.id)">
+                <span class="icon-trash"></span>
+              </a>
+              <div *ngIf="addressToDeleteId===address.id" class="alert alert-info" style="margin-top: 20px;">
+                <p>Are you sure to delete this address..?</p>
+                <a  style="margin-right: 30px;" (click)="deleteAddress(address.id)">oui</a>  <a (click)="addressToDeleteId=''">non</a>
+              </div>
+
             </div>
           </div>
         </div>

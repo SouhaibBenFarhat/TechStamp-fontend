@@ -34,13 +34,15 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
-      if (data) {
-        this.categories = data;
-      }
-    }).catch((err) => {
-      this.errorHandler.handelError(err);
-    })
+    this.authService.getCurrentUser().then(() => {
+      this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
+        if (data) {
+          this.categories = data;
+        }
+      }).catch((err) => {
+        this.errorHandler.handelError(err);
+      });
+    });
 
 
   }

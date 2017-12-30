@@ -13,7 +13,8 @@ export class AuthGuard implements CanActivate {
     canActivate(): Observable<boolean> | boolean | any {
 
         return new Promise((resolve, reject) => {
-            if (this.authService.currentUser && localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
+            if (this.authService.currentUser != null && this.authService.currentUser!= undefined && 
+                localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
                 resolve(true);
             } else {
                 if (localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {

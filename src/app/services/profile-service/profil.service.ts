@@ -19,13 +19,16 @@ export class ProfilService {
 
 
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-    this.headers = new HttpHeaders(
-      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
   }
 
 
 
   addAddress(address: Address): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
     let addresses = new Array<Address>();
     addresses.push(address);
     console.log(addresses);
@@ -36,11 +39,30 @@ export class ProfilService {
           this.authService.setCurrentUser(user);
           this.onCurrentUserChange.emit(0);
           this.onAddressSubmitted.emit(0);
-          resolve(data);
+          resolve(user);
         })
       }, (err) => {
         reject(err);
       });
     })
+  }
+
+  deleteAddress(_id: string): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
+    return new Promise((resolve, reject) => {
+      this.http.request('delete', this.global.urls['delete-address'], { body: { id: _id }, headers: this.headers }).subscribe((data) => {
+        this.converter.userJsonToObject(data).then((user) => {
+          this.authService.setCurrentUser(user);
+          this.onCurrentUserChange.emit(0);
+          resolve(user);
+        })
+      }, (err) => {
+        reject(err);
+      });
+    });
+
   }
 }

@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   @ViewChild('closeBtn') closeBtn: ElementRef;
   currentUser: User;
+  addressToDeleteId: string = "";
 
   constructor(private authService: AuthService, private profileService: ProfilService) {
     this.authService.getCurrentUser().then((data) => {
@@ -30,6 +31,16 @@ export class ProfileComponent implements OnInit {
     this.profileService.onAddressSubmitted.subscribe(() => {
       this.closeBtn.nativeElement.click();
     })
+  }
+
+  dispalyDeleteAddressAlert(_id: string) {
+    this.addressToDeleteId = _id;
+  }
+
+  deleteAddress(_id: string) {
+      this.profileService.deleteAddress(_id).then((data)=>{
+        
+      })
   }
 
 }

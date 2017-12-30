@@ -17,11 +17,16 @@ export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
 
+    this.authService.getCurrentUser().then((data: User) => {
+    }).catch((err) => {
+      this.router.navigate(['/login']);
+    });
   }
 
   ngOnInit() {
 
     this.router.events.subscribe((event) => {
+
       if (event instanceof NavigationEnd) {
         if (event.url.indexOf("contact") >= 0) {
           this.show = true;
@@ -32,10 +37,6 @@ export class AppComponent implements OnInit {
     });
 
 
-    this.authService.getCurrentUser().then((data: User) => {
-      console.log(data);
-    }).catch((err) => {
-      console.log(err);
-    });
+
   }
 }

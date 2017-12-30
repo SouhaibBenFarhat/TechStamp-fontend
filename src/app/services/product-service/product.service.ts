@@ -16,13 +16,14 @@ export class ProductService {
 
 
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-    this.headers = new HttpHeaders(
-      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+   
   }
 
 
 
   getAllProducts(): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let products = new Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
@@ -40,6 +41,8 @@ export class ProductService {
   }
 
   getProductById(id: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('productId', id), { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
         this.converter.productJsonToObject(data).then((product: Product) => {
@@ -52,6 +55,8 @@ export class ProductService {
   }
 
   getPorductByCategoryId(categoryId: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let products = Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('categoryId', categoryId), { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
@@ -68,6 +73,8 @@ export class ProductService {
   }
 
   getProductByBrandId(brandId: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let products = Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product-by-brand'] + brandId, { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
@@ -84,6 +91,8 @@ export class ProductService {
   }
 
   getPorductByCategoryIdWithLimit(categoryId: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let products = Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['product'] + this.global.singleQuaryParamBuilder('categoryId', categoryId) + '&limit=10', { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
@@ -100,6 +109,8 @@ export class ProductService {
   }
 
   getTopproducts(limit: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let products = Array<Product>();
     return new Promise((resolve, reject) => {
       this.http.get(this.global.urls['topProduct'] + '/' + limit, { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {

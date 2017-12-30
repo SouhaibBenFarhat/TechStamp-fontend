@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
+    localStorage.removeItem(this.global.TOKEN_KEY);
+    
   }
 
 

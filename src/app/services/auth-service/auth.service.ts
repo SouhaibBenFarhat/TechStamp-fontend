@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { User } from '../../models/user';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   public currentUser: User;
+  public onUserLoggedIn = new EventEmitter<any>();
+  public onUserLogout = new EventEmitter<any>();
   constructor(private http: HttpClient, private global: Globals, private converter: Converters, private router: Router) { }
 
   login(user: User): any {
@@ -22,6 +24,7 @@ export class AuthService {
             this.setCurrentUser(data);
             this.persistToken(data.token);
             localStorage.setItem(this.global.IS_LOGGED_IN, 'true');
+            this.onUserLoggedIn.emit(0);
             resolve(data);
           });
         } else {
@@ -58,8 +61,18 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.currentUser = null;
       localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
+      localStorage.removeItem(this.global.TOKEN_KEY)
+      this.onUserLogout.emit(0);
       resolve();
     });
+  }
+
+  backToLogin(){
+    this.currentUser = null;
+    localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
+    localStorage.removeItem(this.global.TOKEN_KEY)
+    this.onUserLogout.emit(0);
+    this.router.navigate[('/login')];
   }
   private getUserByToken(token: string): any {
     var headers = new HttpHeaders(
@@ -96,6 +109,7 @@ export class AuthService {
               this.persistToken(data.token);
               resolve(data);
 
+
             } else {
               this.router.navigate(['/login']);
             }
@@ -118,11 +132,11 @@ export class AuthService {
       this.router.navigate(['/login']);
     }
   }
-  public getCurrentUserToken() {
-    if (localStorage.getItem(this.global.TOKEN_KEY)) {
+  public getCurrentUserToken():any {
+    if (localStorage.getItem(this.global.TOKEN_KEY) != null && localStorage.getItem(this.global.TOKEN_KEY) != undefined ) {
       return localStorage.getItem(this.global.TOKEN_KEY);
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl('/login');
     }
   }
 
