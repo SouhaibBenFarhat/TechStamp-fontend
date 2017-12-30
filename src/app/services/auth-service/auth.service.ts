@@ -67,7 +67,7 @@ export class AuthService {
     });
   }
 
-  backToLogin(){
+  backToLogin() {
     this.currentUser = null;
     localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
     localStorage.removeItem(this.global.TOKEN_KEY)
@@ -126,14 +126,11 @@ export class AuthService {
 
   }
   private persistToken(token: string) {
-    if (token.length == this.global.TOKEN_LENGTH) {
-      localStorage.setItem(this.global.TOKEN_KEY, token);
-    } else {
-      this.router.navigate(['/login']);
-    }
+    localStorage.setItem(this.global.TOKEN_KEY, token);
+
   }
-  public getCurrentUserToken():any {
-    if (localStorage.getItem(this.global.TOKEN_KEY) != null && localStorage.getItem(this.global.TOKEN_KEY) != undefined ) {
+  public getCurrentUserToken(): any {
+    if (localStorage.getItem(this.global.TOKEN_KEY) != null && localStorage.getItem(this.global.TOKEN_KEY) != undefined) {
       return localStorage.getItem(this.global.TOKEN_KEY);
     } else {
       this.router.navigateByUrl('/login');

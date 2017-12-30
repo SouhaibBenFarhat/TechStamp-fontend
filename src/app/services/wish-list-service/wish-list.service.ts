@@ -11,7 +11,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WishListService {
 
-  headers;
   wishLists = new Array<WishList>();
   wishListNumber = new EventEmitter<any>();
   onWishListChange = new EventEmitter<any>();
@@ -29,11 +28,11 @@ export class WishListService {
 
   getAllWishList(): any {
 
-    this.headers = new HttpHeaders(
+    let headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
 
     return new Promise((resolve, reject) => {
-      this.http.get(this.global.urls['wish-list'], { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+      this.http.get(this.global.urls['wish-list'], { headers: headers }).map((data: any) => data.data).subscribe((data: any) => {
         this.wishLists = [];
         for (let i = 0; i < data.length; i++) {
           this.converter.wishListJsonToObject(data[i]).then((wishList: WishList) => {
@@ -51,7 +50,7 @@ export class WishListService {
   }
   addToWishList(productId: string): any {
 
-    this.headers = new HttpHeaders(
+    let headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
 
     let wishList = new WishList();
@@ -59,7 +58,7 @@ export class WishListService {
       this.authService.getCurrentUser().then((data) => {
         wishList.productId = productId;
         wishList.userId = data._id;
-        this.http.post(this.global.urls['wish-list'], { productId: wishList.productId, userId: wishList.userId }, { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+        this.http.post(this.global.urls['wish-list'], { productId: wishList.productId, userId: wishList.userId }, { headers: headers }).map((data: any) => data.data).subscribe((data: any) => {
           this.converter.wishListJsonToObject(data).then((wishList: WishList) => {
             this.wishLists.push(wishList);
             this.wishListNumber.emit(this.wishLists.length);
@@ -77,11 +76,11 @@ export class WishListService {
   }
   deleteFromWishList(productId: string, wishListId: string): any {
 
-    this.headers = new HttpHeaders(
+    let headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
 
     return new Promise((resolve, reject) => {
-      this.http.delete(this.global.urls['wish-list-delete'] + wishListId, { headers: this.headers }).subscribe(() => {
+      this.http.delete(this.global.urls['wish-list-delete'] + wishListId, { headers: headers }).subscribe(() => {
         for (let i = 0; i < this.wishLists.length; i++) {
           if (this.wishLists[i].id === wishListId) {
             this.wishLists.splice(i, 1);
@@ -99,7 +98,7 @@ export class WishListService {
 
   doesProductExistInWishList(productId: string): any {
 
-    this.headers = new HttpHeaders(
+    let headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
 
     if (this.wishLists.length > 0) {

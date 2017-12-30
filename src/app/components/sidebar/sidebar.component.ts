@@ -28,25 +28,25 @@ export class SidebarComponent implements OnInit {
       this.authService.getCurrentUser().then(() => {
         this.getAllWishList();
         this.getTopBrand();
-      })
+      });
     }
 
 
     this.wishListService.wishListNumber.subscribe((data) => {
       this.wishListNumber = data;
-    })
+    });
 
     this.authService.onUserLoggedIn.subscribe(() => {
       console.log('bababababa');
       this.getAllWishList();
       this.getTopBrand();
-    })
+    });
 
     this.authService.onUserLogout.subscribe(() => {
       this.loading = false;
       this.wishListNumber = 0;
       this.brands = null;
-    })
+    });
   }
 
   getAllWishList() {
@@ -55,7 +55,6 @@ export class SidebarComponent implements OnInit {
       this.wishListNumber = data.length;
       this.loading = false;
     }).catch((err) => {
-      console.log(localStorage.getItem('TOKEN'));
       this.wishListNumber = 0;
       this.loading = false;
     })
