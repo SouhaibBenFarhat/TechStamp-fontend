@@ -1,5 +1,6 @@
 body {
-    background: url(../img/white_leather.png) repeat 0 0;
+    background: #e9ebee repeat 0 0;
+    font-weight: normal;
 }
 
 #header {
@@ -211,7 +212,7 @@ hr.soften {
 }
 
 .carousel-control, .carousel-control:hover {
-    background: rgba(248, 118, 16, 1);
+    background: rgba(65, 101, 178, 1);
     height: 43px;
     line-height: 34px;
     color: #fff;
@@ -222,7 +223,7 @@ hr.soften {
 }
 
 .homCar h4 {
-    background-color: #eb4800;
+    background-color: #fc714b;
     color: #fff;
     padding: 11px 4px;
     font-size: 26px;
@@ -324,44 +325,45 @@ hr.soften {
 }
 
 .footer {
-    background-color: #222;
-    color: #eee;
+    background-color: #f6f7f9;
+    color: #555555;
     padding: 28px 8px 18px;
     margin-top: 18px;
 }
 
 .footer a {
-    color: #bbb;
+    color: #444;
     font-size: 12px;
 }
 
 .copyright {
+    color: #ffffff;
     clear: both;
     padding: 8px;
-    border-top: 1px solid #CCC;
+    border-top: 1px solid #4166b2;
     font-size: 13px;
-    background: #f2f2f2;
-    box-shadow: 0 0 3px #B1AFAF;
+    background: #4166b2;
+    box-shadow: 0 0 3px #4166b2;
 }
 
 .topNav {
     padding: 0;
-    border-bottom: 1px solid #CCC;
-    background: #f2f2f2;
+    border-bottom: 1px solid #182a4d;
+    background: #4166b2;
     box-shadow: 0 0 3px #B1AFAF;
 }
 
 .topNav a {
-    color: #333;
+    color: #ffffff;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: normal;
     display: inline-block;
     padding: 8px 4px;
 }
 
 .topNav a:hover, .topNav a.active {
     color: #fff;
-    background: #f89406;
+    background: #fc714b;
     text-decoration: none
 }
 
@@ -374,7 +376,7 @@ hr.soften {
     margin-top: 3px;
     font-size: 21px;
     border-radius: 50%;
-    background: #999;
+    background: #182a4d;
     color: #fff;
     text-align: center;
 }
@@ -401,7 +403,7 @@ hr.soften {
 }
 
 #sidebar .nav a:hover {
-    color: #f89406
+    color: #4166b2
 }
 
 #sidebar .cart {
@@ -512,7 +514,7 @@ hr.soften {
     line-height: 1.5em;
     color: #ffffff;
     text-align: center;
-    background: #FFA300;
+    background: #4166b2;
     border: 0;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
@@ -542,7 +544,7 @@ hr.soften {
     text-align: center;
     color: #fff;
     border-radius: 2px;
-    background: #f89406;
+    background: #4166b2;
     position: absolute;
     left: 50%;
     top: 44%;
@@ -567,12 +569,12 @@ hr.soften {
 .shopBtn {
     min-height: 34px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: normal;
     line-height: 34px;
     text-align: center;
     color: #fff;
     border-radius: 2px;
-    background: #f89406;
+    background: #4166b2;
     display: inline-block;
     padding: 0 12px;
     border: 0;
@@ -596,7 +598,7 @@ hr.soften {
 .shopBtn:hover {
     color: #fff;
     text-decoration: none;
-    background: #F86706
+    background: #182a4d
 }
 
 .gotop {

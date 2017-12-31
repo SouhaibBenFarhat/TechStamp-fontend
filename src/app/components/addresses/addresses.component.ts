@@ -26,7 +26,7 @@ export class AddressesComponent implements OnInit {
     this.error = !valid;
 
     if (valid && Number.isInteger(value.code)) {
-
+      value.default = false;
       this.profileService.addAddress(value).then(() => {
         this.address = new Address();
       }).catch((err) => {

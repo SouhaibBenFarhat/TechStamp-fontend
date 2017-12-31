@@ -184,7 +184,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
@@ -192,7 +192,7 @@ body {
 }
 
 a {
-  color: #0088cc;
+  color: #4166b2;
   text-decoration: none;
 }
 
@@ -977,7 +977,7 @@ label, input, button, select, textarea {
 }
 
 input, button, select, textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", Helvetica, Arial, sans-serif;
 }
 
 label {
@@ -2553,11 +2553,11 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
   color: #ffffff;
   text-decoration: none;
   background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+  background-image: -moz-linear-gradient(top, #4166b2, #4166b2);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4166b2), to(#4166b2));
+  background-image: -webkit-linear-gradient(top, #4166b2, #4166b2);
+  background-image: -o-linear-gradient(top, #4166b2, #4166b2);
+  background-image: linear-gradient(to bottom, #4166b2, #4166b2);
   background-repeat: repeat-x;
   outline: 0;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
@@ -2684,8 +2684,8 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
+  background-color: #ffffff;
+  border: 1px solid #dddfe2;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -2696,10 +2696,11 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
 
 .well blockquote {
   border-color: #ddd;
-  border-color: rgba(0, 0, 0, 0.15);
+  border-color: #dddfe2;
 }
 
 .well-large {
+  border: 1px solid #dddfe2;  
   padding: 24px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -2707,7 +2708,8 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
 }
 
 .well-small {
-  padding: 9px;
+  border: 1px solid #dddfe2;  
+  padding: 15px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -2960,7 +2962,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 }
 
 .btn-warning:active, .btn-warning.active {
-  background-color: #c67605 \9;
+  background-color: #182a4d \9;
 }
 
 .btn-danger {
@@ -2982,8 +2984,8 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
   color: #ffffff;
-  background-color: #bd362f;
-  *background-color: #a9302a;
+  background-color: #182a4d;
+  *background-color: #182a4d;
 }
 
 .btn-danger:active, .btn-danger.active {
@@ -3366,9 +3368,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: 20px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
   background-color: #fcf8e3;
-  border: 1px solid #fbeed5;
+  border: 1px solid #ffffff;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -3400,9 +3401,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert-danger, .alert-error {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
+  color: #ffffff;
+  background-color: #fa3e3f;
+  border-color: #ffffff;
 }
 
 .alert-danger h4, .alert-error h4 {
@@ -3410,9 +3411,12 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert-info {
-  color: #3a87ad;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+  color: #ffffff;
+  background-color: #fc714b;
+  border-color: #ffffff;
+}
+.alert-info a {
+  color: white;
 }
 
 .alert-info h4 {
@@ -3807,7 +3811,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .navbar {
   *position: relative;
   *z-index: 2;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   overflow: visible;
 }
 
@@ -3815,14 +3819,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   min-height: 40px;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-color: #ffffff;
   background-repeat: repeat-x;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #e9ecee;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -3943,7 +3942,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 .navbar-search .search-query {
   padding: 4px 14px;
   margin-bottom: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
   line-height: 1;
@@ -4033,7 +4032,6 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   padding: 10px 15px 10px;
   color: #777777;
   text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
 }
 
 .navbar .nav .dropdown-toggle .caret {
@@ -4047,9 +4045,9 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav>.active>a, .navbar .nav>.active>a:hover, .navbar .nav>.active>a:focus {
-  color: #555555;
+  color: #ffffff;
   text-decoration: none;
-  background-color: #e5e5e5;
+  background-color: #4166b2;
   -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
   box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
@@ -5018,7 +5016,7 @@ a.label:hover, a.label:focus, a.badge:hover, a.badge:focus {
 }
 
 .label-warning, .badge-warning {
-  background-color: #f89406;
+  background-color: #fc714b;
 }
 
 .label-warning[href], .badge-warning[href] {

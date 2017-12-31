@@ -31,13 +31,23 @@ export class PersonalDetailComponent implements OnInit {
     var n = d.getFullYear();
 
     for (let i = 1900; i <= n - 5; i++) {
-      this.years.push(i);
+      this.years.unshift(i);
     }
 
 
   }
 
-  onSubmit(){
+  onSubmit({ value, valid }: { value: PersonalDetail, valid: boolean }) {
+
+    console.log(value);
+
+
+
+    if (valid) {
+      this.profileService.addPersonalDetail(value).then(() => {
+
+      })
+    }
 
   }
 

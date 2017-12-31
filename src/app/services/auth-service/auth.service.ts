@@ -42,12 +42,14 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
         if (data != null) {
-          this.converter.userJsonToObject(data).then((data: User) => {
-            this.setCurrentUser(data);
-            this.persistToken(data.token);
-            localStorage.setItem(this.global.IS_LOGGED_IN, 'true');
+          let u = new User();
+          u.email = user.email;
+          u.password = user.password;
+          this.login(u).then((data) => {
             resolve(data);
-          });
+          }).catch((err) => {
+            reject(err);
+          })
         } else {
           reject('Error has occure...');
         }

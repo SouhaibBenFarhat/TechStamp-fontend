@@ -21,6 +21,8 @@ export class CategoryService {
 
 
   getNavbarCategories(): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
     let categories = Array<Category>();
 
     return new Promise((resolve, reject) => {

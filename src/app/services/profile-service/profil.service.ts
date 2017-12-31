@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { User, Address } from "../../models/user";
+import { User, Address, PersonalDetail } from "../../models/user";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Globals } from '../../utils/global';
@@ -45,6 +45,24 @@ export class ProfilService {
         reject(err);
       });
     })
+  }
+
+  addPersonalDetail(personalDetail): any {
+
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+    return new Promise((resolve, reject) => {
+      this.http.put(this.global.urls['personal-detail'], personalDetail, { headers: this.headers }).subscribe((data) => {
+        this.converter.userJsonToObject(data).then((user) => {
+          this.authService.setCurrentUser(user);
+          this.onCurrentUserChange.emit(0);
+          resolve(user);
+        })
+      }, (err) => {
+        reject(err);
+      })
+    })
+
   }
 
   deleteAddress(_id: string): any {

@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   error: boolean = false;
   errorText: string = "";
+  loading: boolean = false;
 
   constructor(private authService: AuthService, private router: Router, private global: Globals, private errorHandlerService: ErrorHandlerService) { }
 
@@ -23,17 +24,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onRegisterSubmitted({ value, valid }: { value: User, valid: boolean }) {
-      if(valid){
-        this.authService.register(this.user).then((data) => {
-          this.router.navigate(['']);
-        }).catch((err) => {
-          this.error = true;
-          this.errorText = this.errorHandlerService.handelError(err);
-        });
-      }else{
+    this.loading = valid;
+    if (valid) {
+      this.authService.register(this.user).then((data) => {
+        this.router.navigate(['']);
+        this.loading = false;
+
+      }).catch((err) => {
+        this.loading = false;
         this.error = true;
-        this.errorText = "Please put a valid data";
-      }
+        this.errorText = this.errorHandlerService.handelError(err);
+      });
+    } else {
+      this.loading = false;
+      this.error = true;
+      this.errorText = "Please put a valid data";
+    }
   }
 
 }
