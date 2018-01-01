@@ -18,6 +18,10 @@ import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messa
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FooterComponent } from './components/footer/footer.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { AgmCoreModule } from '@agm/core';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2ImgMaxModule } from 'ng2-img-max'; 
 
 
 
@@ -51,6 +55,7 @@ import { CompleteProfileComponent } from './components/complete-profile/complete
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { PersonalDetailComponent } from './components/personal-detail/personal-detail.component';
 import { ProfilService } from "./services/profile-service/profil.service";
+import { MapComponent } from './components/map/map.component';
 
 
 
@@ -103,7 +108,8 @@ const appRoutes: Routes = [
     WishListItemComponent,
     CompleteProfileComponent,
     AddressesComponent,
-    PersonalDetailComponent
+    PersonalDetailComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -111,9 +117,13 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     FormsModule,
     HttpClientModule,
-    ScrollToModule.forRoot()
-    
-
+    ScrollToModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCf6mr6BXZbl3PDW9STLMDzR8U3cAfWEhI'
+    }),
+    AgmSnazzyInfoWindowModule,
+    BrowserAnimationsModule,
+    Ng2ImgMaxModule
   ],
   providers: [
     FlashMessagesService,

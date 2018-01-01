@@ -38,7 +38,8 @@ export class Globals {
         this.urls['address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
-
+        this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
+        
 
 
 

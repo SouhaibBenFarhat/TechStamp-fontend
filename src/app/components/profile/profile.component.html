@@ -1,4 +1,7 @@
 <div class="span12">
+  <div class="span11 well card-view">
+    <app-map></app-map>
+  </div>
   <div class="span11 well card-view  ">
     <div class="row">
       <div class="span10 ">
@@ -8,6 +11,12 @@
       </div>
     </div>
   </div>
+  <div class="span11">
+    <div class="alert alert-success" style="margin-left: 40px;">
+      Your profile has been successfully updated.
+    </div>
+  </div>
+
   <div class="span11 well">
     <div class="row">
       <div class="span8">
@@ -20,9 +29,16 @@
     </div>
     <div class="row">
       <div class="span3">
-        <a href="#">
-          <img src="{{currentUser.profilePictureUrl}}" name="aboutme" width="140" height="140" class="img-circle">
+        <a>
+          <img src="{{profilePicture}}" name="aboutme" width="140" height="140" class="img-circle" (click)="openUploader()">
+          <input type="file" id="inputFile" (change)="fileChange($event)" accept=".jpg,.png,.jpeg" #inputFile [hidden]="true">
         </a>
+
+
+        <div *ngIf="showUploadAlert" [@enterAnimation] class="btn-group" style="margin-top: 10px;">
+          <a (click)="uploadProfilePicture()" class="shopBtn">Upload</a>
+          <a class="defaultBtn" (click)="discardUpload()">Discard</a>
+        </div>
       </div>
       <div class="span8">
         <h4>{{currentUser.personalDetail.gender}} {{currentUser.personalDetail.firstname}} {{currentUser.personalDetail.lastname}}</h4>
@@ -78,7 +94,7 @@
     </div>
   </div>
   <div id="personalDetail" *ngIf="currentUser.firstTime || showUpdateProfile">
-    <div class="span12">
+    <div class="span11 well">
 
       <app-personal-detail [personalDetail]="currentUser.personalDetail"></app-personal-detail>
     </div>

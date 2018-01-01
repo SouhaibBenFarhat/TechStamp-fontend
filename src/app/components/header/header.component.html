@@ -2,7 +2,7 @@
   <div class="topNav">
     <div class="container" style="width: 1440px;">
       <div class="alignR">
-        <div class="pull-left socialNw">
+        <div class="pull-left socialNw" style="margin-top:3px;">
           <a href="#">
             <span class="icon-twitter"></span>
           </a>
@@ -15,11 +15,13 @@
           <a href="#">
             <span class="icon-tumblr"></span>
           </a>
+          <a href="#" [routerLink]="['']">
+              <span class="icon-home"></span></a>
         </div>
-        <a href="#" [routerLink]="['']">
-          <span class="icon-home"></span> Home</a>
+        
+        
         <a href="#" [routerLink]="['profile']">
-          <img *ngIf="currentUser" class="avatar" src="{{currentUser.profilePictureUrl}}"> My Account</a>
+          <img *ngIf="currentUser" class="avatar" src="{{profilePicture}}"> My Account</a>
         <a href="register.html">
           <span class="icon-edit"></span> Free Register </a>
         <a href="#" [routerLink]="['contact']">

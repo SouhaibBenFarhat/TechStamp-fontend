@@ -3391,13 +3391,13 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .alert-success {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: #ffffff;
+  background-color: #a5d950;
+  border-color: #dddfe3;
 }
 
 .alert-success h4 {
-  color: #468847;
+  color: #ffffff;
 }
 
 .alert-danger, .alert-error {
@@ -4149,8 +4149,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 }
 
 .navbar .nav li.dropdown.open>.dropdown-toggle, .navbar .nav li.dropdown.active>.dropdown-toggle, .navbar .nav li.dropdown.open.active>.dropdown-toggle {
-  color: #555555;
-  background-color: #e5e5e5;
+  color: #ffffff;
+  background-color: #4166b2;
 }
 
 .navbar .nav li.dropdown>.dropdown-toggle .caret {

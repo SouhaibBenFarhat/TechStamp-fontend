@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth-service/auth.service";
 import { User } from "../../models/user";
+import { ProfilService } from "../../services/profile-service/profil.service";
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,31 @@ import { User } from "../../models/user";
 export class HeaderComponent implements OnInit {
 
   currentUser: User = null;
+  profilePicture: string = "";
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private profileService: ProfilService) { }
 
   ngOnInit() {
 
+    this.profileService.onCurrentUserChange.subscribe(() => {
+      this.currentUser = this.authService.currentUser;
+      this.profilePicture = "";
+      this.profilePicture = this.authService.currentUser.profilePictureUrl;
+    })
+
+
     if (this.authService.currentUser) {
       this.currentUser = this.authService.currentUser;
+      this.profilePicture = "";
+      this.profilePicture = this.authService.currentUser.profilePictureUrl;
     }
 
 
     this.authService.onUserLoggedIn.subscribe(() => {
       this.currentUser = this.authService.currentUser;
+      this.profilePicture = "";
+      this.profilePicture = this.authService.currentUser.profilePictureUrl;
+
     });
     this.authService.onUserLogout.subscribe(() => {
       this.currentUser = null;

@@ -6,7 +6,8 @@ import { Globals } from '../../utils/global';
 import { Converters } from '../../utils/converters';
 import { AuthService } from "../auth-service/auth.service";
 import 'rxjs/add/operator/map';
-import { reject } from 'q';
+import { Ng2ImgMaxService } from 'ng2-img-max';
+
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class ProfilService {
 
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
+  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService, private ng2ImgMaxService: Ng2ImgMaxService) {
 
   }
 
@@ -46,6 +47,47 @@ export class ProfilService {
       });
     })
   }
+
+  resizeImage(file: File): any {
+    return new Promise((resolve, reject) => {
+      this.ng2ImgMaxService.compress([file], 1).subscribe((result) => {
+        this.ng2ImgMaxService.resize([result], 1000, 1000).subscribe(finalResult => {
+          resolve(finalResult);
+        }, error => {
+          reject(error);
+        });
+
+      }, (err) => {
+        reject(err);
+      });
+
+    });
+  }
+
+  uploadProfilePicture(file: File): any {
+    let formData: FormData = new FormData();
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+
+    return new Promise((resolve, reject) => {
+      this.resizeImage(file).then((fileToUpload) => {
+        formData.append('file', fileToUpload, file.name);
+        this.http.post(this.global.urls['upload-picture'], formData, { headers: this.headers })
+          .subscribe((data) => {
+            this.converter.userJsonToObject(data).then((user) => {
+              this.authService.setCurrentUser(user);
+              this.onCurrentUserChange.emit(0);
+              resolve(data);
+            })
+          }, (err) => {
+            reject(err);
+          });
+      }).catch((err) => {
+        reject(err);
+      })
+    })
+  }
+
 
   addPersonalDetail(personalDetail): any {
 
