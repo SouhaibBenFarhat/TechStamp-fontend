@@ -3,6 +3,8 @@ import { AuthService } from "../../services/auth-service/auth.service";
 import { User } from "../../models/user";
 import { ProfilService } from "../../services/profile-service/profil.service";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-profile',
@@ -33,8 +35,25 @@ export class ProfileComponent implements OnInit {
   showUploadAlert = false;
   profilePicture: string;
   file: File;
+  loading: boolean = false;
+  showConfirmationMessage = false;
+
+
+  public lottieConfig: Object;
+  private anim: any;
+  private animationSpeed: number = 1;
+
+
 
   constructor(private authService: AuthService, private profileService: ProfilService) {
+
+    this.lottieConfig = {
+      path: 'assets/loading/pulse_loader.json',
+      autoplay: true,
+      loop: true
+    };
+
+
     this.authService.getCurrentUser().then((data) => {
       this.currentUser = data;
       this.profilePicture = "";
@@ -50,6 +69,11 @@ export class ProfileComponent implements OnInit {
         this.showUpdateProfile = false;
         this.profilePicture = "";
         this.profilePicture = this.currentUser.profilePictureUrl;
+        this.showConfirmationMessage = true;
+        setTimeout(() => {
+         this.showConfirmationMessage = false;
+        }, 5000);
+        
       })
     });
 
@@ -86,11 +110,21 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadProfilePicture() {
-    if (this.file != null && this.file != undefined) {
-      this.profileService.uploadProfilePicture(this.file).then((data) => {
-        this.showUploadAlert = false;
-      });
+    if (!this.loading) {
+      this.loading = true;
+      if (this.file != null && this.file != undefined) {
+        this.profileService.uploadProfilePicture(this.file).then((data) => {
+          this.showUploadAlert = false;
+          this.loading = false;
+        }).catch((err) => {
+          this.loading = false;
+        });
+      }
     }
+  }
+
+  handleAnimation(anim: any) {
+    this.anim = anim;
   }
 
 }

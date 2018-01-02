@@ -12,19 +12,29 @@
     </div>
   </div>
   <div class="span11">
-    <div class="alert alert-success" style="margin-left: 40px;">
+    <div class="alert alert-success" [@enterAnimation] style="margin-left: 40px;" *ngIf="showConfirmationMessage">
       Your profile has been successfully updated.
     </div>
   </div>
 
-  <div class="span11 well">
+  <div class="span11 well" id="accountInformation">
     <div class="row">
+
       <div class="span8">
+
         <h3>Account Information</h3>
+
         <br>
       </div>
-      <div class="span2 pull-right">
-        <a [ngx-scroll-to]="'#personalDetail'" [ngx-scroll-to-offset]="450" (click)="showUpdateProfile = true" class="defaultBtn">Profile Settings</a>
+      <div class="row">
+        <div class="span2 pull-right">
+          <a [ngx-scroll-to]="'#personalDetail'" [ngx-scroll-to-offset]="550" (click)="showUpdateProfile = true" class="defaultBtn">Profile Settings</a>
+        </div>
+        <div class="span12 pull-left">
+          <lottie-animation-view [hidden]="!loading" style="padding:0; margin:0;" [options]="lottieConfig" [width]="100" [height]="100"
+            (animCreated)="handleAnimation($event)">
+          </lottie-animation-view>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -97,6 +107,10 @@
     <div class="span11 well">
 
       <app-personal-detail [personalDetail]="currentUser.personalDetail"></app-personal-detail>
+
+      <div class="span2 pull-right">
+        <a (click)="showUpdateProfile = false" class="defaultBtn">Close</a>
+      </div>
     </div>
   </div>
   <!-- Modal -->

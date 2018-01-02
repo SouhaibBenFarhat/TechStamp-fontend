@@ -1,49 +1,50 @@
-  <div class="span6">
-    <div class="well">
-      <div *ngIf="error" class="alert alert-danger">
-        {{errorText}}
-      </div>
-
-      <h5>ALREADY REGISTERED ?</h5>
-      <br/> Enter your e-mail address and password to sign in.
-      <br/>
-      <br/>
-      <br/>
-      <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
-        <div class="control-group">
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-            <input class="span3" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" #userEmail="ngModel" required>
-            <div *ngIf="userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
-              Email is required...
-            </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="password">Password</label>
-          <div class="controls">
-            <input type="password" class="span3" [(ngModel)]="user.password" placeholder="Password" name="password" #userPassword="ngModel"
-              required>
-            <div *ngIf="userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
-              Password is required...
-            </div>
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls" *ngIf="!loading">
-            <button type="submit" class="defaultBtn">Sign in</button>
-            <a href="#" [routerLink]="['/reset-password']">Forget password?</a>
-          </div>
-          <br><br>
-          <div class="spinner" *ngIf="loading">
-              <div class="rect1"></div>
-              <div class="rect2"></div>
-              <div class="rect3"></div>
-              <div class="rect4"></div>
-              <div class="rect5"></div>
-            </div>
-        </div>
-      </form>
+<div class="span6">
+  <div class="well">
+    <div *ngIf="error" class="alert alert-danger">
+      {{errorText}}
     </div>
+
+    <h5>ALREADY REGISTERED ?</h5>
+    <br/> Enter your e-mail address and password to sign in.
+    <br/>
+    <br/>
+    <br/>
+    <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
+      <div class="control-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+          <input class="span3" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" #userEmail="ngModel" required>
+          <div *ngIf="userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
+            Email is required...
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input type="password" class="span3" [(ngModel)]="user.password" placeholder="Password" name="password" #userPassword="ngModel"
+            required>
+          <div *ngIf="userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
+            Password is required...
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls" *ngIf="!loading">
+          <button type="submit" class="defaultBtn">Sign in</button>
+          <a href="#" [routerLink]="['/reset-password']">Forget password?</a>
+        </div>
+        <br>
+        <br>
+        <div class="spinner" *ngIf="loading">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+    </form>
   </div>
-  <app-register></app-register>
+</div>
+<app-register></app-register>

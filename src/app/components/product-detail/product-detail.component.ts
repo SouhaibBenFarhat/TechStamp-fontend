@@ -48,7 +48,12 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-
+  enter(){
+    console.log('enter');
+  }
+  leave(){
+    console.log('leave');
+  }
 
 
 

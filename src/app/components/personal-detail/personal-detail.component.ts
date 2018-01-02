@@ -15,6 +15,7 @@ export class PersonalDetailComponent implements OnInit {
   days: Array<number> = new Array<number>();
   months: Array<number> = new Array<number>();
   years: Array<number> = new Array<number>();
+  loading: boolean = false;
 
 
 
@@ -43,9 +44,12 @@ export class PersonalDetailComponent implements OnInit {
 
 
 
-    if (valid) {
+    if (valid && !this.loading) {
+      this.loading = true
       this.profileService.addPersonalDetail(value).then(() => {
-
+        this.loading = false
+      }).catch((err) => {
+        this.loading = false;
       })
     }
 

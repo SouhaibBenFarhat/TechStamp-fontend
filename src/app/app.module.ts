@@ -21,7 +21,10 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Ng2ImgMaxModule } from 'ng2-img-max'; 
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { LottieAnimationViewModule } from 'ng-lottie';
+import {ImageZoomModule} from 'angular2-image-zoom';
+
 
 
 
@@ -56,6 +59,7 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 import { PersonalDetailComponent } from './components/personal-detail/personal-detail.component';
 import { ProfilService } from "./services/profile-service/profil.service";
 import { MapComponent } from './components/map/map.component';
+import { ImageThumbnailsComponent } from './components/image-thumbnails/image-thumbnails/image-thumbnails.component';
 
 
 
@@ -109,7 +113,8 @@ const appRoutes: Routes = [
     CompleteProfileComponent,
     AddressesComponent,
     PersonalDetailComponent,
-    MapComponent
+    MapComponent,
+    ImageThumbnailsComponent
   ],
   imports: [
     BrowserModule,
@@ -123,7 +128,9 @@ const appRoutes: Routes = [
     }),
     AgmSnazzyInfoWindowModule,
     BrowserAnimationsModule,
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    LottieAnimationViewModule.forRoot(),
+    ImageZoomModule
   ],
   providers: [
     FlashMessagesService,

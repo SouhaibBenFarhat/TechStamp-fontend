@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User, Address, PersonalDetail } from "../../models/user";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Globals } from '../../utils/global';
 import { Converters } from '../../utils/converters';
@@ -72,13 +72,22 @@ export class ProfilService {
     return new Promise((resolve, reject) => {
       this.resizeImage(file).then((fileToUpload) => {
         formData.append('file', fileToUpload, file.name);
-        this.http.post(this.global.urls['upload-picture'], formData, { headers: this.headers })
-          .subscribe((data) => {
-            this.converter.userJsonToObject(data).then((user) => {
-              this.authService.setCurrentUser(user);
-              this.onCurrentUserChange.emit(0);
-              resolve(data);
-            })
+        const req = new HttpRequest('POST', this.global.urls['upload-picture'], formData, { headers: this.headers, reportProgress: true });
+        this.http.request(req).subscribe((data) => {
+            if (data.type === HttpEventType.UploadProgress) {
+              const percentDone = Math.round(100 * data.loaded / data.total);
+              console.log(`File is ${percentDone}% uploaded.`);
+            } 
+            else if(data instanceof HttpResponse) {
+           
+              this.converter.userJsonToObject(data.body).then((user) => {
+                this.authService.setCurrentUser(user);
+                this.onCurrentUserChange.emit(0);
+                resolve(data);
+              })
+            }
+
+
           }, (err) => {
             reject(err);
           });
