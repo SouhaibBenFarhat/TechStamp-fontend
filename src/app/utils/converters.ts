@@ -23,6 +23,7 @@ export class Converters {
             this.user.countryCode = data.data.countryCode;
             this.user.role = data.data.role;
             this.user.token = data.data.token;
+            this.user.temporaryToken = data.data.temporaryToken;
             this.user.profilePictureUrl = data.data.profilePictureUrl;
             if ((data.data.personalDetail != null) && (data.data.personalDetail != undefined)) {
                 this.user.personalDetail.date = data.data.personalDetail.date;

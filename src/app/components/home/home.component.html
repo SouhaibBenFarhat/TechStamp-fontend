@@ -1,6 +1,6 @@
 <div class="span12">
   <app-highlight></app-highlight>
-  <div class="loader" *ngIf="loading">Loading...</div>
+  <div class="loader" *ngIf="loading"></div>
   
   <ul class="thumbnails">
       <app-product-item-component *ngFor="let product of products" [product]="product"></app-product-item-component>

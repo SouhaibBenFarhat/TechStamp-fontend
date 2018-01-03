@@ -38,17 +38,36 @@ export class AuthService {
 
   }
 
+  sendEmailVerification(token: string): any {
+
+    var headers = new HttpHeaders(
+      { 'authorization': token });
+    return new Promise((resolve, reject) => {
+      this.http.post(this.global.urls['send-email-verification'], null, { headers: headers }).subscribe((data) => {
+        resolve();
+      }, (err) => {
+        reject();
+      })
+    });
+  }
+
+  confirmEmail(token: string): any {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.global.urls['confirm-email'], { token: token }).subscribe((data) => {
+        resolve(data);
+      }, (err) => {
+        reject(err);
+      })
+    });
+
+  }
+
   register(user: User) {
     return new Promise((resolve, reject) => {
       this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
         if (data != null) {
-          let u = new User();
-          u.email = user.email;
-          u.password = user.password;
-          this.login(u).then((data) => {
-            resolve(data);
-          }).catch((err) => {
-            reject(err);
+          this.converter.userJsonToObject(data).then((user) => {
+            resolve(user);
           })
         } else {
           reject('Error has occure...');
@@ -114,13 +133,21 @@ export class AuthService {
 
             } else {
               this.router.navigate(['/login']);
+              console.log('zab1')
             }
           }).catch((err) => {
             reject('This user is not defined.');
             this.router.navigate(['/login']);
+            console.log('zab2')
           });
         } else {
-          this.router.navigate(['/login']);
+          console.log(window.location.href);
+          if (window.location.href.indexOf('email-verification') >= 0) {
+            return;
+          } else {
+            this.router.navigate(['/login']);
+            console.log('zab3');
+          }
         }
       }
 
@@ -135,7 +162,7 @@ export class AuthService {
     if (localStorage.getItem(this.global.TOKEN_KEY) != null && localStorage.getItem(this.global.TOKEN_KEY) != undefined) {
       return localStorage.getItem(this.global.TOKEN_KEY);
     } else {
-      this.router.navigateByUrl('/login');
+      return null;
     }
   }
 

@@ -7,10 +7,25 @@ import { CategoryService } from "../../services/category-service/category.servic
 import { Category } from "../../models/category";
 import { ErrorHandlerService } from "../../services/error-handler.service";
 import { Observable } from 'rxjs/Rx';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-navbar',
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({transform: 'translateX(0)', opacity: 0}),
+          animate('800ms', style({transform: 'translateX(0)', opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({transform: 'translateX(0)', opacity: 1}),
+          animate('500ms', style({transform: 'translateX(0)', opacity: 0}))
+        ])
+      ]
+    )
+  ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })

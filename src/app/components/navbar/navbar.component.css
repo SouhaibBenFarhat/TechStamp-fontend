@@ -18,3 +18,10 @@ nav {
     border-width: 2px;
     border-color: transparent;
 }
+
+.undernabar {
+    background: #000000c9;
+    border-bottom: 1px;
+    color: white;
+    font-weight: normal;
+}

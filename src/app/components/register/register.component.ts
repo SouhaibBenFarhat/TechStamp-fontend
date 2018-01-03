@@ -26,8 +26,9 @@ export class RegisterComponent implements OnInit {
   onRegisterSubmitted({ value, valid }: { value: User, valid: boolean }) {
     this.loading = valid;
     if (valid) {
-      this.authService.register(this.user).then((data) => {
-        this.router.navigate(['']);
+      this.authService.register(this.user).then((data: User) => {
+        this.router.navigate(['/after-registration/' + data.temporaryToken]);
+        console.log(data.temporaryToken);
         this.loading = false;
 
       }).catch((err) => {

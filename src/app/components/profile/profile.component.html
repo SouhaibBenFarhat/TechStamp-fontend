@@ -108,7 +108,7 @@
 
       <app-personal-detail [personalDetail]="currentUser.personalDetail"></app-personal-detail>
 
-      <div class="span2 pull-right">
+      <div class="span2 pull-right" *ngIf="!currentUser.firstTime">
         <a (click)="showUpdateProfile = false" class="defaultBtn">Close</a>
       </div>
     </div>

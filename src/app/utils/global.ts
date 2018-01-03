@@ -23,9 +23,16 @@ export class Globals {
 
 
         //Internal
+
+
+        //Auth
         this.urls['login'] = this.serverAddress + '/api/auth/login';
         this.urls['register'] = this.serverAddress + '/api/auth/register';
+        this.urls['send-email-verification'] = this.serverAddress + '/api/auth/send-email-verification/';
         this.urls['info'] = this.serverAddress + '/api/auth/info';
+        this.urls['confirm-email'] = this.serverAddress + '/api/auth/confirm-email/';
+
+        //Data
         this.urls['product'] = this.serverAddress + '/api/v1/product';
         this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
         this.urls['top-brands'] = this.serverAddress + '/api/v1/brand/top-brands';
@@ -39,7 +46,8 @@ export class Globals {
         this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
         this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
-        
+
+
 
 
 

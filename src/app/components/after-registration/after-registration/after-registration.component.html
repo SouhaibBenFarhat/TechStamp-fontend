@@ -1,0 +1,47 @@
+<div class="span11">
+  <div class="well">
+    <h2>Sending Email Confirmation</h2>
+  </div>
+  <div class="row">
+    <div class="span11">
+      <div class="alert alert-success" [@enterAnimation] *ngIf="showConfirmation">
+        The email has been successfully sent
+      </div>
+    </div>
+  </div>
+  <div class="well">
+    <div class="row">
+      <div class="span9">
+        <h5>
+          We thank you for your registration in our plateform.
+        </h5>
+        <p>
+          TechStamp Team are happy to have you with us. We would like to make sure that your email is a valid email, in order to do
+          that you will receive an email where you can validate your account by clicking on link.
+          <br>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span8">
+        <h5>
+          If you are not receiving this email
+        </h5>
+
+        <button *ngIf="!loading" type="submit" class="shopBtn" (click)="sendEmailVerification()">
+          <span class=" icon-user"></span> Send Again</button>
+
+        <div class="pull-left">
+          <div class="spinner" *ngIf="loading">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

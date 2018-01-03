@@ -23,7 +23,7 @@ import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { LottieAnimationViewModule } from 'ng-lottie';
-import {ImageZoomModule} from 'angular2-image-zoom';
+import { ImageZoomModule } from 'angular2-image-zoom';
 
 
 
@@ -60,6 +60,8 @@ import { PersonalDetailComponent } from './components/personal-detail/personal-d
 import { ProfilService } from "./services/profile-service/profil.service";
 import { MapComponent } from './components/map/map.component';
 import { ImageThumbnailsComponent } from './components/image-thumbnails/image-thumbnails/image-thumbnails.component';
+import { AfterRegistrationComponent } from './components/after-registration/after-registration/after-registration.component';
+import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 
 
 
@@ -81,7 +83,10 @@ const appRoutes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
   { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
   { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] },
-  { path: 'wish-list', component: WishListComponent, canActivate: [AuthGuard] }
+  { path: 'wish-list', component: WishListComponent, canActivate: [AuthGuard] },
+  { path: 'after-registration/:token', component: AfterRegistrationComponent },
+  { path: 'after-registration/email-verification/:token', component: EmailVerificationComponent }
+  
 
 ]
 
@@ -114,7 +119,9 @@ const appRoutes: Routes = [
     AddressesComponent,
     PersonalDetailComponent,
     MapComponent,
-    ImageThumbnailsComponent
+    ImageThumbnailsComponent,
+    AfterRegistrationComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,

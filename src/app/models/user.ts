@@ -5,6 +5,7 @@ export class User {
     profilePictureUrl: string;
     salt: string;
     token: string;
+    temporaryToken: string;
     role: string;
     countryCode: string;
     description: string;

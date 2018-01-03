@@ -5,6 +5,7 @@ import { ErrorHandlerService } from "../../services/error-handler.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',

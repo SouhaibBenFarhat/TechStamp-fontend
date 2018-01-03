@@ -1,38 +1,19 @@
-<div class="container" style="width:1440px;"  >
-  <header id="header">
-    <div class="row">
-      <div class="span4">
-      </div>
-      <div class="span9 well" [ngClass]="[flash ? 'flash' : 'not-flash']"  style="margin-top: 20px;" *ngIf="showMessage">
-        <div class="container">
-          <h3>Welcome To TechStamp</h3>
-        </div>
-        <div class="row">
-          <div class="span8">
-            <h5>In order to complete your registration please complete your information...</h5>
-            <br>
-          </div>
-        </div>
-        <div class="span2">
-          <a href="#" [routerLink]="['profile']" (click)="showMessage= false">
-            <span class="badge badge-warning" style="line-height: 25px;"> Yes</span>
-          </a>
-          <a href="cart.html">
-            <span class="badge badge-warning" style="line-height: 25px;" (click)="showMessage = false"> skip</span>
-          </a>
-        </div>
-      </div>
+<div class="navbar navbar-inverse navbar-fixed-top " style="margin-top:40px;" *ngIf="showMessage" [@enterAnimation]>
+  <div class="topNav undernabar">
+    <div class="container" style="width: 1440px;">
+      <div class="container">
+          In order to complete your registration please complete your information...
+        <a href="#" [routerLink]="['profile']" (click)="showMessage= false">
+          <span class="icon-edit"></span> Yes </a>
 
-      <div class="pull-right">
-    
-    
+        <a href="#" (click)="showMessage = false">
+          <span class="icon-edit"></span>No </a>
+
       </div>
     </div>
-  </header>
-
-  <!--
-    Navigation Bar Section 
-    -->
+  </div>
+</div>
+<div class="container" style="width:1440px; margin-top: 80px;">
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
@@ -54,13 +35,13 @@
             </li>
 
           </ul>
-       
+
           <ul class="nav pull-right">
 
             <li>
-                <form action="#" class="navbar-search pull-left">
-                    <input type="text" placeholder="Search" class="search-query span1">
-                  </form>
+              <form action="#" class="navbar-search pull-left">
+                <input type="text" placeholder="Search" class="search-query span1">
+              </form>
             </li>
 
             <li class="dropdown">
