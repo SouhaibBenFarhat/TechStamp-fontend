@@ -62,6 +62,9 @@ import { MapComponent } from './components/map/map.component';
 import { ImageThumbnailsComponent } from './components/image-thumbnails/image-thumbnails/image-thumbnails.component';
 import { AfterRegistrationComponent } from './components/after-registration/after-registration/after-registration.component';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { ConfirmationErrorComponent } from './components/confirmation-error/confirmation-error.component';
+import { RegisterGuard } from './guard/register.guard';
+import { ActivatedRouteSnapshot } from "@angular/router";
 
 
 
@@ -84,9 +87,10 @@ const appRoutes: Routes = [
   { path: 'brands', component: BrandsComponent, canActivate: [AuthGuard] },
   { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] },
   { path: 'wish-list', component: WishListComponent, canActivate: [AuthGuard] },
-  { path: 'after-registration/:token', component: AfterRegistrationComponent },
-  { path: 'after-registration/email-verification/:token', component: EmailVerificationComponent }
-  
+  { path: 'after-registration/:token', component: AfterRegistrationComponent, canActivate: [RegisterGuard] },
+  { path: 'confirmation-error/:token', component: ConfirmationErrorComponent, canActivate: [RegisterGuard] },
+  { path: 'after-registration/email-verification/:token', component: EmailVerificationComponent, canActivate: [RegisterGuard] }
+
 
 ]
 
@@ -121,7 +125,8 @@ const appRoutes: Routes = [
     MapComponent,
     ImageThumbnailsComponent,
     AfterRegistrationComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    ConfirmationErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +156,8 @@ const appRoutes: Routes = [
     CategoryService,
     NewsService,
     WishListService,
-    ProfilService
+    ProfilService,
+    RegisterGuard
   ],
   bootstrap: [AppComponent]
 })

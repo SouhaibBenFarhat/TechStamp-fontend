@@ -2,7 +2,7 @@
   <div class="topNav undernabar">
     <div class="container" style="width: 1440px;">
       <div class="container">
-          In order to complete your registration please complete your information...
+        In order to complete your registration please complete your information...
         <a href="#" [routerLink]="['profile']" (click)="showMessage= false">
           <span class="icon-edit"></span> Yes </a>
 
@@ -45,11 +45,11 @@
             </li>
 
             <li class="dropdown">
-              <a *ngIf="!isLoggedIn" data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <a *ngIf="!isLoggedIn" data-toggle="dropdown" class="dropdown-toggle">
                 <span class="icon-unlock"></span> Login
                 <b class="caret"></b>
               </a>
-              <a *ngIf="isLoggedIn" data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <a *ngIf="isLoggedIn" data-toggle="dropdown" class="dropdown-toggle">
                 <span class="icon-lock"></span> Logout
                 <b class="caret"></b>
               </a>

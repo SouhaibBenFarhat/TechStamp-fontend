@@ -38,6 +38,16 @@ export class AuthService {
 
   }
 
+  checkConfirmation(token): any {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.global.urls['check-confirmation'], { token: this.getTemporaryToken() }).subscribe(() => {
+        resolve();
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
   sendEmailVerification(token: string): any {
 
     var headers = new HttpHeaders(
@@ -133,20 +143,16 @@ export class AuthService {
 
             } else {
               this.router.navigate(['/login']);
-              console.log('zab1')
             }
           }).catch((err) => {
             reject('This user is not defined.');
             this.router.navigate(['/login']);
-            console.log('zab2')
           });
         } else {
-          console.log(window.location.href);
           if (window.location.href.indexOf('email-verification') >= 0) {
             return;
           } else {
             this.router.navigate(['/login']);
-            console.log('zab3');
           }
         }
       }
@@ -168,6 +174,17 @@ export class AuthService {
 
   setCurrentUser(user: User): void {
     this.currentUser = user;
+  }
+
+  setTemporaryToken(token) {
+    localStorage.setItem(this.global.TK, token);
+  }
+  getTemporaryToken() {
+    if (localStorage.getItem(this.global.TK)) {
+      return localStorage.getItem(this.global.TK);
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 
 }

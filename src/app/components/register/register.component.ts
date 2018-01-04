@@ -21,15 +21,18 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
+
   }
 
   onRegisterSubmitted({ value, valid }: { value: User, valid: boolean }) {
+    this.error = false;
     this.loading = valid;
     if (valid) {
       this.authService.register(this.user).then((data: User) => {
-        this.router.navigate(['/after-registration/' + data.temporaryToken]);
-        console.log(data.temporaryToken);
-        this.loading = false;
+        this.authService.setTemporaryToken(data.temporaryToken);
+        this.router.navigate(['/after-registration/' + data.temporaryToken]).then(() => {
+          this.loading = false;
+        });
 
       }).catch((err) => {
         this.loading = false;

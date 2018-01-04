@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../../services/auth-service/auth.service";
+import { Globals } from "../../utils/global";
 
 @Component({
   selector: 'app-email-verification',
@@ -15,7 +16,7 @@ export class EmailVerificationComponent implements OnInit {
   private anim: any;
 
 
-  constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private global: Globals, private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.lottieConfig = {
       path: 'assets/animation/tick.json',
       autoplay: false,
@@ -29,6 +30,7 @@ export class EmailVerificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.removeItem(this.global.TK);
 
   }
 

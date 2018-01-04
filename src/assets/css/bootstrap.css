@@ -3415,6 +3415,12 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
   background-color: #fc714b;
   border-color: #ffffff;
 }
+.alert-confirmation {
+  color: #ffc107;
+  background-color: transparent;
+  border-color: #ffffff;
+  font-weight: bold;
+}
 .alert-info a {
   color: white;
 }

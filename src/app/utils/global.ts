@@ -9,6 +9,7 @@ export class Globals {
     TOKEN_LENGTH = 273;
     IS_LOGGED_IN = "IS_LOGGED_IN";
     API_KEY = "d4e84ad4231a48bb89d8d16ef9daef76";
+    TK = "TEMPRORAY_TOKEN";
 
 
 
@@ -31,6 +32,7 @@ export class Globals {
         this.urls['send-email-verification'] = this.serverAddress + '/api/auth/send-email-verification/';
         this.urls['info'] = this.serverAddress + '/api/auth/info';
         this.urls['confirm-email'] = this.serverAddress + '/api/auth/confirm-email/';
+        this.urls['check-confirmation'] = this.serverAddress + '/api/auth/check-confirmation';
 
         //Data
         this.urls['product'] = this.serverAddress + '/api/v1/product';

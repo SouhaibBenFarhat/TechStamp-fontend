@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from "../../../services/auth-service/auth.service";
+import { AuthService } from "../../services/auth-service/auth.service";
 import { trigger, style, animate, transition } from '@angular/animations';
+import { Globals } from '../../utils/global';
 
 
 @Component({
-  selector: 'app-after-registration',
+  selector: 'app-confirmation-error',
   animations: [
     trigger(
       'enterAnimation', [
@@ -20,10 +21,10 @@ import { trigger, style, animate, transition } from '@angular/animations';
       ]
     )
   ],
-  templateUrl: './after-registration.component.html',
-  styleUrls: ['./after-registration.component.css']
+  templateUrl: './confirmation-error.component.html',
+  styleUrls: ['./confirmation-error.component.css']
 })
-export class AfterRegistrationComponent implements OnInit {
+export class ConfirmationErrorComponent implements OnInit {
 
   private loading: boolean = false;
   private token: string = "";
@@ -32,16 +33,14 @@ export class AfterRegistrationComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private activatedRouter: ActivatedRoute, private authService: AuthService) {
+  constructor(private global:Globals,private router: Router, private activatedRouter: ActivatedRoute, private authService: AuthService) {
 
   }
 
   ngOnInit() {
     this.activatedRouter.params.subscribe((params) => {
       this.token = params.token;
-      this.sendEmailVerification();
     }, (err) => {
-      console.log(err);
     });
   }
 
@@ -49,7 +48,7 @@ export class AfterRegistrationComponent implements OnInit {
   sendEmailVerification() {
     if (!this.loading) {
       this.showConfirmation = false;
-      this.showConfirmationError = false      
+      this.showConfirmationError = false            
       this.loading = true;
       this.authService.sendEmailVerification(this.token).then(() => {
         this.loading = false;
@@ -58,8 +57,10 @@ export class AfterRegistrationComponent implements OnInit {
         this.loading = false;
         this.showConfirmation = false;
         this.showConfirmationError = true
+        
       });
     }
   }
 
 }
+
