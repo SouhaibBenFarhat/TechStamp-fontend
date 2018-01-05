@@ -1,12 +1,24 @@
 <div class="span12">
+  <div class="well np ">
+    <div id="myCarousel" class="carousel slide homCar card-view">
+      <div class="carousel-inner">
+        <div class="item active" *ngIf="product">
+          <img style="width:100%" src="{{product.largeImage}}" alt="bootstrap templates">
+          <div class="carousel-caption">
+            <h4>{{product.name}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="well well-small" *ngIf="product">
     <div class="row-fluid">
-      <div class="span6" *ngIf="product.image">
-        <img [imageZoom]="product.image" *ngIf="zoom" [src]="product.image" [lensBorder]="1" (mouseleave)="zoom=false" [windowPosition]="1"
-          [delay]="500" [lensWidth]="500" [lensHeight]="500">
-        <img src="{{product.image}}" (mouseenter)="zoom=true" *ngIf="!zoom">
+      <div class="span5" *ngIf="product.image">
+        <img [imageZoom]="product.image" *ngIf="zoom" [src]="product.image" class="" [lensBorder]="2" (mouseleave)="zoom=false"
+          [windowPosition]="1" [delay]="500" [lensWidth]="500" [lensHeight]="500">
+        <img src="{{product.image}}" (mouseenter)="zoom=true" class="" *ngIf="!zoom">
       </div>
-      <div class="span6">
+      <div class="span7">
         <h3>{{product.name}} {{product.price}} TND</h3>
         <hr class="soft" />
 
@@ -54,7 +66,7 @@
     <app-brand-item [brand]="product.brand"></app-brand-item>
     <hr class="softn clr" />
 
-    <div class="row-fluid galery-container" style="margin-left: 0px;" *ngIf="showGallery">
+    <div class="row-fluid galery-container card-product" style="margin-left: 0px;" *ngIf="showGallery">
       <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
     </div>
 

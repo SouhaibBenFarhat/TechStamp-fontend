@@ -41,6 +41,25 @@ export class ProductService {
 
   }
 
+  getProductsWithPagination(skip: number, limit: number): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+    let products = new Array<Product>();
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['products-pagination'] + '?skip=' + skip + '&limit=' + limit, { headers: this.headers }).map((data: any) => data.data).subscribe((data: any) => {
+        for (let i = 0; i < data.length; i++) {
+          this.converter.productJsonToObject(data[i]).then((product: Product) => {
+            products.push(product);
+          });
+        }
+        resolve(products);
+      }, (error) => {
+        reject(error);
+      });
+    });
+
+  }
+
   getProductById(id: string): any {
     this.headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });

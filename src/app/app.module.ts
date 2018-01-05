@@ -145,7 +145,7 @@ const appRoutes: Routes = [
     LottieAnimationViewModule.forRoot(),
     ImageZoomModule,
     NgxGalleryModule
-  ],
+    ],
   providers: [
     FlashMessagesService,
     AuthService,

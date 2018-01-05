@@ -36,6 +36,8 @@ export class Globals {
 
         //Data
         this.urls['product'] = this.serverAddress + '/api/v1/product';
+        this.urls['products-pagination'] = this.serverAddress + '/api/v1/product/pagination';
+        
         this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
         this.urls['top-brands'] = this.serverAddress + '/api/v1/brand/top-brands';
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';

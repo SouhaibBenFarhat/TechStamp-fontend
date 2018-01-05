@@ -1,4 +1,13 @@
 .galery-container {
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     background-color: #e9ecee;
+}
+
+.product-image {
+    height: 350px;
+    width: 440px;
+}
+
+.card-product {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.10);
 }

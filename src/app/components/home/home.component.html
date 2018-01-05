@@ -1,8 +1,14 @@
-<div class="span12">
+<div class="span12" id="th-infinite-scroll-tracker">
   <app-highlight></app-highlight>
-  <div class="loader" *ngIf="loading"></div>
-  
+
   <ul class="thumbnails">
-      <app-product-item-component *ngFor="let product of products" [product]="product"></app-product-item-component>
+    <app-product-item-component *ngFor="let product of products" [product]="product"></app-product-item-component>
   </ul>
+  <div class="loader" [hidden]="!loading"></div>
+
+  
+  <div class="load-more-button">
+    <button type="submit" class="shopBtn" (click)="loadMore()">
+      <span class=" icon-shopping-cart"></span> More...</button>
+  </div>
 </div>

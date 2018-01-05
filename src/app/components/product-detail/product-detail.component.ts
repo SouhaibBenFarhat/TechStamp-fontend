@@ -68,28 +68,35 @@ export class ProductDetailComponent implements OnInit {
     this.galleryOptions = [
       {
         width: '100%',
-        height: '400px',
+        height: '500px',
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide,
         previewCloseOnClick: true,
-        previewKeyboardNavigation: true
-
+        previewKeyboardNavigation: true,
+        thumbnailsArrows: true,
+        thumbnailsRemainingCount: true,
+        preview: true,
+        previewSwipe: true,
+        previewCloseOnEsc: true,
+        previewInfinityMove: true,
+        previewZoom: true,
+        previewFullscreen: true
       },
       // max-width 800
       {
         breakpoint: 800,
         width: '100%',
         height: '600px',
-        imagePercent: 0,
-        thumbnailsPercent: 0,
+        imagePercent: 70,
+        thumbnailsPercent: 100,
         thumbnailsMargin: 0,
-        thumbnailMargin: 0,
 
       },
       // max-width 400
       {
         breakpoint: 100,
         preview: true,
+
       }
     ];
     this.showGallery = true;
