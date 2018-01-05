@@ -3,8 +3,8 @@ import { User } from '../../models/user';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Globals } from '../../utils/global';
-import { Converters } from '../../utils/converters';
 import { Router } from '@angular/router';
+import { Converters } from "../../utils/converters";
 
 
 
@@ -14,7 +14,10 @@ export class AuthService {
   public currentUser: User;
   public onUserLoggedIn = new EventEmitter<any>();
   public onUserLogout = new EventEmitter<any>();
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private router: Router) { }
+  private converter: Converters;
+  constructor(private http: HttpClient, private global: Globals, private router: Router) {
+    this.converter = new Converters();
+  }
 
   login(user: User): any {
     return new Promise((resolve, reject) => {

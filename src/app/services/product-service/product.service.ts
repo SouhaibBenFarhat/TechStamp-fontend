@@ -13,10 +13,11 @@ import { reject } from 'q';
 export class ProductService {
 
   headers;
+  private converter: Converters;
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-   
+  constructor(private http: HttpClient, private global: Globals, private authService: AuthService) {
+    this.converter = new Converters();
   }
 
 

@@ -16,11 +16,12 @@ export class ProfilService {
   headers;
   onCurrentUserChange = new EventEmitter<any>();
   onAddressSubmitted = new EventEmitter<any>();
+  private converter: Converters;
 
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService, private ng2ImgMaxService: Ng2ImgMaxService) {
-
+  constructor(private http: HttpClient, private global: Globals, private authService: AuthService, private ng2ImgMaxService: Ng2ImgMaxService) {
+    this.converter = new Converters();
   }
 
 
@@ -74,23 +75,23 @@ export class ProfilService {
         formData.append('file', fileToUpload, file.name);
         const req = new HttpRequest('POST', this.global.urls['upload-picture'], formData, { headers: this.headers, reportProgress: true });
         this.http.request(req).subscribe((data) => {
-            if (data.type === HttpEventType.UploadProgress) {
-              const percentDone = Math.round(100 * data.loaded / data.total);
-              console.log(`File is ${percentDone}% uploaded.`);
-            } 
-            else if(data instanceof HttpResponse) {
-           
-              this.converter.userJsonToObject(data.body).then((user) => {
-                this.authService.setCurrentUser(user);
-                this.onCurrentUserChange.emit(0);
-                resolve(data);
-              })
-            }
+          if (data.type === HttpEventType.UploadProgress) {
+            const percentDone = Math.round(100 * data.loaded / data.total);
+            console.log(`File is ${percentDone}% uploaded.`);
+          }
+          else if (data instanceof HttpResponse) {
+
+            this.converter.userJsonToObject(data.body).then((user) => {
+              this.authService.setCurrentUser(user);
+              this.onCurrentUserChange.emit(0);
+              resolve(data);
+            })
+          }
 
 
-          }, (err) => {
-            reject(err);
-          });
+        }, (err) => {
+          reject(err);
+        });
       }).catch((err) => {
         reject(err);
       })

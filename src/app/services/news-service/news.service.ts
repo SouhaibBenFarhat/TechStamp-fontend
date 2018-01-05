@@ -9,8 +9,11 @@ import 'rxjs/add/operator/map';
 export class NewsService {
 
   articles: Array<Article> = new Array<Article>();
+  private converter: Converters;
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters) { }
+  constructor(private http: HttpClient, private global: Globals) {
+    this.converter = new Converters();
+  }
 
 
 
@@ -21,7 +24,7 @@ export class NewsService {
           for (let i = 0; i < data.length; i++) {
             if (data[i].author) {
               this.converter.articleJsonToObject(data[i]).then((article) => {
-                if(i<=4){
+                if (i <= 4) {
                   this.articles.push(article);
                 }
               });

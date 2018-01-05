@@ -14,10 +14,11 @@ export class WishListService {
   wishLists = new Array<WishList>();
   wishListNumber = new EventEmitter<any>();
   onWishListChange = new EventEmitter<any>();
+  private converter: Converters;
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-
+  constructor(private http: HttpClient, private global: Globals, private authService: AuthService) {
+    this.converter = new Converters();
 
   }
 

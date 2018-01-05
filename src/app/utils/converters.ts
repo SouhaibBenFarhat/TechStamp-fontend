@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { User, Address } from '../models/user';
 import { Product } from '../models/product';
 import { Brand } from "../models/brand";
@@ -6,12 +5,13 @@ import { Category } from "../models/category";
 import { Article } from "../models/article";
 import { WishList } from "../models/wishList";
 
-@Injectable()
 export class Converters {
 
-    user: User = new User();
+    user: User;
 
-    constructor() { }
+    constructor() {
+        this.user = new User();
+    }
 
     userJsonToObject(data): any {
         this.user = new User();

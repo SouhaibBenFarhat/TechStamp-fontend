@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { LottieAnimationViewModule } from 'ng-lottie';
 import { ImageZoomModule } from 'angular2-image-zoom';
+import { NgxGalleryModule } from 'ngx-gallery';
+
 
 
 
@@ -35,7 +37,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
 import { HighlightComponent } from './components/highlight/highlight.component';
-import { Converters } from './utils/converters';
 import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthGuard } from './guard/auth.guard';
 import { BrandService } from './services/brand-service/brand.service';
@@ -142,13 +143,13 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     Ng2ImgMaxModule,
     LottieAnimationViewModule.forRoot(),
-    ImageZoomModule
+    ImageZoomModule,
+    NgxGalleryModule
   ],
   providers: [
     FlashMessagesService,
     AuthService,
     Globals,
-    Converters,
     ErrorHandlerService,
     AuthGuard,
     ProductService,

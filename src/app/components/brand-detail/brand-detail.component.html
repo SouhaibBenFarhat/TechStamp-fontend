@@ -1,6 +1,31 @@
 <div class="span12">
-        <div class="loader" *ngIf="loading">Loading...</div>
-        
+    <div class="well np ">
+        <div id="myCarousel" class="carousel slide homCar card-view">
+            <div class="carousel-inner">
+                <div class="item active" *ngIf="brand">
+                    <img style="width:100%" src="{{brand.image}}" alt="bootstrap templates">
+                    <div class="carousel-caption">
+                        <h4>{{brand.name}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="well" *ngIf="brand">
+        <div class="row">
+            <div class="span11">
+                <h3>
+                    {{brand.name}}
+                </h3>
+                <p>
+                    {{brand.description}}{{brand.description}}{{brand.description}}
+                    <br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="loader" *ngIf="loading"></div>
+
     <ul class="thumbnails">
         <app-product-item-component *ngFor="let product of products" [product]="product"></app-product-item-component>
     </ul>

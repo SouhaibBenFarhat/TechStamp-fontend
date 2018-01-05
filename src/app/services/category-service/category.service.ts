@@ -12,9 +12,11 @@ import { Category } from '../../models/category';
 export class CategoryService {
 
   headers;
+  private converter: Converters;
 
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
+  constructor(private http: HttpClient, private global: Globals, private authService: AuthService) {
+    this.converter = new Converters();
     this.headers = new HttpHeaders(
       { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
   }

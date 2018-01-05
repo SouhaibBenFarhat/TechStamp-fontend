@@ -13,9 +13,10 @@ export class BrandService {
 
 
   headers;
+  private converter: Converters;
 
-  constructor(private http: HttpClient, private global: Globals, private converter: Converters, private authService: AuthService) {
-
+  constructor(private http: HttpClient, private global: Globals, private authService: AuthService) {
+    this.converter = new Converters();
   }
 
   getAllBrands(): any {
@@ -50,6 +51,18 @@ export class BrandService {
           });
         }
         resolve(brands);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
+
+  getBrandById(id: string): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+    return new Promise((resolve, reject) => {
+      this.http.get(this.global.urls['brand-by-id'] + this.global.singleQuaryParamBuilder("id", id), { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
+        resolve(data);
       }, (err) => {
         reject(err);
       });
