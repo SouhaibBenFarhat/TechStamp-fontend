@@ -4,9 +4,24 @@ import { User } from '../../models/user';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { Globals } from '../../utils/global';
 import { ErrorHandlerService } from '../../services/error-handler.service';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({ transform: 'translateX(0)', opacity: 0 }),
+          animate('1000ms', style({ transform: 'translateX(0)', opacity: 1 }))
+        ]),
+        transition(':leave', [
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate('1000ms', style({ transform: 'translateX(0%)', opacity: 0 }))
+        ])
+      ]
+    )
+  ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -16,6 +31,7 @@ export class RegisterComponent implements OnInit {
   error: boolean = false;
   errorText: string = "";
   loading: boolean = false;
+  showSellerAccountPanel = false;
 
   constructor(private authService: AuthService, private router: Router, private global: Globals, private errorHandlerService: ErrorHandlerService) { }
 

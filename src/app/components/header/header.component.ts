@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   currentUser: User = null;
   profilePicture: string = "";
+  showNavbar: boolean = false;
 
   constructor(private authService: AuthService, private profileService: ProfilService) { }
 
@@ -35,10 +36,12 @@ export class HeaderComponent implements OnInit {
       this.currentUser = this.authService.currentUser;
       this.profilePicture = "";
       this.profilePicture = this.authService.currentUser.profilePictureUrl;
+      this.showNavbar = true;
 
     });
     this.authService.onUserLogout.subscribe(() => {
       this.currentUser = null;
+      this.showNavbar = false;
     })
   }
 

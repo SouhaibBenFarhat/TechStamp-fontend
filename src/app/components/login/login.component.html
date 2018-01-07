@@ -1,50 +1,84 @@
-<div class="span6">
-  <div class="well">
-
-
-    <h5>ALREADY REGISTERED ?</h5>
-    <br/> Enter your e-mail address and password to sign in.
-    <br/>
-    <br>
-    <div *ngIf="error" class="alert alert-danger">
-      {{errorText}}
+<div class="row">
+  <div class="span7">
+    <div class="well">
+      <h5>ALREADY REGISTERED ?</h5>
+      <br/> Enter your e-mail address and password to sign in.
+      <br/>
+      <br>
+      <div *ngIf="error" class="alert alert-danger">
+        {{errorText}}
+      </div>
+      <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
+        <div class="control-group">
+          <label class="control-label" for="email">Email</label>
+          <div class="controls">
+            <input class="span3" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" #userEmail="ngModel" required>
+            <div *ngIf="userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
+              Email is required...
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input type="password" class="span3" [(ngModel)]="user.password" placeholder="Password" name="password" #userPassword="ngModel"
+              required>
+            <div *ngIf="userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
+              Password is required...
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls" *ngIf="!loading">
+            <button type="submit" class="defaultBtn">Sign in</button>
+            <a href="#" [routerLink]="['/reset-password']">Forget password?</a>
+          </div>
+          <br>
+          <br>
+          <div class="spinner" *ngIf="loading">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+        </div>
+      </form>
     </div>
-    <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
-      <div class="control-group">
-        <label class="control-label" for="email">Email</label>
-        <div class="controls">
-          <input class="span3" type="text" [(ngModel)]="user.email" placeholder="Email" name="email" #userEmail="ngModel" required>
-          <div *ngIf="userEmail.errors?.required && userEmail.touched" class="alert alert-danger">
-            Email is required...
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="password">Password</label>
-        <div class="controls">
-          <input type="password" class="span3" [(ngModel)]="user.password" placeholder="Password" name="password" #userPassword="ngModel"
-            required>
-          <div *ngIf="userPassword.errors?.required && userPassword.touched" class="alert alert-danger">
-            Password is required...
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="controls" *ngIf="!loading">
-          <button type="submit" class="defaultBtn">Sign in</button>
-          <a href="#" [routerLink]="['/reset-password']">Forget password?</a>
-        </div>
-        <br>
-        <br>
-        <div class="spinner" *ngIf="loading">
-          <div class="rect1"></div>
-          <div class="rect2"></div>
-          <div class="rect3"></div>
-          <div class="rect4"></div>
-          <div class="rect5"></div>
-        </div>
-      </div>
-    </form>
   </div>
+
+  <div class="span7">
+    <div class="well">
+      <h3>Connect with others and find what you are looking for on TechStamp.</h3>
+    </div>
+    <div class="well">
+      <p>
+        By clicking Create Account, you agree to our
+        <a href="">
+          <b>Terms</b>
+        </a> and that you have read our
+        <a href="">
+          <b> Data Policy</b>
+        </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+      </p>
+    </div>
+    <ul class="nav nav-list ">
+      <li>
+        <img style="margin: 10px;" src="https://scontent.ftun3-1.fna.fbcdn.net/v/t39.2365-6/851565_602269956474188_918638970_n.png?oh=6f3dd15f3b723df9818b66d8e567aa70&oe=5AFD68F5"> See photos and updates from friends in News Feed.
+      </li>
+      <li>
+        <img style="margin: 10px;" src="https://scontent.ftun3-1.fna.fbcdn.net/v/t39.2365-6/851585_216271631855613_2121533625_n.png?oh=41b1aa396da7376fa83f63eb923577fa&oe=5AB4D320"> Share what's new in your life on your Timeline.
+      </li>
+      <li>
+        <img style="margin: 10px;" src="https://scontent.ftun3-1.fna.fbcdn.net/v/t39.2365-6/851558_160351450817973_1678868765_n.png?oh=76fde4ad86a8717674612efd4d85a616&oe=5ABDA9D8"> Find more of what you're looking for with Facebook Search.
+      </li>
+      <li style="border:0"> &nbsp;</li>
+    </ul>
+  </div>
+
+  <div>
+    <app-register></app-register>
+  </div>
+
+
 </div>
-<app-register></app-register>

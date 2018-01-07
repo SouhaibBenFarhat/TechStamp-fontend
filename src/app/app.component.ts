@@ -12,16 +12,15 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
 
   title = 'app';
-  show: boolean = true;
+  show: boolean = false;
+  showRightSidebar = false;
 
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) {
 
-    this.authService.getCurrentUser().then((data: User) => {
-      this.authService.onUserLoggedIn.emit(0);
-    }).catch((err) => {
-      this.router.navigate(['/login']);
-    });
+
+
+
   }
 
   ngOnInit() {
@@ -29,13 +28,23 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
 
       if (event instanceof NavigationEnd) {
-        if (event.url.indexOf("contact") >= 0) {
-          this.show = true;
+        if ((event.url.indexOf("contact") >= 0) ||
+          event.url.indexOf("login") >= 0 ||
+          event.url.indexOf("reset-password") >= 0 ||
+          event.url.indexOf("seller-registration") >= 0) {
+
+          this.show = false;
+          this.showRightSidebar = false;
         } else {
           this.show = true;
+          this.showRightSidebar = true;
+
         }
       }
     });
+
+
+
 
 
 

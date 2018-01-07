@@ -1,0 +1,320 @@
+<div class="container">
+  <div class="well">
+    <img src="./assets/img/seller-bg.png" />
+  </div>
+  <div class="well">
+    <h2>Create Business account.</h2>
+    <div class="pull-right">
+      <i class="fa fa-info" aria-hidden="true"></i>
+    </div>
+    <p style="font-size: 1.2em; text-align: justify;">Connect with others and find what you are looking for on TechStamp.</p>
+    <div class="well">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non illo consequatur obcaecati soluta architecto! Error iure
+        assumenda, aliquam, rerum reiciendis molestias qui atque repellat consequuntur corporis perferendis magnam mollitia?
+        By clicking Create Account, you agree to our
+        <a href="">
+          <b>Terms</b>
+        </a> and that you have read our
+        <a href="">
+          <b> Data Policy</b>
+        </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+      </p>
+      <button class="defaultBtn" [routerLink]="['/login']">Back</button>
+    </div>
+  </div>
+  <div class="well card-view">
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+    <div class="span5"></div>
+    <div class="span1">
+      <div class="spinner" *ngIf="loading">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+    <div class="span5"></div>
+    <br *ngIf="loading">
+  </div>
+
+  <div class="well">
+    <h4>Business Detail</h4>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, accusamus, velit harum sit voluptates eligendi iure
+      maiores accusantium cumque rem blanditiis! Perspiciatis non saepe dolor quam iure maiores eius sapiente. Lorem ipsum
+      dolor, sit amet consectetur adipisicing elit. Voluptatum, aliquam excepturi numquam distinctio fugiat mollitia ad quasi,
+      veritatis beatae harum eaque sequi dicta necessitatibus deleniti ut, voluptate inventore in sunt!</p>
+  </div>
+
+  <div class="well">
+    <div class="row">
+      <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
+        <div class="span12">
+          <h3>Business Information.</h3>
+          <br>
+        </div>
+        <div class="span1"></div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Page name</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Page Name" name="pageName" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="shopEmail">Page Email</label>
+            <div class="controls">
+              <input type="email" class="span3" placeholder="Email-Address" name="pageEmail" required>
+            </div>
+          </div>
+        </div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="email">Business Address</label>
+            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
+              #search>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="shopName">Phone number</label>
+            <div class="controls">
+              <input class="span3" type="number" placeholder="Phone number" name="phoneNumber" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="span12">
+            <br>
+            <div class="span1"></div>
+            <div class="control-group span8">
+              <label class="control-label" for="shopName">What are you selling? (e.g, Smarthones, Tv...)</label>
+              <div class="controls">
+                <div class="span8">
+                  <div class="fixed-height">
+                    <div class="tag-container">
+                      <ul>
+                        <li class="small-tag">
+                          Smartphones
+                        </li>
+                        <li class="small-tag">
+                          Tv and Photos.
+                        </li>
+                        <li class="small-tag">
+                          Computers
+                        </li>
+                        <li class="small-tag">
+                          Accessories
+                        </li>
+                        <li class="small-tag">
+                          Gaming
+                        </li>
+                        <li class="small-tag">
+                          Sound
+                        </li>
+                        <li class="small-tag">
+                          Smartphones
+                        </li>
+                        <li class="small-tag">
+                          Tv and Photos.
+                        </li>
+                        <li class="small-tag">
+                          Computers
+                        </li>
+                        <li class="small-tag">
+                          Accessories
+                        </li>
+                        <li class="small-tag">
+                          Gaming
+                        </li>
+                        <li class="small-tag">
+                          Sound
+                        </li>
+                        <li class="small-tag">
+                          Smartphones
+                        </li>
+                        <li class="small-tag">
+                          Tv and Photos.
+                        </li>
+                        <li class="small-tag">
+                          Computers
+                        </li>
+                        <li class="small-tag">
+                          Accessories
+                        </li>
+                        <li class="small-tag">
+                          Gaming
+                        </li>
+                        <li class="small-tag">
+                          Sound
+                        </li>
+                        <li class="small-tag">
+                          Smartphones
+                        </li>
+                        <li class="small-tag">
+                          Tv and Photos.
+                        </li>
+                        <li class="small-tag">
+                          Computers
+                        </li>
+                        <li class="small-tag">
+                          Accessories
+                        </li>
+                        <li class="small-tag">
+                          Gaming
+                        </li>
+                        <li class="small-tag">
+                          Sound
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="span2"></div>
+          <div class="span1">
+            <div class="pull-right">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12">
+            <br>
+            <br>
+            <div class="span1"></div>
+            <div class="span5">
+              <div class="control-group">
+                <label class="control-label" for="shopName">Company Type.</label>
+                <div class="controls">
+                  <div class="span4">
+                    <div class="company-type">
+                      <div>
+                        <p>Local Business.</p>
+                        <img src="./assets/img/local-business.png" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="span5">
+              <div class="control-group">
+                <br>
+                <label class="control-label" for="shopName"></label>
+                <div class="controls">
+                  <div class="span4">
+                    <div class="company-type">
+                      <div>
+                        <p>Company,Organization.</p>
+                        <img src="./assets/img/brand.png" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="well">
+    <h4>Contact Info.</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere amet ratione nam ipsam quas obcaecati harum
+      aperiam, molestias tempore recusandae! Fugit voluptatem minus odit cumque adipisci saepe ipsam nobis! Lorem ipsum dolor
+      sit, amet consectetur adipisicing elit. Ipsum impedit commodi quaerat, explicabo alias recusandae ex ratione enim iste
+      cupiditate eos, iure eligendi harum atque, nostrum incidunt. Mollitia, temporibus dolores.</p>
+    <div class="row">
+      <div class="span12">
+        <br>
+        <div class="span1"></div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Website</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Website" name="website" required>
+            </div>
+          </div>
+        </div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Instgram</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Instagram url" name="instagram" required>
+            </div>
+          </div>
+        </div>
+        <div class="span1"></div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Twitter</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Twitter url" name="twitter" required>
+            </div>
+          </div>
+        </div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Facebook</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Facebook url" name="facebook" required>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="well">
+    <h4>Email & Password.</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <div class="row">
+      <div class="span12">
+        <br>
+        <div class="span1"></div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Email</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Email-Address" name="email" required [attr.disabled]="disableEmail?'':null">
+              <br>
+              <input type="checkbox" (change)="disableEmail = !disableEmail" class="form-control"> User page email.
+              <br><br>
+            </div>
+          </div>
+        </div>
+        <div class="span5">
+          <div class="control-group">
+            <label class="control-label" for="shopName">Password</label>
+            <div class="controls">
+              <input class="span3" type="text" placeholder="Password" name="password" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12">
+            <div class="span1">
+            </div>
+            <div class="span8">
+
+              <p>
+                By clicking Create Account, you agree to our
+                <a href="">
+                  <b>Terms</b>
+                </a> and that you have read our
+                <a href="">
+                  <b> Data Policy</b>
+                </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+              </p>
+              <a href="#" class="defaultBtn green-button">Create Business account.</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

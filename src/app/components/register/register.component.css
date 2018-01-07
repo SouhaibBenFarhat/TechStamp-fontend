@@ -1,0 +1,11 @@
+.green-button {
+    background-color: #588b44;
+    border: 1px solid;
+    border-color: #3b6e22;
+    border-radius: 10px;
+    color: white;
+}
+
+.defaultBtn {
+    border-radius: 10px;
+}

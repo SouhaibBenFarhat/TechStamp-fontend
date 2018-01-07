@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   loading: boolean = false;
   showLoadMoreButton = false;
   skip: number = 0;
-  limit: number = 18;
+  limit: number = 12;
 
   constructor(private productService: ProductService, private errorHandelr: ErrorHandlerService) { }
 

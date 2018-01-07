@@ -1,0 +1,95 @@
+agm-map {
+    height: 300px;
+}
+
+.add-tag-btn {
+    border-radius: 15px;
+    background-color: #4166b2;
+    color: white;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.tag-container {
+    border-radius: 20px;
+    border: 1px solid;
+    border-color: #dddfe2;
+    background-color: #dddfe25e;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    height: 124px;
+    overflow: auto;
+}
+
+.small-tag {
+    border-radius: 35px;
+    margin-top: 10px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 0px 10px #4080ff inset;
+    background-color: #5d91ff;
+    font-size: 0.8em;
+    color: white;
+    cursor: pointer;
+}
+
+ul {
+    margin: 0 auto;
+    text-align: justify;
+}
+
+li {
+    margin-top: 30px;
+    display: inline-block;
+    vertical-align: top;
+    transition: all .3s ease-in-out;
+}
+
+li:hover {
+    background-color: #fc714b;
+    box-shadow: 5px 0px 10px #fc714b inset;
+    transform: scale(1.1);
+    font-size: 0.8em;
+}
+
+.fixed-height {
+    float: left;
+    height: 150px;
+    width: 100%;
+    padding: 3px;
+    margin-bottom: 20px;
+}
+
+.company-type {
+    text-align: center;
+    width: 300px;
+    height: 230px;
+    background: #f6f7f9;
+    position: relative;
+    border: 5px solid #e9ebee;
+    margin: 10px;
+    border-radius: 5px;
+    vertical-align: middle;
+    line-height: 70px;
+}
+
+.company-type p {
+    font-size: 1.3em;
+}
+
+.company-type:hover {
+    background: #e9ebee;
+}
+
+hr {
+    background-color: #dddfe2;
+}
+
+.green-button {
+    background-color: #588b44;
+    border: 1px solid;
+    border-color: #3b6e22;
+    border-radius: 10px;
+    color: white;
+}

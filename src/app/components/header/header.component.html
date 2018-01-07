@@ -35,4 +35,9 @@
     </div>
   </div>
 </div>
-<app-navbar></app-navbar>
+<div class="container" style="width:1440px; margin-top: 40px;" *ngIf="!showNavbar">
+    <div class="navbar">
+      
+    </div>
+  </div>
+<app-navbar [hidden]="!showNavbar"></app-navbar>

@@ -66,6 +66,7 @@ import { EmailVerificationComponent } from './components/email-verification/emai
 import { ConfirmationErrorComponent } from './components/confirmation-error/confirmation-error.component';
 import { RegisterGuard } from './guard/register.guard';
 import { ActivatedRouteSnapshot } from "@angular/router";
+import { SellerRegistrationComponent } from './components/seller-registration/seller-registration.component';
 
 
 
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'seller-registration', component: SellerRegistrationComponent },
 
   // Secure
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -127,7 +129,8 @@ const appRoutes: Routes = [
     ImageThumbnailsComponent,
     AfterRegistrationComponent,
     EmailVerificationComponent,
-    ConfirmationErrorComponent
+    ConfirmationErrorComponent,
+    SellerRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -137,7 +140,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     ScrollToModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCf6mr6BXZbl3PDW9STLMDzR8U3cAfWEhI'
+      apiKey: 'AIzaSyCf6mr6BXZbl3PDW9STLMDzR8U3cAfWEhI',
+      libraries: ["places"]
     }),
     AgmSnazzyInfoWindowModule,
     BrowserAnimationsModule,
@@ -145,7 +149,7 @@ const appRoutes: Routes = [
     LottieAnimationViewModule.forRoot(),
     ImageZoomModule,
     NgxGalleryModule
-    ],
+  ],
   providers: [
     FlashMessagesService,
     AuthService,
