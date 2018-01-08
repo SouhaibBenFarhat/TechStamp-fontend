@@ -90,6 +90,21 @@ export class AuthService {
       });
     });
   }
+  registerAsBusiness(user: User) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
+        if (data != null) {
+          this.converter.userJsonToObject(data).then((user) => {
+            resolve(user);
+          })
+        } else {
+          reject('Error has occure...');
+        }
+      }, (error) => {
+        reject(error);
+      });
+    });
+  }
 
   logout() {
     return new Promise((resolve, reject) => {

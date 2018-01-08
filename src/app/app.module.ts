@@ -13,7 +13,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 //My Custom imports
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { FooterComponent } from './components/footer/footer.component';
@@ -137,6 +137,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ScrollToModule.forRoot(),
     AgmCoreModule.forRoot({

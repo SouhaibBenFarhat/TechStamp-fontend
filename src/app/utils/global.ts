@@ -34,10 +34,9 @@ export class Globals {
         this.urls['confirm-email'] = this.serverAddress + '/api/auth/confirm-email/';
         this.urls['check-confirmation'] = this.serverAddress + '/api/auth/check-confirmation';
 
-        //Data
+        //Data Secure
         this.urls['product'] = this.serverAddress + '/api/v1/product';
         this.urls['products-pagination'] = this.serverAddress + '/api/v1/product/pagination';
-        
         this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
         this.urls['top-brands'] = this.serverAddress + '/api/v1/brand/top-brands';
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';
@@ -51,6 +50,11 @@ export class Globals {
         this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
         this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
+
+
+        //Public
+        this.urls['public-category'] = this.serverAddress + '/api/public/category';
+
 
 
 

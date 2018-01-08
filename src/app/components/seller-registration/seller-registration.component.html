@@ -59,28 +59,69 @@
         <div class="span1"></div>
         <div class="span5">
           <div class="control-group">
-            <label class="control-label" for="shopName">Page name</label>
+            <label class="control-label" for="shopName">Page name
+              <sup>*</sup>
+            </label>
             <div class="controls">
-              <input class="span3" type="text" placeholder="Page Name" name="pageName" required>
+              <input class="span3" type="text" placeholder="Page Name" name="pageName" [(ngModel)]="business.pageName" #pageName="ngModel"
+                required>
+              <div *ngIf="pageName.errors?.required && pageName.touched" class="alert alert-danger" style="margin-right: 50px;">
+                Page name is required...
+              </div>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="shopEmail">Page Email</label>
+            <label class="control-label" for="shopEmail">Page Email
+              <sup>*</sup>
+            </label>
             <div class="controls">
-              <input type="email" class="span3" placeholder="Email-Address" name="pageEmail" required>
+              <input type="email" class="span3" placeholder="Email-Address" [(ngModel)]="business.pageEmail" #pageEmail="ngModel" name="pageEmail"
+                required>
+              <div *ngIf="(pageEmail.errors?.required && pageEmail.touched)" class="alert alert-danger" style="margin-right: 50px;">
+                Page email is required...
+              </div>
             </div>
           </div>
         </div>
         <div class="span5">
           <div class="control-group">
-            <label class="control-label" for="email">Business Address</label>
-            <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control"
-              #search>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="shopName">Phone number</label>
+            <label class="control-label" for="shopName">Phone number
+              <sup>*</sup>
+            </label>
             <div class="controls">
-              <input class="span3" type="number" placeholder="Phone number" name="phoneNumber" required>
+              <input class="span3" type="number" placeholder="Phone number" (keyup)="phoneNumberValidator()" [(ngModel)]="business.phoneNumber"
+                #phoneNumber="ngModel" name="phoneNumber" required>
+              <div *ngIf="(phoneNumber.errors?.required && phoneNumber.touched)" class="alert alert-danger" style="margin-right: 50px;">
+                Phone number is required...
+              </div>
+              <div *ngIf="badPhoneNumber" class="alert alert-info" style="margin-right: 50px;">
+                Please use a valid phone number...
+              </div>
+            </div>
+          </div>
+          <div class="control-group" *ngIf="!advancedAddress">
+            <label class="control-label" for="email">Business Address
+              <sup>*</sup>
+            </label>
+            <input [(ngModel)]="business.approximation" #approximation="ngModel" name="approximation" placeholder="search for location"
+              autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
+            <br>
+            <a (click)="advancedAddress = true">Advanced.</a>
+          </div>
+          <div *ngIf="advancedAddress">
+            <div class="control-group">
+              <label class="control-label" for="businessLat">Latitude/Langitude
+                <sup>*</sup>
+              </label>
+              <div class="controls">
+                <input class="span1" type="number" [(ngModel)]="business.position.latitude" #latitude="ngModel" placeholder="Latitude" (keyup)="onLatLangChange(latitude)"
+                  (change)="onLatLangChange(latitude)" #latitude name="businessLat" required>
+                <input class="span1" type="number" #langitute="ngModel" [(ngModel)]="business.position.langitude" placeholder="Langitude"
+                  (keyup)="onLatLangChange(langitude)" (change)="onLatLangChange(langitude)" #langitude name="businessLang"
+                  required>
+                <br>
+                <a (click)="advancedAddress = false">Close.</a>
+              </div>
             </div>
           </div>
         </div>
@@ -90,83 +131,16 @@
             <br>
             <div class="span1"></div>
             <div class="control-group span8">
-              <label class="control-label" for="shopName">What are you selling? (e.g, Smarthones, Tv...)</label>
+              <label class="control-label" for="shopName">What are you selling? (e.g, Smarthones, Tv...)
+                <small> choose at least one.</small>
+              </label>
               <div class="controls">
                 <div class="span8">
                   <div class="fixed-height">
                     <div class="tag-container">
                       <ul>
-                        <li class="small-tag">
-                          Smartphones
-                        </li>
-                        <li class="small-tag">
-                          Tv and Photos.
-                        </li>
-                        <li class="small-tag">
-                          Computers
-                        </li>
-                        <li class="small-tag">
-                          Accessories
-                        </li>
-                        <li class="small-tag">
-                          Gaming
-                        </li>
-                        <li class="small-tag">
-                          Sound
-                        </li>
-                        <li class="small-tag">
-                          Smartphones
-                        </li>
-                        <li class="small-tag">
-                          Tv and Photos.
-                        </li>
-                        <li class="small-tag">
-                          Computers
-                        </li>
-                        <li class="small-tag">
-                          Accessories
-                        </li>
-                        <li class="small-tag">
-                          Gaming
-                        </li>
-                        <li class="small-tag">
-                          Sound
-                        </li>
-                        <li class="small-tag">
-                          Smartphones
-                        </li>
-                        <li class="small-tag">
-                          Tv and Photos.
-                        </li>
-                        <li class="small-tag">
-                          Computers
-                        </li>
-                        <li class="small-tag">
-                          Accessories
-                        </li>
-                        <li class="small-tag">
-                          Gaming
-                        </li>
-                        <li class="small-tag">
-                          Sound
-                        </li>
-                        <li class="small-tag">
-                          Smartphones
-                        </li>
-                        <li class="small-tag">
-                          Tv and Photos.
-                        </li>
-                        <li class="small-tag">
-                          Computers
-                        </li>
-                        <li class="small-tag">
-                          Accessories
-                        </li>
-                        <li class="small-tag">
-                          Gaming
-                        </li>
-                        <li class="small-tag">
-                          Sound
+                        <li *ngFor="let c of categories" class="small-tag" [ngClass]="{'selected':c.selected}" (click)="c.selected = !c.selected">
+                          {{c.name}}
                         </li>
                       </ul>
                     </div>
@@ -174,7 +148,6 @@
                 </div>
               </div>
             </div>
-
           </div>
           <div class="span2"></div>
           <div class="span1">
@@ -266,6 +239,19 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="span12">
+            <div class="span1"></div>
+            <div class="span10">
+              <div class="control-group">
+                <label class="control-label" for="shopName">About</label>
+                <div class="controls">
+                  <textarea class="span9" placeholder="Here yout a brief description about your business..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -283,7 +269,8 @@
               <input class="span3" type="text" placeholder="Email-Address" name="email" required [attr.disabled]="disableEmail?'':null">
               <br>
               <input type="checkbox" (change)="disableEmail = !disableEmail" class="form-control"> User page email.
-              <br><br>
+              <br>
+              <br>
             </div>
           </div>
         </div>
