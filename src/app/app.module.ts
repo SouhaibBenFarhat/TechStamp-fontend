@@ -67,6 +67,7 @@ import { ConfirmationErrorComponent } from './components/confirmation-error/conf
 import { RegisterGuard } from './guard/register.guard';
 import { ActivatedRouteSnapshot } from "@angular/router";
 import { SellerRegistrationComponent } from './components/seller-registration/seller-registration.component';
+import {PopoverModule} from "ngx-popover";
 
 
 
@@ -149,7 +150,8 @@ const appRoutes: Routes = [
     Ng2ImgMaxModule,
     LottieAnimationViewModule.forRoot(),
     ImageZoomModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    PopoverModule
   ],
   providers: [
     FlashMessagesService,

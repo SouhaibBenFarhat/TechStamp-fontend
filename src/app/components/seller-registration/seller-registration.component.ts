@@ -7,6 +7,8 @@ import { CategoryService } from "../../services/category-service/category.servic
 import { Category } from "../../models/category";
 import { User } from "../../models/user";
 import { Business } from "../../models/business";
+import { DummyDataProvider } from "../../utils/dummyData";
+import { BusinessType } from "../../models/businessType";
 
 @Component({
   selector: 'app-seller-registration',
@@ -27,6 +29,7 @@ export class SellerRegistrationComponent implements OnInit {
   private user: User = new User();
   private business: Business = new Business();
   private badPhoneNumber: boolean = false;
+  private businessTypes = Array<BusinessType>();
 
 
   @ViewChild("search")
@@ -39,6 +42,10 @@ export class SellerRegistrationComponent implements OnInit {
     this.zoom = 4;
     this.latitude = 39.8282;
     this.longitude = -98.5795;
+
+
+
+    this.businessTypes = new DummyDataProvider().getDummyBusinessType();
 
     this.categoriesService.getAllCategories().then((data) => {
       this.categories = data;
@@ -102,7 +109,6 @@ export class SellerRegistrationComponent implements OnInit {
 
   }
   phoneNumberValidator() {
-    console.log(this.business.phoneNumber);
     if (this.business.phoneNumber == null) {
       this.badPhoneNumber = false;
       return;

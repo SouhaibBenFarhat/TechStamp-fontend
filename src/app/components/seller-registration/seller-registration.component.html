@@ -49,9 +49,10 @@
       veritatis beatae harum eaque sequi dicta necessitatibus deleniti ut, voluptate inventore in sunt!</p>
   </div>
 
-  <div class="well">
-    <div class="row">
-      <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
+  <form novalidate #f="ngForm" (ngSubmit)="onLoginSubmitted(f)">
+
+    <div class="well">
+      <div class="row">
         <div class="span12">
           <h3>Business Information.</h3>
           <br>
@@ -99,7 +100,7 @@
               </div>
             </div>
           </div>
-          <div class="control-group" *ngIf="!advancedAddress">
+          <div class="control-group" [hidden]="advancedAddress">
             <label class="control-label" for="email">Business Address
               <sup>*</sup>
             </label>
@@ -160,93 +161,23 @@
             <br>
             <br>
             <div class="span1"></div>
-            <div class="span5">
-              <div class="control-group">
-                <label class="control-label" for="shopName">Company Type.</label>
-                <div class="controls">
-                  <div class="span4">
-                    <div class="company-type">
-                      <div>
-                        <p>Local Business.</p>
-                        <img src="./assets/img/local-business.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="control-group">
+              <label class="control-label" for="shopName">Company Type.</label>
             </div>
-            <div class="span5">
-              <div class="control-group">
-                <br>
-                <label class="control-label" for="shopName"></label>
-                <div class="controls">
-                  <div class="span4">
-                    <div class="company-type">
-                      <div>
-                        <p>Company,Organization.</p>
-                        <img src="./assets/img/brand.png" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="well">
-    <h4>Contact Info.</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere amet ratione nam ipsam quas obcaecati harum
-      aperiam, molestias tempore recusandae! Fugit voluptatem minus odit cumque adipisci saepe ipsam nobis! Lorem ipsum dolor
-      sit, amet consectetur adipisicing elit. Ipsum impedit commodi quaerat, explicabo alias recusandae ex ratione enim iste
-      cupiditate eos, iure eligendi harum atque, nostrum incidunt. Mollitia, temporibus dolores.</p>
-    <div class="row">
-      <div class="span12">
-        <br>
-        <div class="span1"></div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Website</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Website" name="website" required>
-            </div>
-          </div>
-        </div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Instgram</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Instagram url" name="instagram" required>
-            </div>
-          </div>
-        </div>
-        <div class="span1"></div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Twitter</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Twitter url" name="twitter" required>
-            </div>
-          </div>
-        </div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Facebook</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Facebook url" name="facebook" required>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="span12">
             <div class="span1"></div>
-            <div class="span10">
+            <div class="span5" *ngFor="let bt of businessTypes">
               <div class="control-group">
-                <label class="control-label" for="shopName">About</label>
                 <div class="controls">
-                  <textarea class="span9" placeholder="Here yout a brief description about your business..."></textarea>
+                  <div class="span4" popover="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus quisquam nemo corrupti quas quis ab laborum excepturi in, dolor ullam nostrum amet animi aliquid eaque tempore! Sint similique nihil illum."
+                    popoverTitle="{{bt.name}}" popoverPlacement="right" [popoverOnHover]="true" [popoverCloseOnClickOutside]="true"
+                    [popoverCloseOnMouseOutside]="false" [popoverDisabled]="false" [popoverAnimation]="true" [popoverDismissTimeout]="0">
+                    <div class="company-type">
+                      <div>
+                        <p>{{bt.name}}</p>
+                        <img src="{{bt.logo}}" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -254,54 +185,126 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="well">
-    <h4>Email & Password.</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-    <div class="row">
-      <div class="span12">
-        <br>
-        <div class="span1"></div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Email</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Email-Address" name="email" required [attr.disabled]="disableEmail?'':null">
-              <br>
-              <input type="checkbox" (change)="disableEmail = !disableEmail" class="form-control"> User page email.
-              <br>
-              <br>
+    <div class="well">
+      <h4>Contact Info.</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur facere amet ratione nam ipsam quas obcaecati
+        harum aperiam, molestias tempore recusandae! Fugit voluptatem minus odit cumque adipisci saepe ipsam nobis! Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. Ipsum impedit commodi quaerat, explicabo alias recusandae ex
+        ratione enim iste cupiditate eos, iure eligendi harum atque, nostrum incidunt. Mollitia, temporibus dolores.</p>
+      <div class="row">
+        <div class="span12">
+          <br>
+          <div class="span1"></div>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Website</label>
+              <div class="controls">
+                <input class="span3" type="text" placeholder="Website" name="website">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="span5">
-          <div class="control-group">
-            <label class="control-label" for="shopName">Password</label>
-            <div class="controls">
-              <input class="span3" type="text" placeholder="Password" name="password" required>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Instgram</label>
+              <div class="controls">
+                <input class="span3" type="text" placeholder="Instagram url" name="instagram">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="span12">
-            <div class="span1">
+          <div class="span1"></div>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Twitter</label>
+              <div class="controls">
+                <input class="span3" type="text" placeholder="Twitter url" name="twitter">
+              </div>
             </div>
-            <div class="span8">
-
-              <p>
-                By clicking Create Account, you agree to our
-                <a href="">
-                  <b>Terms</b>
-                </a> and that you have read our
-                <a href="">
-                  <b> Data Policy</b>
-                </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
-              </p>
-              <a href="#" class="defaultBtn green-button">Create Business account.</a>
-
+          </div>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Facebook</label>
+              <div class="controls">
+                <input class="span3" type="text" placeholder="Facebook url" name="facebook">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <div class="span1"></div>
+              <div class="span10">
+                <div class="control-group">
+                  <label class="control-label" for="shopName">About</label>
+                  <div class="controls">
+                    <textarea class="span9" placeholder="Here you put a brief description about your business..."></textarea>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="well">
+      <h4>Email & Password.</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <div class="row">
+        <div class="span12">
+          <br>
+          <div class="span1"></div>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Email</label>
+              <div class="controls">
+                <input class="span3" #userEmail="ngModel" [(ngModel)]="user.email" type="email" placeholder="Email-Address" name="email"
+                  required [attr.disabled]="disableEmail?'':null">
+                <div *ngIf="(userEmail.errors?.required && userEmail.touched)" class="alert alert-danger" style="margin-right: 50px; margin-top:10px;">
+                  Email is required...
+                </div>
+                <br>
+                <input type="checkbox" (change)="disableEmail = !disableEmail; user.email = business.pageEmail;" class="form-control"> Use page email.
+                <br>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+            <div class="control-group">
+              <label class="control-label" for="shopName">Password</label>
+              <div class="controls">
+                <input class="span3" [(ngModel)]="user.password" type="password" #userPassword="ngModel" placeholder="Password" name="password"
+                  minlength="8" required>
+                <div *ngIf="(userPassword.errors?.required && userPassword.touched)" class="alert alert-danger" style="margin-right: 50px;">
+                  Password is required...
+                </div>
+                <div *ngIf="(userPassword.errors?.minlength && userPassword.touched)" class="alert alert-warning" style="margin-right: 50px;">
+                  Password must contain at least 8 characters...
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span12">
+              <div class="span1">
+              </div>
+              <div class="span8">
+
+                <p>
+                  By clicking Create Account, you agree to our
+                  <a href="">
+                    <b>Terms</b>
+                  </a> and that you have read our
+                  <a href="">
+                    <b> Data Policy</b>
+                  </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
+                </p>
+                <a href="#" class="defaultBtn green-button">Create Business account.</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
