@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { User } from '../../models/user';
+import { Business } from "../../models/business";
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Globals } from '../../utils/global';
@@ -35,6 +36,7 @@ export class AuthService {
         }
       }, (err) => {
         reject(err);
+        console.log(err);
       });
 
     });
@@ -90,12 +92,19 @@ export class AuthService {
       });
     });
   }
-  registerAsBusiness(user: User) {
+  registerAsBusiness(user: User, business: Business) {
     return new Promise((resolve, reject) => {
       this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
         if (data != null) {
-          this.converter.userJsonToObject(data).then((user) => {
-            resolve(user);
+          this.converter.userJsonToObject(data).then((user: User) => {
+            var headers = new HttpHeaders({ 'authorization': 'Bearer ' + user.temporaryToken });
+            business.userId = user._id;
+            this.http.post(this.global.urls['add-business'], business, { headers: headers }).subscribe((d) => {
+              resolve(user);
+            }, (err) => {
+              reject(err);
+            })
+
           })
         } else {
           reject('Error has occure...');

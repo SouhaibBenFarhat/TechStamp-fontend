@@ -43,15 +43,14 @@ export class LoginComponent implements OnInit {
     } else {
       this.loading = false;
     }
-
-
   }
 
   handelErrors(error) {
-
     if (error.status == 401) {
       this.authService.setTemporaryToken(error.error.data);
+      console.log(error.error.data);
       this.router.navigate(['/confirmation-error/' + error.error.data]);
+      
     }
     else if (error.status == 404) {
       this.loading = false;

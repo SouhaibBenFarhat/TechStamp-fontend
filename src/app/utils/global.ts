@@ -24,8 +24,6 @@ export class Globals {
 
 
         //Internal
-
-
         //Auth
         this.urls['login'] = this.serverAddress + '/api/auth/login';
         this.urls['register'] = this.serverAddress + '/api/auth/register';
@@ -50,6 +48,7 @@ export class Globals {
         this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
         this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
+        this.urls['add-business'] = this.serverAddress + '/api/v1/business';
 
 
         //Public

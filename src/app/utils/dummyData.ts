@@ -11,11 +11,14 @@ export class DummyDataProvider {
         bt1.description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non illo consequatur obcaecati soluta architecto! Error iureassumenda, aliquam, rerum reiciendis molestias qui atque repellat consequuntur corporis perferendis magnam mollitia By clicking Create Account, you agree to our"
         bt1.name = "Local Business.";
         bt1.logo = "./assets/img/local-business.png";
+        bt1.selected = false;
 
         let bt2 = new BusinessType();
         bt2.description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel non illo consequatur obcaecati soluta architecto! Error iureassumenda, aliquam, rerum reiciendis molestias qui atque repellat consequuntur corporis perferendis magnam mollitia By clicking Create Account, you agree to our"
         bt2.name = "Company,Organization.";
         bt2.logo = "./assets/img/brand.png";
+        bt2.selected = false;
+        
 
         let businessTypes = new Array<BusinessType>();
         businessTypes.push(bt1);

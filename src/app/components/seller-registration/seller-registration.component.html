@@ -29,7 +29,7 @@
     </agm-map>
     <div class="span5"></div>
     <div class="span1">
-      <div class="spinner" *ngIf="loading">
+      <div class="spinner" *ngIf="loadingMap">
         <div class="rect1"></div>
         <div class="rect2"></div>
         <div class="rect3"></div>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="span5"></div>
-    <br *ngIf="loading">
+    <br *ngIf="loadingMap">
   </div>
 
   <div class="well">
@@ -107,7 +107,7 @@
             <input [(ngModel)]="business.approximation" #approximation="ngModel" name="approximation" placeholder="search for location"
               autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search>
             <br>
-            <a (click)="advancedAddress = true">Advanced.</a>
+            <a tooltip="hello" (click)="advancedAddress = true">Advanced.</a>
           </div>
           <div *ngIf="advancedAddress">
             <div class="control-group">
@@ -171,7 +171,7 @@
                   <div class="span4" popover="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus quisquam nemo corrupti quas quis ab laborum excepturi in, dolor ullam nostrum amet animi aliquid eaque tempore! Sint similique nihil illum."
                     popoverTitle="{{bt.name}}" popoverPlacement="right" [popoverOnHover]="true" [popoverCloseOnClickOutside]="true"
                     [popoverCloseOnMouseOutside]="false" [popoverDisabled]="false" [popoverAnimation]="true" [popoverDismissTimeout]="0">
-                    <div class="company-type">
+                    <div class="company-type" [ngClass]="{'clicked':bt.selected}" (click)="selectCompanyType(); bt.selected = !bt.selected;">
                       <div>
                         <p>{{bt.name}}</p>
                         <img src="{{bt.logo}}" />
@@ -199,7 +199,7 @@
             <div class="control-group">
               <label class="control-label" for="shopName">Website</label>
               <div class="controls">
-                <input class="span3" type="text" placeholder="Website" name="website">
+                <input class="span3" type="text" placeholder="Website" name="website" [(ngModel)]="business.website">
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@
             <div class="control-group">
               <label class="control-label" for="shopName">Instgram</label>
               <div class="controls">
-                <input class="span3" type="text" placeholder="Instagram url" name="instagram">
+                <input class="span3" type="text" placeholder="Instagram url" name="instagram" [(ngModel)]="business.instagram">
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@
             <div class="control-group">
               <label class="control-label" for="shopName">Twitter</label>
               <div class="controls">
-                <input class="span3" type="text" placeholder="Twitter url" name="twitter">
+                <input class="span3" type="text" placeholder="Twitter url" name="twitter" [(ngModel)]="business.twitter">
               </div>
             </div>
           </div>
@@ -224,7 +224,7 @@
             <div class="control-group">
               <label class="control-label" for="shopName">Facebook</label>
               <div class="controls">
-                <input class="span3" type="text" placeholder="Facebook url" name="facebook">
+                <input class="span3" type="text" placeholder="Facebook url" name="facebook" [(ngModel)]="business.facebook">
               </div>
             </div>
           </div>
@@ -235,7 +235,7 @@
                 <div class="control-group">
                   <label class="control-label" for="shopName">About</label>
                   <div class="controls">
-                    <textarea class="span9" placeholder="Here you put a brief description about your business..."></textarea>
+                    <textarea class="span9" placeholder="Here you put a brief description about your business..." name="description" [(ngModel)]="business.description"></textarea>
                   </div>
                 </div>
               </div>
@@ -262,8 +262,6 @@
                 </div>
                 <br>
                 <input type="checkbox" (change)="disableEmail = !disableEmail; user.email = business.pageEmail;" class="form-control"> Use page email.
-                <br>
-                <br>
               </div>
             </div>
           </div>
@@ -297,7 +295,7 @@
                     <b> Data Policy</b>
                   </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
                 </p>
-                <a href="#" class="defaultBtn green-button">Create Business account.</a>
+                <input type="submit" class="defaultBtn green-button" value="Create Business account.">
 
               </div>
             </div>

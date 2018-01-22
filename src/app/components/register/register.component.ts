@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth-service/auth.service';
 import { User } from '../../models/user';
-import { RouterModule, Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Globals } from '../../utils/global';
 import { ErrorHandlerService } from '../../services/error-handler.service';
 import { trigger, style, animate, transition } from '@angular/animations';

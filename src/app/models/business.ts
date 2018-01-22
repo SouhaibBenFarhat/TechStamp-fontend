@@ -5,6 +5,7 @@ export class Business {
     logo: string;
     images: Array<string>;
     visible: boolean;
+    activie: boolean;
     pageEmail: string;
     position: {
         latitude: number;

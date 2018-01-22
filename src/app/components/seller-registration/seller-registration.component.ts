@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, NgZone, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, NgZone, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
@@ -9,6 +9,11 @@ import { User } from "../../models/user";
 import { Business } from "../../models/business";
 import { DummyDataProvider } from "../../utils/dummyData";
 import { BusinessType } from "../../models/businessType";
+import { AuthService } from "../../services/auth-service/auth.service";
+import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
+
 
 @Component({
   selector: 'app-seller-registration',
@@ -22,7 +27,7 @@ export class SellerRegistrationComponent implements OnInit {
   private longitude: number;
   private searchControl: FormControl;
   private zoom: number;
-  private loading: boolean = false;
+  private loadingMap: boolean = false;
   private advancedAddress: boolean = false;
   private categories: Array<any> = new Array<any>();
   private selected
@@ -36,7 +41,10 @@ export class SellerRegistrationComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader, private categoriesService: CategoryService,
-    private ngZone: NgZone) { }
+    private ngZone: NgZone, private authService: AuthService, private router: Router, private toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+
+  }
 
   ngOnInit() {
     this.zoom = 4;
@@ -87,7 +95,7 @@ export class SellerRegistrationComponent implements OnInit {
   }
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
-      this.loading = true;
+      this.loadingMap = true;
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
@@ -95,25 +103,22 @@ export class SellerRegistrationComponent implements OnInit {
         this.business.position.latitude = position.coords.latitude;
         this.business.position.langitude = position.coords.longitude;
         this.zoom = 12;
-        this.loading = false;
+        this.loadingMap = false;
       });
     }
   }
-
   onLatLangChange(value) {
     if (value.name == "businessLat") {
       this.latitude = parseInt(value.value);
     } else {
       this.longitude = parseInt(value.value);
     }
-
   }
   phoneNumberValidator() {
     if (this.business.phoneNumber == null) {
       this.badPhoneNumber = false;
       return;
     }
-
     setTimeout(() => {
       if (new String(this.business.phoneNumber).length < 8 && new String(this.business.phoneNumber).length > 0) {
         this.badPhoneNumber = true;
@@ -123,5 +128,27 @@ export class SellerRegistrationComponent implements OnInit {
       }
     }, 2000);
   }
+  selectCompanyType() {
+    this.businessTypes.forEach(bt => {
+      bt.selected = false;
+    })
+  }
+  onLoginSubmitted({ value, valid }: { value: any, valid: boolean }) {
+    if (valid) {
+      this.categories.forEach(c => { if (c.selected) { this.business.categories.push(c.id); } });
+      this.businessTypes.forEach(bt => { if (bt.selected) { this.business.businessType = bt; } });
 
+      this.authService.registerAsBusiness(this.user, this.business).then((data: User) => {
+        this.authService.setTemporaryToken(data.temporaryToken);
+        this.router.navigate(['/after-registration/' + data.temporaryToken]).then(() => {
+        });
+      }).catch((err) => {
+        console.log(err);
+      });
+    } else {
+      this.toastr.error('Please make sure that you put all required fields', 'Oops!');
+    }
+  }
 }
+
+

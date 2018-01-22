@@ -78,6 +78,10 @@ a {
     vertical-align: middle;
     line-height: 70px;
 }
+.clicked{
+    border: 5px solid #fc714b;        
+ 
+}
 
 .company-type p {
     font-size: 1.3em;

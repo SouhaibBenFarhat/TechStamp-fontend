@@ -33,14 +33,22 @@ import { NgxGalleryModule } from 'ngx-gallery';
 //My Service imports
 import { AuthService } from './services/auth-service/auth.service';
 import { ProductService } from './services/product-service/product.service';
+import { ErrorHandlerService } from './services/error-handler.service';
+import { WishListService } from "./services/wish-list-service/wish-list.service";
+import { ProfilService } from "./services/profile-service/profil.service";
+import { NewsService } from './services/news-service/news.service';
+import { BusinessService } from './services/business-service/business-service.service';
+import { CategoryService } from './services/category-service/category.service';
+import { BrandService } from './services/brand-service/brand.service';
+
+
+
+//Other
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Globals } from './utils/global';
 import { HeaderComponent } from './components/header/header.component';
 import { HighlightComponent } from './components/highlight/highlight.component';
-import { ErrorHandlerService } from './services/error-handler.service';
 import { AuthGuard } from './guard/auth.guard';
-import { BrandService } from './services/brand-service/brand.service';
-import { CategoryService } from './services/category-service/category.service';
 import { CategoryComponent } from './components/category/category/category.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { RelatedProductComponentComponent } from './components/related-product-component/related-product-component.component';
@@ -51,14 +59,11 @@ import { BrandItemComponent } from './components/brand-item/brand-item.component
 import { BrandsComponent } from './components/brands/brands.component';
 import { BrandDetailComponent } from './components/brand-detail/brand-detail.component';
 import { RightSidebarComponent } from './components/right-sidebar/right-sidebar.component';
-import { NewsService } from './services/news-service/news.service';
-import { WishListService } from "./services/wish-list-service/wish-list.service";
 import { WishListComponent } from './components/wish-list/wish-list.component';
 import { WishListItemComponent } from './components/wish-list-item/wish-list-item.component';
 import { CompleteProfileComponent } from './components/complete-profile/complete-profile.component';
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { PersonalDetailComponent } from './components/personal-detail/personal-detail.component';
-import { ProfilService } from "./services/profile-service/profil.service";
 import { MapComponent } from './components/map/map.component';
 import { ImageThumbnailsComponent } from './components/image-thumbnails/image-thumbnails/image-thumbnails.component';
 import { AfterRegistrationComponent } from './components/after-registration/after-registration/after-registration.component';
@@ -67,7 +72,12 @@ import { ConfirmationErrorComponent } from './components/confirmation-error/conf
 import { RegisterGuard } from './guard/register.guard';
 import { ActivatedRouteSnapshot } from "@angular/router";
 import { SellerRegistrationComponent } from './components/seller-registration/seller-registration.component';
-import {PopoverModule} from "ngx-popover";
+import { PopoverModule } from "ngx-popover";
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ToastOptions } from 'ng2-toastr';
+import { ToastCustomOptions } from "./utils/ToastCustomOptions";
+
+
 
 
 
@@ -151,8 +161,9 @@ const appRoutes: Routes = [
     LottieAnimationViewModule.forRoot(),
     ImageZoomModule,
     NgxGalleryModule,
-    PopoverModule
-  ],
+    PopoverModule,
+    ToastModule.forRoot()
+    ],
   providers: [
     FlashMessagesService,
     AuthService,
@@ -165,7 +176,9 @@ const appRoutes: Routes = [
     NewsService,
     WishListService,
     ProfilService,
-    RegisterGuard
+    RegisterGuard,
+    { provide: ToastOptions, useClass: ToastCustomOptions },
+    BrandService
   ],
   bootstrap: [AppComponent]
 })

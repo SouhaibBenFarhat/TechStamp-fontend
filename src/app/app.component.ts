@@ -31,14 +31,15 @@ export class AppComponent implements OnInit {
         if ((event.url.indexOf("contact") >= 0) ||
           event.url.indexOf("login") >= 0 ||
           event.url.indexOf("reset-password") >= 0 ||
-          event.url.indexOf("seller-registration") >= 0) {
-
+          event.url.indexOf("seller-registration") >= 0 ||
+          event.url.indexOf("confirmation-error") >= 0 ||
+          event.url.indexOf("after-registration") >= 0 ||
+          event.url.indexOf("after-registration/email-verification") >= 0) {
           this.show = false;
           this.showRightSidebar = false;
         } else {
           this.show = true;
           this.showRightSidebar = true;
-
         }
       }
     });
