@@ -16,12 +16,12 @@ import { trigger, style, animate, transition } from '@angular/animations';
     trigger(
       'enterAnimation', [
         transition(':enter', [
-          style({transform: 'translateX(0)', opacity: 0}),
-          animate('800ms', style({transform: 'translateX(0)', opacity: 1}))
+          style({ transform: 'translateX(0)', opacity: 0 }),
+          animate('800ms', style({ transform: 'translateX(0)', opacity: 1 }))
         ]),
         transition(':leave', [
-          style({transform: 'translateX(0)', opacity: 1}),
-          animate('500ms', style({transform: 'translateX(0)', opacity: 0}))
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate('500ms', style({ transform: 'translateX(0)', opacity: 0 }))
         ])
       ]
     )
@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false;
   categories: Array<Category>;
   navClicked: string = '';
-  flash: boolean = true;
   showMessage = false;
 
   constructor(private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute, private global: Globals, private categoryService: CategoryService, private errorHandler: ErrorHandlerService) {
@@ -48,20 +47,11 @@ export class NavbarComponent implements OnInit {
     this.authService.onUserLoggedIn.subscribe(() => {
       if (this.authService.currentUser.firstTime) {
         this.showMessage = true;
-        Observable.interval(700).subscribe(x => {
-          this.flash = !this.flash;
-        });
       }
     });
-
     this.authService.onUserLogout.subscribe(() => {
       this.showMessage = false;
     })
-
-
-
-
-
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         if (localStorage.getItem(this.global.IS_LOGGED_IN) == 'true') {
@@ -73,13 +63,9 @@ export class NavbarComponent implements OnInit {
     });
 
     this.authService.onUserLoggedIn.subscribe(() => {
-      this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
-        if (data) {
-          this.categories = data;
-        }
-      });
+      this.getCategories();
     });
-
+    this.getCategories();
 
   }
 
@@ -89,6 +75,13 @@ export class NavbarComponent implements OnInit {
     this.authService.logout().then(() => {
       this.router.navigate(['/login']);
     })
+  }
+  getCategories() {
+    this.categoryService.getNavbarCategories().then((data: Array<Category>) => {
+      if (data) {
+        this.categories = data;
+      }
+    });
   }
 
 }

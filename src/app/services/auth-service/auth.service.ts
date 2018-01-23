@@ -79,7 +79,7 @@ export class AuthService {
 
   register(user: User) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
+      this.http.post(this.global.urls['register'], { email: user.email, password: user.password, role: this.global.USER_ROLE }).subscribe((data) => {
         if (data != null) {
           this.converter.userJsonToObject(data).then((user) => {
             resolve(user);
@@ -94,7 +94,7 @@ export class AuthService {
   }
   registerAsBusiness(user: User, business: Business) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['register'], { email: user.email, password: user.password }).subscribe((data) => {
+      this.http.post(this.global.urls['register'], { email: user.email, password: user.password, role: this.global.BUSINESS_ROLE }).subscribe((data) => {
         if (data != null) {
           this.converter.userJsonToObject(data).then((user: User) => {
             var headers = new HttpHeaders({ 'authorization': 'Bearer ' + user.temporaryToken });

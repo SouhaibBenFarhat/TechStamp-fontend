@@ -25,11 +25,15 @@ export class HeaderComponent implements OnInit {
     })
 
 
-    if (this.authService.currentUser) {
+    this.authService.getCurrentUser().then(() => {
       this.currentUser = this.authService.currentUser;
       this.profilePicture = "";
       this.profilePicture = this.authService.currentUser.profilePictureUrl;
-    }
+      this.showNavbar = true;
+    })
+
+
+
 
 
     this.authService.onUserLoggedIn.subscribe(() => {

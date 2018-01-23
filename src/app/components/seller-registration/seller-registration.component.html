@@ -295,8 +295,14 @@
                     <b> Data Policy</b>
                   </a>, including our Cookie Use. You may receive SMS Notifications from Facebook and can opt out at any time.
                 </p>
-                <input type="submit" class="defaultBtn green-button" value="Create Business account.">
-
+                <input *ngIf="!loading" type="submit" class="defaultBtn green-button" value="Create Business account.">
+                <div class="spinner" *ngIf="loading">
+                  <div class="rect1"></div>
+                  <div class="rect2"></div>
+                  <div class="rect3"></div>
+                  <div class="rect4"></div>
+                  <div class="rect5"></div>
+                </div>
               </div>
             </div>
           </div>

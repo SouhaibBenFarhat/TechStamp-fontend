@@ -10,6 +10,8 @@ export class Globals {
     IS_LOGGED_IN = "IS_LOGGED_IN";
     API_KEY = "d4e84ad4231a48bb89d8d16ef9daef76";
     TK = "TEMPRORAY_TOKEN";
+    USER_ROLE = "user";
+    BUSINESS_ROLE = "business";
 
 
 

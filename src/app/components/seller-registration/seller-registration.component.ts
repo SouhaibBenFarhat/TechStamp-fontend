@@ -11,6 +11,7 @@ import { DummyDataProvider } from "../../utils/dummyData";
 import { BusinessType } from "../../models/businessType";
 import { AuthService } from "../../services/auth-service/auth.service";
 import { Router } from '@angular/router';
+import { Messages } from "../../utils/errorMessages";
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 
@@ -28,6 +29,7 @@ export class SellerRegistrationComponent implements OnInit {
   private searchControl: FormControl;
   private zoom: number;
   private loadingMap: boolean = false;
+  private loading: boolean = false;
   private advancedAddress: boolean = false;
   private categories: Array<any> = new Array<any>();
   private selected
@@ -135,20 +137,37 @@ export class SellerRegistrationComponent implements OnInit {
   }
   onLoginSubmitted({ value, valid }: { value: any, valid: boolean }) {
     if (valid) {
+      this.loading = true;
       this.categories.forEach(c => { if (c.selected) { this.business.categories.push(c.id); } });
+      if (this.business.categories.length == 0) { this.toastr.warning(Messages.SR_EMPTY_CATEGORY, 'Oups'); this.loading = false; return; }
       this.businessTypes.forEach(bt => { if (bt.selected) { this.business.businessType = bt; } });
+      if (this.business.businessType == null || this.business.businessType == undefined) { this.toastr.warning(Messages.SR_EMPTY_TYPE, 'Oups'); this.loading = false; return; }
+
 
       this.authService.registerAsBusiness(this.user, this.business).then((data: User) => {
         this.authService.setTemporaryToken(data.temporaryToken);
         this.router.navigate(['/after-registration/' + data.temporaryToken]).then(() => {
+          this.loading = false;
         });
       }).catch((err) => {
         console.log(err);
+        this.handelErrors(err);
       });
     } else {
-      this.toastr.error('Please make sure that you put all required fields', 'Oops!');
+      this.toastr.error(Messages.REQUIRED_FIELDS, 'Oops!');
+    }
+  }
+
+  handelErrors(error) {
+    if (error.status == 400) {
+      this.loading = false;
+      this.toastr.error(error.error.errors, 'Oops!');
+    } else {
+      this.loading = false;
+      this.toastr.error(Messages.CONNECTION_REFUSED, 'Oops!');
     }
   }
 }
+
 
 
