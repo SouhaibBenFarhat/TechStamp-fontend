@@ -1,0 +1,312 @@
+div {
+    /*box-sizing: border-box;*/
+    outline-color: #e9ecee;
+    outline-style: none;
+}
+
+/* Dropdowns - I */
+
+.dropdown .dropdown-toggle .down-arrow {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 5px;
+    width: 16px;
+    height: 9px;
+    background-image: url("http://www.htic.es/assets/down-arrow.png")
+}
+
+.dropdown .dropdown-toggle .caret {
+    display: none;
+}
+
+.dropdown.open .down-arrow {
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+}
+
+.dropdown button, .dropdown-menu {
+    background-color: #f6f8f8;
+}
+
+.dropdown-menu {
+    margin-top: 0px;
+    background-color: #f6f8f8;
+    border-radius: 0 0 0 0;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: #96a4ad;
+}
+
+/* Dropdowns - F */
+
+div.clearfix {
+    margin-top: 15px;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+
+/** General HTML style - F */
+
+canvas {
+    margin-bottom: 15px;
+}
+
+container {
+    padding-bottom: 15px;
+}
+
+/*#monthDrop*/
+
+.dropdown button .btn-default {
+    width: 100%;
+    border-color: red;
+}
+
+.balance {
+    line-height: 1em;
+    font-size: 2.5em
+}
+
+.title {
+    color: black;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/** Rounded divs - I */
+
+div.rounded, div.top-rounded, div.bottom-rounded {
+    border: solid 1px #dce1e5;
+}
+
+div.rounded {
+    margin-bottom: 20px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px;
+}
+
+div.top-rounded {
+    -webkit-border-radius: 4px 4px 0px 0px;
+    -moz-border-radius: 4px 4px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
+}
+
+div.bottom-rounded {
+    border-top-style: none;
+    -webkit-border-radius: 0px 0px 4px 4px;
+    -moz-border-radius: 0px 0px 4px 4px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+/** Rounded divs - F */
+
+/** Dropdown draft - I */
+
+.dropdown span.caret {
+    float: right;
+    margin-top: 8px;
+}
+
+.dropdown button {
+    text-align: left;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+/** Dropdown draft - F */
+
+/** Let tabls-left class be available in bootstrap 3.3.7 - I **/
+
+.tabs-left>.nav-tabs {
+    border-bottom: 0;
+}
+
+.tab-content>.tab-pane {
+    display: none;
+}
+
+.tab-content>.active {
+    display: block;
+}
+
+.tabs-left>.nav-tabs>li {
+    float: none;
+}
+
+.tabs-left>.nav-tabs>li>a, .tabs-left>.nav-tabs>li>div {
+    margin-right: 0;
+    margin-bottom: 3px;
+}
+
+.tabs-left>.nav-tabs {
+    float: left;
+    margin-right: 19px;
+    border-right: 1px solid #ddd;
+}
+
+.tabs-left>.nav-tabs>li>a, .tabs-left>.nav-tabs>li>div {
+    margin-right: -1px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.tabs-left>.nav-tabs>li>a:hover, .tabs-left>.nav-tabs>li>a:focus, .tabs-left>.nav-tabs>li>div:hover, .tabs-left>.nav-tabs>li>div:focus {
+    border-color: #eeeeee #dddddd #eeeeee #eeeeee;
+    background-color: #eeeeee;
+}
+
+.tabs-left>.nav-tabs .active>a, .tabs-left>.nav-tabs .active>a:hover, .tabs-left>.nav-tabs .active>a:focus, .tabs-left>.nav-tabs .active>div, .tabs-left>.nav-tabs .active>div:hover, .tabs-left>.nav-tabs .active>div:focus {
+    border-color: #ddd transparent #ddd #ddd;
+    *border-right-color: #ffffff;
+}
+
+/** Let tabls-left class be available in bootstrap 3.3.7 - F **/
+
+.account-type {
+    color: black;
+    font-size: 1.3em;
+    font-weight: bold;
+    line-height: 18px;
+}
+
+.account-amount {
+    color: #A0AEB6;
+    font-size: 1.1em;
+    line-height: 16px;
+}
+
+.account-link {
+    color: #4166b2;
+    font-size: 0.95em;
+    /*line-height: 1em;*/
+}
+
+/* TABS */
+
+.tabs-left>.nav-tabs {
+    margin-right: 0px;
+    padding: 0;
+    height: 100%;
+    /* 700px - Debe ser el mismo height que el que tenga .tab-content */
+}
+
+/* CONTENIDO DE LOS TABS */
+
+.tab-content {
+    background-color: #FFFFFF;
+    border: solid 1px #DCE1E5;
+    border-left-style: none;
+    height: 100%;
+    margin-bottom: 15px;
+    min-height: 700px;
+    border-radius: 0px 4px 4px 4px;
+    -moz-border-radius: 0px 4px 4px 4px;
+    -webkit-border-radius: 0px 4px 4px 4px;
+    -webkit-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content>div {
+    margin-top: 26px;
+}
+
+/* Formato del tab activo */
+
+.tabs-left>.nav-tabs .active>a, .tabs-left>.nav-tabs .active>a:hover, .tabs-left>.nav-tabs .active>a:focus, .tabs-left>.nav-tabs .active div, .tabs-left>.nav-tabs .active div:hover, .tabs-left>.nav-tabs .active div:focus {
+    background-color: #FFFFFF;
+    border-bottom-style: none;
+    border-left-style: none;
+    /*border-bottom: 1px solid #DCE1E5;*/
+    /*border-left: 1px solid #DCE1E5;*/
+    border-bottom-left-radius: 0px;
+    border-right-style: none;
+    margin-right: -1px;
+    -webkit-box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+    box-shadow: -4px 0px 18px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Formato de los tabs en general */
+
+.tabs-left>.nav-tabs>li:nth-child(1)>a, .tabs-left>.nav-tabs>li:nth-child(1)>a:hover, .tabs-left>.nav-tabs>li:nth-child(1)>a:focus, .tabs-left>.nav-tabs>li:nth-child(1)>div, .tabs-left>.nav-tabs>li:nth-child(1)>div:hover, .tabs-left>.nav-tabs>li:nth-child(1)>div:focus {
+    cursor: pointer;
+    border-top-left-radius: 4px;
+}
+
+.tabs-left>.nav-tabs>li.active:nth-child(1)>a, .tabs-left>.nav-tabs>li.active:nth-child(1)>a:hover, .tabs-left>.nav-tabs>li.active:nth-child(1)>a:focus, .tabs-left>.nav-tabs>li.active:nth-child(1)>div, .tabs-left>.nav-tabs>li.active:nth-child(1)>div:hover, .tabs-left>.nav-tabs>li.active:nth-child(1)>div:focus {
+    border-top-left-radius: 4px;
+    border-bottom-style: none;
+    border-left: 1px solid #DCE1E5;
+}
+
+.tabs-left>.nav-tabs>li>a, .tabs-left>.nav-tabs>li>div {
+    /*display:block;*/
+    /*display: table;*/
+    /*border: solid 1px transparent;*/
+    margin-right: -1px;
+    margin-bottom: -1px;
+    border: solid 1px #DCE1E5;
+    border-radius: 0px;
+}
+
+/* Style of the div element acting as tab content */
+
+.tabbable.tabs-left>.nav-tabs>li>div>div {
+    display: block;
+    padding: 1em;
+    min-height: 6em;
+}
+
+/** For elements on the same line that jump down - I */
+
+@media (max-width: 767px) {
+    .mt-20 {
+        margin-top: 20px;
+    }
+    .tab-content {
+        border-left-style: solid;
+        border-radius: 4px 4px 4px 4px;
+        -moz-border-radius: 4px 4px 4px 4px;
+        -webkit-border-radius: 4px 4px 4px 4px;
+    }
+}
+
+.badge1 {
+    position: relative;
+}
+
+.badge1[data-badge]:after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 0px;
+    right: -30px;
+    font-size: 1em;
+    background: #fc704b;
+    color: white;
+    width: 28px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 10%;
+    box-shadow: 0 0 1px #fc704b;
+}
+
+/** For elements on the same line that jump down - F */

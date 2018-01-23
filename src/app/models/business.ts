@@ -1,11 +1,13 @@
+import { BusinessType } from "./businessType";
 export class Business {
+    _id: string;
     userId: string;
     pageName: string;
     coverPicture: string;
     logo: string;
     images: Array<string>;
     visible: boolean;
-    activie: boolean;
+    active: boolean;
     pageEmail: string;
     position: {
         latitude: number;
@@ -14,23 +16,27 @@ export class Business {
     approximation: string;
     phoneNumber: number;
     categories: Array<string>;
-    businessType: {
-        name: string
-    }
+    businessType: BusinessType;
     website: string;
     instagram: string;
     twitter: string;
     facebook: string;
     description: string;
-    workTime: {
-        sunday: boolean,
-        saturday: boolean,
-        openTime: string,
-        closeTime: string
-    }
+    workTime: WorkTime;
     constructor() {
-        this.images = new Array<string>(); this.categories = new Array<string>();
+        this.images = new Array<string>();
+        this.categories = new Array<string>();
         this.position = { latitude: 0, langitude: 0 };
+        this.businessType = new BusinessType();
+        this.workTime = new WorkTime();
     }
+
+}
+export class WorkTime {
+
+    sunday: boolean;
+    saturday: boolean;
+    openTime: string;
+    closeTime: string;
 
 }

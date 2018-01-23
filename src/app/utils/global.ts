@@ -51,7 +51,9 @@ export class Globals {
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
         this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
         this.urls['add-business'] = this.serverAddress + '/api/v1/business';
-
+        this.urls['business-by-user'] = this.serverAddress + '/api/v1/business/user/';
+        this.urls['business-by-id'] = this.serverAddress + '/api/v1/business/';
+        
 
         //Public
         this.urls['public-category'] = this.serverAddress + '/api/public/category';

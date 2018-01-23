@@ -47,7 +47,7 @@ label {
   cursor: pointer;
   text-decoration: none;
   text-align: center;
-  background: #f0f0f0;
+  background: #dddfe3;
 }
 
 #tab1:checked ~ #content1,

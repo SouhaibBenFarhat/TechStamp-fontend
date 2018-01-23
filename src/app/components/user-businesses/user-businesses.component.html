@@ -1,0 +1,111 @@
+<div style="margin-left: 20px;">
+  <nav id="mainNav" class="hidden navbar navbar-default navbar-fixed-top navbar-custom affix-top">
+    <div class="container">
+
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-xs-12 visible-xs">
+      <!-- Account selection for mobile - I -->
+      <div class="dropdown">
+        <ul class="dropdown-menu" aria-labelledby="actionsDrop">
+          <li class="selected">
+            <a href="#">HSA - $587.50</a>
+          </li>
+          <li>
+            <a href="#">FSA - $120.00</a>
+          </li>
+          <li>
+            <a href="#">HSAOD - $350.00</a>
+          </li>
+          <li>
+            <a href="#">DCAP - $2300,00</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Account selection for mobile - F -->
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-md-12" style="overflow:auto">
+      <div id="MyAccountsTab" class="tabbable tabs-left">
+        <!-- Account selection for desktop - I -->
+        <ul class="nav nav-tabs col-md-1 hidden-xs">
+          <li class="active">
+            <div data-target="#lA" data-toggle="tab">
+              <div class="ellipsis">
+                <span class="account-type">
+                  <small>Pages</small>
+                </span>
+                <br/>
+                <br>
+                <a href="https://www.htic.es" class="account-link badge1" data-badge="20">Notifications</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div data-target="#lB" data-toggle="tab">
+              <div>
+                <span class="account-type">
+                  <small>Activity Log</small>
+                </span>
+                <br/>
+                <span class="account-amount">342</span>
+                <br/>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div data-target="#lC" data-toggle="tab">
+              <div>
+                <span class="account-type">HSAOD</span>
+                <br/>
+                <span class="account-amount">$350,00</span>
+                <br/>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div data-target="#lD" data-toggle="tab">
+              <div>
+                <span class="account-type">DCAP</span>
+                <br/>
+                <span class="account-amount">$2.300,00</span>
+                <br/>
+                <a href="#" class="account-link">Investments</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="tab-content col-md-12">
+          <div class="tab-pane active" id="lA">
+            <app-business-item *ngFor="let b of businesses" [business]="b"></app-business-item>
+          </div>
+          <div class="tab-pane" id="lB">
+            <div class="col-md-offset-1">
+              <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                <p>FSA account selected.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="lC">
+            <div class="col-md-offset-1">
+              <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                <p>HSAOD account selected.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="lD">
+            <div class="col-md-offset-1">
+              <div class="row" style="line-height: 14px; margin-bottom: 34.5px">
+                <p>DCAP account selected.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Account selection for desktop - F -->
+      </div>
+    </div>
+  </div>
+</div>

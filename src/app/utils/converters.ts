@@ -4,6 +4,7 @@ import { Brand } from "../models/brand";
 import { Category } from "../models/category";
 import { Article } from "../models/article";
 import { WishList } from "../models/wishList";
+import { Business } from "../models/business";
 
 export class Converters {
 
@@ -143,6 +144,47 @@ export class Converters {
             wishList.productId = data.productId;
             wishList.userId = data.userId;
             resolve(wishList);
+        });
+    }
+
+    businessJsonToObject(data): any {
+        let business = new Business();
+        return new Promise((resolve, reject) => {
+            console.log(data);
+            business._id = data._id;
+            business.active = data.active;
+            business.approximation = data.approximation;
+            if (data.categories != undefined && data.categories != null) {
+                for (let i = 0; i < data.categories.length; i++) {
+                    business.categories.push(data.categories[i]);
+                }
+            };
+            business.coverPicture = data.coverPicture;
+            business.description = data.description;
+            business.facebook = data.facebook;
+            if (data.images != undefined && data.images != null) {
+                for (let i = 0; i < data.images.length; i++) {
+                    business.images.push(data.images[i]);
+                }
+            };
+            business.instagram = data.instagram;
+            business.logo = data.logo;
+            business.pageEmail = data.pageEmail;
+            business.pageName = data.pageName;
+
+            business.position.langitude = data.position.langitude;
+            business.position.latitude = data.position.latitude;
+
+            business.workTime.closeTime = data.workTime.closeTime;
+            business.workTime.openTime = data.workTime.openTime;
+            business.workTime.saturday = data.workTime.saturday;
+            business.workTime.sunday = data.workTime.sunday;
+
+            business.businessType.description = data.businessType.description;
+            business.businessType.logo = data.businessType.logo;
+            business.businessType.name = data.businessType.name;
+            resolve(business);
+
         });
     }
 

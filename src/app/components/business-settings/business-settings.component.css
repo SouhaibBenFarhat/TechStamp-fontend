@@ -1,0 +1,243 @@
+.fb-profile img.fb-image-lg {
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fb-image-profile {
+    margin: -160px 10px 0px 50px;
+    z-index: 9;
+    width: 20%;
+}
+
+@media (max-width:768px) {
+    .fb-profile-text>h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #DDD;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    border-width: 0;
+}
+
+.nav-tabs>li>a {
+    border: none;
+    color: #666;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li>a:hover {
+    border: none;
+    color: #4285F4 !important;
+    background: transparent;
+}
+
+.nav-tabs>li>a::after {
+    content: "";
+    background: #4285F4;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    bottom: -1px;
+    transition: all 250ms ease 0s;
+    transform: scale(0);
+}
+
+.nav-tabs>li.active>a::after, .nav-tabs>li:hover>a::after {
+    transform: scale(1);
+}
+
+.tab-nav>li>a::after {
+    background: #21527d none repeat scroll 0% 0%;
+    color: #fff;
+}
+
+.tab-pane {
+    padding: 15px 0;
+}
+
+.tab-content {
+    padding: 20px
+}
+
+.card {
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+body {
+    background: #EDECEC;
+    padding: 50px
+}
+
+.custom-tab>li>a {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.custom-tab>li {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.custom-tab>li>a:link {
+    border-top: 3px solid #00bfff;
+    border-right: 1px solid #00bfff;
+    border-left: 1px solid #00bfff;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:visited {
+    background-color: #00bfff;
+    border-top: 3px solid #00bfff;
+    border-right: 1px solid #00bfff;
+    border-left: 1px solid #00bfff;
+    color: #FFF;
+    background-color: #00bfff;
+}
+
+i {
+    color: #000;
+}
+
+.link-lable {
+    text-decoration: none;
+    color: #000;
+}
+
+@media screen and (max-width: 767px) {
+    .link-lable {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+.css3-tabstrip
+{
+    width: 100%;
+    height: 100vh;
+}    
+ 
+.css3-tabstrip ul,
+.css3-tabstrip li
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ 
+.css3-tabstrip,
+.css3-tabstrip input[type="radio"]:checked + label
+{
+    position: relative;
+}
+ 
+.css3-tabstrip li,
+.css3-tabstrip input[type="radio"] + label
+{
+    display: inline-block;
+}
+ 
+.css3-tabstrip li > div,
+.css3-tabstrip input[type="radio"]
+{
+    position: absolute;
+}
+ 
+.css3-tabstrip li > div,
+.css3-tabstrip input[type="radio"] + label
+{
+    border: solid 1px #dddfe3;
+}
+ 
+.css3-tabstrip
+{
+    color: #000000;
+}
+ 
+.css3-tabstrip li
+{
+    vertical-align: top;
+}
+ 
+.css3-tabstrip li:first-child
+{
+    margin-left: 8px;
+}
+ 
+.css3-tabstrip li > div
+{
+    top: 33px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px;
+    overflow: auto;
+    background: #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ 
+.css3-tabstrip input[type="radio"] + label
+{
+    margin: 0 2px 0 0;
+    padding: 0 18px;
+    line-height: 32px;
+    background: #f1f1f1;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+ 
+.css3-tabstrip input[type="radio"]:checked + label
+{
+    z-index: 1;
+    background: #fff;
+    border-bottom-color: #fff;
+    cursor: default;
+}
+ 
+.css3-tabstrip input[type="radio"]
+{
+    opacity: 0;
+}
+ 
+.css3-tabstrip input[type="radio"] ~ div
+{
+    display: none;
+}
+ 
+.css3-tabstrip input[type="radio"]:checked:not(:disabled) ~ div
+{
+    display: block;
+}
+ 
+.css3-tabstrip input[type="radio"]:disabled + label
+{
+    opacity: .5;
+    cursor: no-drop;
+}

@@ -76,6 +76,9 @@ import { PopoverModule } from "ngx-popover";
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOptions } from 'ng2-toastr';
 import { ToastCustomOptions } from "./utils/ToastCustomOptions";
+import { UserBusinessesComponent } from './components/user-businesses/user-businesses.component';
+import { BusinessItemComponent } from './components/business-item/business-item.component';
+import { BusinessSettingsComponent } from './components/business-settings/business-settings.component';
 
 
 
@@ -103,7 +106,8 @@ const appRoutes: Routes = [
   { path: 'wish-list', component: WishListComponent, canActivate: [AuthGuard] },
   { path: 'after-registration/:token', component: AfterRegistrationComponent, canActivate: [RegisterGuard] },
   { path: 'confirmation-error/:token', component: ConfirmationErrorComponent, canActivate: [RegisterGuard] },
-  { path: 'after-registration/email-verification/:token', component: EmailVerificationComponent, canActivate: [RegisterGuard] }
+  { path: 'after-registration/email-verification/:token', component: EmailVerificationComponent, canActivate: [RegisterGuard] },
+  { path: 'business-settings/:id', component: BusinessSettingsComponent, canActivate: [AuthGuard] }
 
 
 ]
@@ -141,7 +145,10 @@ const appRoutes: Routes = [
     AfterRegistrationComponent,
     EmailVerificationComponent,
     ConfirmationErrorComponent,
-    SellerRegistrationComponent
+    SellerRegistrationComponent,
+    UserBusinessesComponent,
+    BusinessItemComponent,
+    BusinessSettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -163,7 +170,7 @@ const appRoutes: Routes = [
     NgxGalleryModule,
     PopoverModule,
     ToastModule.forRoot()
-    ],
+  ],
   providers: [
     FlashMessagesService,
     AuthService,
@@ -178,7 +185,8 @@ const appRoutes: Routes = [
     ProfilService,
     RegisterGuard,
     { provide: ToastOptions, useClass: ToastCustomOptions },
-    BrandService
+    BrandService,
+    BusinessService
   ],
   bootstrap: [AppComponent]
 })

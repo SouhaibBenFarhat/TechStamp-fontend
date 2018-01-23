@@ -1,0 +1,58 @@
+<div class="span4">
+  <div class="twPc-div">
+    <a class="twPc-bg twPc-block" [ngStyle]="{ 'background-image': 'url(' + business.coverPicture + ')'}"></a>
+    <div>
+      <div class="twPc-button">
+        <!-- Twitter Button | you can get from: https://about.twitter.com/tr/resources/buttons#follow -->
+        <a href="https://twitter.com/mertskaplan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false"
+          data-dnt="true"></a>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+        <!-- Twitter Button -->
+      </div>
+
+      <a title="Mert Salih Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
+        <img alt="Mert Salih Kaplan" src="{{business.logo}}" class="twPc-avatarImg">
+      </a>
+
+      <div class="twPc-divUser" style="margin-top:40px;">
+        <div class="twPc-divName">
+          <a href="#" [routerLink]= "['/business-settings/'+business._id]">{{business.pageName}}</a>
+        </div>
+        <span>
+          <a href="https://twitter.com/mertskaplan">@
+            <span>{{business.pageEmail}}</span>
+          </a>
+        </span>
+      </div>
+      <div class="twPc-divStats">
+        <ul class="twPc-Arrange">
+          <li class="twPc-ArrangeSizeFit">
+            <a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
+              <span class="twPc-StatLabel twPc-block">Tweets</span>
+              <span class="twPc-StatValue">9.840</span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a href="https://twitter.com/mertskaplan/following" title="885 Following">
+              <span class="twPc-StatLabel twPc-block">View</span>
+              <span class="twPc-StatValue">885</span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a href="https://twitter.com/mertskaplan/followers" title="1.810 Followers">
+              <span class="twPc-StatLabel twPc-block">Followers</span>
+              <span class="twPc-StatValue">1.810</span>
+            </a>
+          </li>
+          <li class="twPc-ArrangeSizeFit">
+            <a href="#" class="defaultBtn edit-button">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <small> Settings</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
