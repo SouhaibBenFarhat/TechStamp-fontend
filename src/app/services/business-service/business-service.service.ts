@@ -47,4 +47,19 @@ export class BusinessService {
 
     })
   }
+  public updateBusiness(business: Business): any {
+    console.log(business);
+
+    this.headers = new HttpHeaders({ 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+    return new Promise((resolve, reject) => {
+      this.http.put(this.global.urls['update-business'], business, { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
+        this.converter.businessJsonToObject(data).then((business) => {
+          resolve(business);
+        })
+      }, (err) => {
+        reject(err);
+      })
+
+    })
+  }
 }

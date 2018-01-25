@@ -12,21 +12,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="span3"></div>
-    <div class="span9" style="margin-top:-0px;">
+    <div class="span7" style="margin-top:-0px;">
       <div class="css3-tabstrip">
         <ul>
           <li>
             <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-0" />
-            <label for="css3-tabstrip-0-0">Home</label>
-            <div>
-              <h3>What is Lorem Ipsum</h3>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-                including versions of Lorem Ipsum.</p>
+            <label for="css3-tabstrip-0-0">General</label>
+            <div style="padding: 0;">
+              <div class="welcome_message">
+                <h3>Welcome to Your Ne Page.</h3>
+                Before you share your Page with others, try these tips that help you describe your business, brand or organization. We'll
+                give you more tips later.
+              </div>
             </div>
           </li>
           <li>
@@ -75,6 +72,55 @@
         </ul>
       </div>
     </div>
+
+    <div class="span5">
+      <b>
+        <small>Description:</small>
+      </b>
+      <p style="text-align: justify;">{{business.description}}</p>
+      <div>
+        <small>
+          <b>What are you selling:</b>
+        </small>
+        <a [popover]="myPopover" (click)="checkCategories()">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          edit.
+        </a>
+        <popover-content #myPopover title="Categories" placement="right" [animation]="true" [closeOnClickOutside]="true">
+          <small>Lorem ipsum dolor sit amet consectetur.</small>
+          <div class="col-md-6">
+            <div class="todolist not-done">
+              <br>
+              <input type="text" class="form-control add-todo" placeholder="search...">
+              <ul id="sortable" class="list-unstyled">
+                <li class="ui-state-default" *ngFor="let c of allCategories">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="" (change)="c.selected=!c.selected;updateCategories()" [attr.checked]="c.selected" />{{c.name}}</label>
+                  </div>
+                </li>
+              </ul>
+              <div style="text-align: center;">
+                <br>
+                <button id="checkAll" class="btn btn-success" (click)="updateBusiness()">validate.</button>
+              </div>
+
+            </div>
+          </div>
+        </popover-content>
+        <div *ngIf="loadingCategories" class="col-sm-12">
+          <div class="progress">
+            <div class="indeterminate"></div>
+          </div>
+        </div>
+        <br>
+        <div class="pull-left">
+          <span *ngFor="let c of categories" class="label label-info">{{c.name}}</span>
+        </div>
+      </div>
+    </div>
+
+
 
   </div>
 </div>

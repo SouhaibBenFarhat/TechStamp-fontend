@@ -7,6 +7,7 @@ export class Category {
     date: string;
     productsNumber: number;
     description: string;
+    selected:boolean
 
     constructor() { }
 }

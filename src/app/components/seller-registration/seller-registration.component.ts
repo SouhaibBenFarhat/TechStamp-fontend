@@ -43,7 +43,7 @@ export class SellerRegistrationComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(private mapsAPILoader: MapsAPILoader, private categoriesService: CategoryService,
-    private ngZone: NgZone, private authService: AuthService, private router: Router, private toastr: ToastsManager, vcr: ViewContainerRef) {
+    private ngZone: NgZone, private authService: AuthService, private router: Router, private toastr: ToastsManager, private vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
 
   }

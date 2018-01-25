@@ -59,4 +59,23 @@ export class CategoryService {
       });
     });
   }
+
+  getGroupCategories(ids: Array<string>): any {
+    this.headers = new HttpHeaders(
+      { 'authorization': 'Bearer ' + this.authService.getCurrentUserToken() });
+    let categories = Array<Category>();
+
+    return new Promise((resolve, reject) => {
+      this.http.patch(this.global.urls['group-category'], ids, { headers: this.headers }).map((data: any) => data.data).subscribe((data) => {
+        for (let i = 0; i < data.length; i++) {
+          this.converter.categoryJsonToObject(data[i]).then((category) => {
+            categories.push(category);
+          });
+        }
+        resolve(categories);
+      }, (err) => {
+        reject(err);
+      });
+    });
+  }
 }

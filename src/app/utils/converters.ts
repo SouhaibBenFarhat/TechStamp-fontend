@@ -150,7 +150,6 @@ export class Converters {
     businessJsonToObject(data): any {
         let business = new Business();
         return new Promise((resolve, reject) => {
-            console.log(data);
             business._id = data._id;
             business.active = data.active;
             business.approximation = data.approximation;

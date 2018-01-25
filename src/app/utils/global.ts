@@ -35,24 +35,42 @@ export class Globals {
         this.urls['check-confirmation'] = this.serverAddress + '/api/auth/check-confirmation';
 
         //Data Secure
-        this.urls['product'] = this.serverAddress + '/api/v1/product';
-        this.urls['products-pagination'] = this.serverAddress + '/api/v1/product/pagination';
-        this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
+
+        //Brand
         this.urls['top-brands'] = this.serverAddress + '/api/v1/brand/top-brands';
         this.urls['brand'] = this.serverAddress + '/api/v1/brand';
         this.urls['brand-by-id'] = this.serverAddress + '/api/v1/brand';
-        this.urls['category'] = this.serverAddress + '/api/v1/category';
-        this.urls['product-by-brand'] = this.serverAddress + '/api/v1/product/by-brand/';
+
+
+        //Wish list
         this.urls['wish-list'] = this.serverAddress + '/api/v1/wish-list';
         this.urls['wish-list-exist'] = this.serverAddress + '/api/v1/wish-list/exist/';
         this.urls['wish-list-delete'] = this.serverAddress + '/api/v1/wish-list/';
+
+        //Porfile
         this.urls['address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['delete-address'] = this.serverAddress + '/api/v1/user/address/';
         this.urls['personal-detail'] = this.serverAddress + '/api/v1/user/personal-detail/';
         this.urls['upload-picture'] = this.serverAddress + '/api/v1/upload/profile_picture/';
+
+
+        //Categories
+        this.urls['category'] = this.serverAddress + '/api/v1/category';
+        this.urls['group-category'] = this.serverAddress + '/api/v1/category/group/';
+
+
+        //product
+        this.urls['product-by-brand'] = this.serverAddress + '/api/v1/product/by-brand/';
+        this.urls['product'] = this.serverAddress + '/api/v1/product';
+        this.urls['products-pagination'] = this.serverAddress + '/api/v1/product/pagination';
+        this.urls['topProduct'] = this.serverAddress + '/api/v1/product';
+
+
+        //Business
         this.urls['add-business'] = this.serverAddress + '/api/v1/business';
         this.urls['business-by-user'] = this.serverAddress + '/api/v1/business/user/';
         this.urls['business-by-id'] = this.serverAddress + '/api/v1/business/';
+        this.urls['update-business'] = this.serverAddress + '/api/v1/business/';
         
 
         //Public
