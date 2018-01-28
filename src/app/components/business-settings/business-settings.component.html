@@ -5,75 +5,69 @@
       <img align="left" class="fb-image-profile thumbnail" src="{{business.logo}}" alt="Profile image example" />
       <div class="fb-profile-text well">
         <h4>{{business.pageName}}</h4>
-        <p *ngIf="business.description" style="text-align: justify;">
 
-        </p>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="span7" style="margin-top:-0px;">
-      <div class="css3-tabstrip">
-        <ul>
-          <li>
-            <input type="radio" name="css3-tabstrip-0" checked="checked" id="css3-tabstrip-0-0" />
-            <label for="css3-tabstrip-0-0">General</label>
-            <div style="padding: 0;">
-              <div class="welcome_message">
-                <h3>Welcome to Your Ne Page.</h3>
-                Before you share your Page with others, try these tips that help you describe your business, brand or organization. We'll
-                give you more tips later.
-              </div>
-            </div>
-          </li>
-          <li>
-            <input type="radio" name="css3-tabstrip-0" id="css3-tabstrip-0-1" />
-            <label for="css3-tabstrip-0-1">About Us</label>
-            <div>
-              <h3>Why do we use it?</h3>
-              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking
-                at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-                as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
-                packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum'
-                will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
-                by accident, sometimes on purpose (injected humour and the like).</p>
-            </div>
-          </li>
-          <li>
-            <input type="radio" name="css3-tabstrip-0" id="css3-tabstrip-0-2" />
-            <label for="css3-tabstrip-0-2">Portfolio</label>
-            <div>
-              <h3>Where does it come from?</h3>
-              <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-                literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-                College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
-                and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-                Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-                Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
-                1.10.32.
-              </p>
-            </div>
-          </li>
-          <li>
-            <input type="radio" name="css3-tabstrip-0" id="css3-tabstrip-0-3" disabled="disabled" />
-            <label for="css3-tabstrip-0-3">Contact Us</label>
-            <div>
-              <h3>Where can I get some?</h3>
-              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-                some form, by injected humour, or randomised words which don't look even slightly believable. If you are
-                going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
-                middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
-                making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined
-                with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated
-                Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-            </div>
-          </li>
-        </ul>
+    <div class="span7 white-bg" style="margin-top:-0px;">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#home">General</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu1">Work Time</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu2">Social</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#menu2">Stat</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+          <div class="welcome-message" style="padding: 20px;">
+            <h3>Welcome to Your New Page</h3>
+            <p>Before you share your Page with others, try these tips that help you describe your business, brand or organization.
+              We'll give you more tips later.</p>
+          </div>
+          <div style="padding: 20px;">
+            <app-business-general-settings [business]="business"></app-business-general-settings>
+          </div>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+          <h3>Menu 1</h3>
+          <p>Some content in menu 1.</p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+          <h3>Menu 2</h3>
+          <p>Some content in menu 2.</p>
+        </div>
       </div>
     </div>
 
     <div class="span5">
+      <div class="pull-left">
+        <div class="col-md-5">
+          <small>
+            <b>Visible</b>
+          </small>
+          <div class="onoffswitch4">
+            <input type="checkbox" name="onoffswitch4" class="onoffswitch4-checkbox" id="myonoffswitch4" checked>
+            <label class="onoffswitch4-label" for="myonoffswitch4">
+              <span class="onoffswitch4-inner"></span>
+              <span class="onoffswitch4-switch"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
       <b>
         <small>Description:</small>
       </b>
@@ -117,10 +111,34 @@
         <div class="pull-left">
           <span *ngFor="let c of categories" class="label label-info">{{c.name}}</span>
         </div>
+        <br>
+        <br>
+
+        <div class="text-left">
+          <small>
+            <b>Social:</b>
+          </small>
+          <br />
+          <a href="https://www.facebook.com/bootsnipp">
+            <i id="social-fb" class="fa fa-facebook-square fa-3x social"></i>
+          </a>
+          <a href="https://twitter.com/bootsnipp">
+            <i id="social-tw" class="fa fa-twitter-square fa-3x social"></i>
+          </a>
+          <a href="https://plus.google.com/+Bootsnipp-page">
+            <i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i>
+          </a>
+          <a href="mailto:bootsnipp@gmail.com">
+            <i id="social-em" class="fa fa-envelope-square fa-3x social"></i>
+          </a>
+        </div>
+
+
+
+
       </div>
+
+
+
     </div>
-
-
-
   </div>
-</div>

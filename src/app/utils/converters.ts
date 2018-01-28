@@ -178,6 +178,7 @@ export class Converters {
             business.workTime.openTime = data.workTime.openTime;
             business.workTime.saturday = data.workTime.saturday;
             business.workTime.sunday = data.workTime.sunday;
+            business.phoneNumber = data.phoneNumber;
 
             business.businessType.description = data.businessType.description;
             business.businessType.logo = data.businessType.logo;

@@ -1,0 +1,87 @@
+<div class="col-md-7">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="box box-info">
+                <div class="box-body">
+                    <div class="col-sm-3">
+                        <h4 style="color:#4166b2;">General Information. </h4>
+                        <div class="pull-right">
+                            <a style="cursor: pointer;" (click)="editing = !editing">
+                                <span class="label label-success">Edit</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr style="margin:5px 0 5px 0;">
+                    <div class="row" *ngIf="!editing">
+                        <div class="span3">
+                            <div class="container">
+                                <div class="col-md-3">
+                                    <div class="col-sm-5 col-xs-6 tital ">Page name:</div>
+                                    <div class="col-sm-7 col-xs-6 ">{{business.pageName}}</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+
+                                    <div class="col-sm-5 col-xs-6 tital ">Page email:</div>
+                                    <div class="col-sm-7"> {{business.pageName}}</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span3">
+                            <div class="container">
+
+                                <div class="col-sm-3">
+                                    <div class="col-sm-5 col-xs-6 tital ">Phone:</div>
+                                    <div class="col-sm-7"> {{business.phoneNumber}}</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+
+                                    <div class="col-sm-5 col-xs-6 tital ">Type:</div>
+                                    <div class="col-sm-7">{{business.businessType.name}}</div>
+                                    <div class="clearfix"></div>
+                                    <div class="bot-border"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="editing">
+                        <form>
+                            <div class="span3">
+
+                                <div class="form-group col-lg-6">
+                                    <label>Page name</label>
+                                    <input type="text" name="pageName" [(ngModel)]="business.pageName" class="form-control">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Page email</label>
+                                    <input type="email" name="pageEmail" [(ngModel)]="business.pageEmail" class="form-control">
+                                </div>
+                            </div>
+                            <div class="span3">
+                                <div class="form-group col-lg-6">
+                                    <label>Phone Number</label>
+                                    <input type="number" name="phoneNumber" [(ngModel)]="business.phoneNumber" class="form-control">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label>Business Type</label>
+                                    <select class="form-control" name="businessType"  (change)="businessTypeChange($event)">
+                                        <option *ngFor="let bt of businessTypes" [value]="bt" [attr.selected]="bt.selected==true">{{bt.name}}</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

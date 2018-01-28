@@ -79,6 +79,7 @@ import { ToastCustomOptions } from "./utils/ToastCustomOptions";
 import { UserBusinessesComponent } from './components/user-businesses/user-businesses.component';
 import { BusinessItemComponent } from './components/business-item/business-item.component';
 import { BusinessSettingsComponent } from './components/business-settings/business-settings.component';
+import { BusinessGeneralSettingsComponent } from './components/business-settings/business-general-settings/business-general-settings.component';
 
 
 
@@ -148,7 +149,8 @@ const appRoutes: Routes = [
     SellerRegistrationComponent,
     UserBusinessesComponent,
     BusinessItemComponent,
-    BusinessSettingsComponent
+    BusinessSettingsComponent,
+    BusinessGeneralSettingsComponent
   ],
   imports: [
     BrowserModule,
