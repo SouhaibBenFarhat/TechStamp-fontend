@@ -40,6 +40,7 @@ import { NewsService } from './services/news-service/news.service';
 import { BusinessService } from './services/business-service/business-service.service';
 import { CategoryService } from './services/category-service/category.service';
 import { BrandService } from './services/brand-service/brand.service';
+import { BusinessTypeService } from './services/business-type-service/business-type-service';
 
 
 
@@ -188,7 +189,8 @@ const appRoutes: Routes = [
     RegisterGuard,
     { provide: ToastOptions, useClass: ToastCustomOptions },
     BrandService,
-    BusinessService
+    BusinessService,
+    BusinessTypeService
   ],
   bootstrap: [AppComponent]
 })

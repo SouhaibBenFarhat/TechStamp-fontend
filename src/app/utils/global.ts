@@ -71,10 +71,11 @@ export class Globals {
         this.urls['business-by-user'] = this.serverAddress + '/api/v1/business/user/';
         this.urls['business-by-id'] = this.serverAddress + '/api/v1/business/';
         this.urls['update-business'] = this.serverAddress + '/api/v1/business/';
-        
+
 
         //Public
         this.urls['public-category'] = this.serverAddress + '/api/public/category';
+        this.urls['business-type'] = this.serverAddress + '/api/public/business-type/';
 
 
 

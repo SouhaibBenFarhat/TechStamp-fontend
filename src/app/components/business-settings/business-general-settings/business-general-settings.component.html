@@ -8,14 +8,17 @@
                     <div class="col-sm-3">
                         <h4 style="color:#4166b2;">General Information. </h4>
                         <div class="pull-right">
-                            <a style="cursor: pointer;" (click)="editing = !editing">
+                            <a *ngIf="editing==false" style="cursor: pointer;" (click)="editing = true">
                                 <span class="label label-success">Edit</span>
+                            </a>
+                            <a *ngIf="editing==true" style="cursor: pointer;" (click)="editing = false">
+                                <span class="label label-info">Back</span>
                             </a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin:5px 0 5px 0;">
-                    <div class="row" *ngIf="!editing">
+                    <div class="row" *ngIf="editing==false">
                         <div class="span3">
                             <div class="container">
                                 <div class="col-md-3">
@@ -33,7 +36,6 @@
                         </div>
                         <div class="span3">
                             <div class="container">
-
                                 <div class="col-sm-3">
                                     <div class="col-sm-5 col-xs-6 tital ">Phone:</div>
                                     <div class="col-sm-7"> {{business.phoneNumber}}</div>
@@ -48,10 +50,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="editing">
+                    <div class="row" *ngIf="editing == true">
                         <form>
                             <div class="span3">
-
                                 <div class="form-group col-lg-6">
                                     <label>Page name</label>
                                     <input type="text" name="pageName" [(ngModel)]="business.pageName" class="form-control">
@@ -68,12 +69,21 @@
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Business Type</label>
-                                    <select class="form-control" name="businessType"  (change)="businessTypeChange($event)">
-                                        <option *ngFor="let bt of businessTypes" [value]="bt" [attr.selected]="bt.selected==true">{{bt.name}}</option>
+                                    <select class="form-control" name="businessType" (change)="businessTypeChange($event)">
+                                        <option *ngFor="let bt of businessTypes" [value]="bt.id" [attr.selected]="bt.id==business.businessType.id">{{bt.name}}</option>
                                     </select>
                                 </div>
-
-
+                            </div>
+                            <div class="span6">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="7" style="width: 470px;" name="description" [(ngModel)]="business.description"></textarea>
+                                </div>
+                            </div>
+                            <div class="span6">
+                                <div class="form-group">
+                                    <a class="defaultBtn green-button" type="submit" style="cursor: pointer;">Update.</a>
+                                </div>
                             </div>
                         </form>
                     </div>

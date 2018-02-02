@@ -5,6 +5,7 @@ import { Category } from "../models/category";
 import { Article } from "../models/article";
 import { WishList } from "../models/wishList";
 import { Business } from "../models/business";
+import { BusinessType } from "../models/businessType";
 
 export class Converters {
 
@@ -180,6 +181,7 @@ export class Converters {
             business.workTime.sunday = data.workTime.sunday;
             business.phoneNumber = data.phoneNumber;
 
+            business.businessType.id = data.businessType._id;
             business.businessType.description = data.businessType.description;
             business.businessType.logo = data.businessType.logo;
             business.businessType.name = data.businessType.name;
@@ -188,4 +190,14 @@ export class Converters {
         });
     }
 
+    businessTypeJsonToObject(data): any {
+        return new Promise((resolve, reject) => {
+            let businessType = new BusinessType();
+            businessType.id = data._id;
+            businessType.description = data.description;
+            businessType.logo = data.logo;
+            businessType.name = data.name;
+            resolve(businessType);
+        })
+    }
 }

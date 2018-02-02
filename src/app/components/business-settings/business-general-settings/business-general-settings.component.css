@@ -23,3 +23,15 @@ input.hidden {
     border-bottom: 1px #f8f8f8 solid;
     margin: 5px 0 5px 0
 }
+
+.label-info {
+    background-color: #4166b2;
+}
+
+.green-button {
+    background-color: #588b44;
+    border: 1px solid;
+    border-color: #3b6e22;
+    border-radius: 10px;
+    color: white;
+}
