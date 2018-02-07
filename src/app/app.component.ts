@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
 
       if (event instanceof NavigationEnd) {
+
+
+
         if ((event.url.indexOf("contact") >= 0) ||
           event.url.indexOf("login") >= 0 ||
           event.url.indexOf("reset-password") >= 0 ||
@@ -40,6 +43,9 @@ export class AppComponent implements OnInit {
         } else {
           this.show = true;
           this.showRightSidebar = true;
+        }
+        if (event.url.indexOf("latest") >= 0) {
+          this.showRightSidebar = false;
         }
       }
     });

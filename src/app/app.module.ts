@@ -81,7 +81,7 @@ import { UserBusinessesComponent } from './components/user-businesses/user-busin
 import { BusinessItemComponent } from './components/business-item/business-item.component';
 import { BusinessSettingsComponent } from './components/business-settings/business-settings.component';
 import { BusinessGeneralSettingsComponent } from './components/business-settings/business-general-settings/business-general-settings.component';
-import { LatestComponentComponent } from './components/latest-component/latest-component.component';
+import { LatestComponent } from './components/latest-component/latest-component.component';
 
 
 
@@ -100,6 +100,7 @@ const appRoutes: Routes = [
   { path: 'seller-registration', component: SellerRegistrationComponent },
 
   // Secure
+  { path: 'latest', component: LatestComponent, canActivate: [AuthGuard] },  
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'category/:id', component: CategoryComponent, canActivate: [AuthGuard] },
@@ -153,7 +154,7 @@ const appRoutes: Routes = [
     BusinessItemComponent,
     BusinessSettingsComponent,
     BusinessGeneralSettingsComponent,
-    LatestComponentComponent
+    LatestComponent
   ],
   imports: [
     BrowserModule,
