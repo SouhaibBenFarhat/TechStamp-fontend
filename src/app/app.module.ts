@@ -81,6 +81,7 @@ import { UserBusinessesComponent } from './components/user-businesses/user-busin
 import { BusinessItemComponent } from './components/business-item/business-item.component';
 import { BusinessSettingsComponent } from './components/business-settings/business-settings.component';
 import { BusinessGeneralSettingsComponent } from './components/business-settings/business-general-settings/business-general-settings.component';
+import { LatestComponentComponent } from './components/latest-component/latest-component.component';
 
 
 
@@ -151,7 +152,8 @@ const appRoutes: Routes = [
     UserBusinessesComponent,
     BusinessItemComponent,
     BusinessSettingsComponent,
-    BusinessGeneralSettingsComponent
+    BusinessGeneralSettingsComponent,
+    LatestComponentComponent
   ],
   imports: [
     BrowserModule,

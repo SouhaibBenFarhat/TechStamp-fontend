@@ -25,7 +25,6 @@ export class BusinessTypeService {
             businessTypes.push(bt);
           });
         }
-        console.log(businessTypes);
         resolve(businessTypes);
       }, (err) => {
         reject(err);

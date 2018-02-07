@@ -18,7 +18,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin:5px 0 5px 0;">
-                    <div class="row" *ngIf="editing==false">
+                    <div class="row" [hidden]="editing">
                         <div class="span3">
                             <div class="container">
                                 <div class="col-md-3">
@@ -50,26 +50,47 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="editing == true">
-                        <form>
+                    <div class="row">
+                        <div class="span4">
+                            <div *ngIf="pageName.errors?.required && pageName.touched" class="alert alert-danger">
+                                Page name is required...
+                            </div>
+                            <div *ngIf="pageEmail.errors?.required && pageName.touched" class="alert alert-danger">
+                                Page Email is required...
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row" [hidden]="!editing">
+                        <form novalidate #form="ngForm" (ngSubmit)="onUpdateSubmitted(form)">
                             <div class="span3">
                                 <div class="form-group col-lg-6">
                                     <label>Page name</label>
-                                    <input type="text" name="pageName" [(ngModel)]="business.pageName" class="form-control">
+                                    <input type="text" name="pageName" #pageName="ngModel" [(ngModel)]="business.pageName" class="form-control"
+                                        required>
+
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label>Page email</label>
-                                    <input type="email" name="pageEmail" [(ngModel)]="business.pageEmail" class="form-control">
+                                    <label>Page email
+                                        <span style="margin-left: 10px; color:red;" *ngIf="pageEmail.errors && pageEmail.errors.pattern">
+                                            <small>
+                                                <b>Email is invalid</b>
+                                            </small>
+                                        </span>
+                                    </label>
+
+                                    <input type="email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #pageEmail="ngModel" name="pageEmail"
+                                        [(ngModel)]="business.pageEmail" class="form-control" required>
                                 </div>
                             </div>
                             <div class="span3">
                                 <div class="form-group col-lg-6">
                                     <label>Phone Number</label>
-                                    <input type="number" name="phoneNumber" [(ngModel)]="business.phoneNumber" class="form-control">
+                                    <input type="number"  name="phoneNumber" [(ngModel)]="business.phoneNumber" class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-6">
                                     <label>Business Type</label>
-                                    <select class="form-control" name="businessType" (change)="businessTypeChange($event)">
+                                    <select class="form-control"  name="businessType" (change)="businessTypeChange($event)" required>
                                         <option *ngFor="let bt of businessTypes" [value]="bt.id" [attr.selected]="bt.id==business.businessType.id">{{bt.name}}</option>
                                     </select>
                                 </div>
@@ -77,17 +98,23 @@
                             <div class="span6">
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="7" style="width: 470px;" name="description" [(ngModel)]="business.description"></textarea>
+                                    <textarea class="form-control"  rows="7" style="width: 470px;" name="description" [(ngModel)]="business.description"></textarea>
                                 </div>
                             </div>
                             <div class="span6">
                                 <div class="form-group">
-                                    <a class="defaultBtn green-button" type="submit" style="cursor: pointer;">Update.</a>
+                                    <button class="defaultBtn green-button" *ngIf="!loadingUpdate" type="submit" style="cursor: pointer;">Update.</button>
+                                    <div class="spinner" *ngIf="loadingUpdate">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                        <div class="rect5"></div>
+                                      </div>
                                 </div>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
 
