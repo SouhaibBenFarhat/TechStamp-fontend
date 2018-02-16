@@ -4,5 +4,5 @@ export class ToastCustomOptions extends ToastOptions {
     animate = 'flyRight';
     newestOnTop = false;
     showCloseButton = true;
-    positionClass = "toast-top-center";
+    positionClass = 'toast-top-center';
 }

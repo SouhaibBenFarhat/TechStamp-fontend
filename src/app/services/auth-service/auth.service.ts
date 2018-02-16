@@ -1,11 +1,11 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { User } from '../../models/user';
-import { Business } from "../../models/business";
-import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Globals } from '../../utils/global';
-import { Router } from '@angular/router';
-import { Converters } from "../../utils/converters";
+import {Injectable, EventEmitter} from '@angular/core';
+import {User} from '../../models/user';
+import {Business} from '../../models/business';
+import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Globals} from '../../utils/global';
+import {Router} from '@angular/router';
+import {Converters} from '../../utils/converters';
 
 
 
@@ -22,7 +22,7 @@ export class AuthService {
 
   login(user: User): any {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['login'], { email: user.email, password: user.password }).subscribe((data) => {
+      this.http.post(this.global.urls['login'], {email: user.email, password: user.password}).subscribe((data) => {
         if (data != null) {
           this.converter.userJsonToObject(data).then((data: User) => {
             this.setCurrentUser(data);
@@ -45,7 +45,7 @@ export class AuthService {
 
   checkConfirmation(token): any {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['check-confirmation'], { token: this.getTemporaryToken() }).subscribe(() => {
+      this.http.post(this.global.urls['check-confirmation'], {token: this.getTemporaryToken()}).subscribe(() => {
         resolve();
       }, (err) => {
         reject(err);
@@ -55,20 +55,20 @@ export class AuthService {
 
   sendEmailVerification(token: string): any {
 
-    var headers = new HttpHeaders(
-      { 'authorization': token });
+    const headers = new HttpHeaders(
+      {'authorization': token});
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['send-email-verification'], null, { headers: headers }).subscribe((data) => {
+      this.http.post(this.global.urls['send-email-verification'], null, {headers: headers}).subscribe((data) => {
         resolve();
       }, (err) => {
         reject();
-      })
+      });
     });
   }
 
   confirmEmail(token: string): any {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['confirm-email'], { token: token }).subscribe((data) => {
+      this.http.post(this.global.urls['confirm-email'], {token: token}).subscribe((data) => {
         resolve(data);
       }, (err) => {
         reject(err);
@@ -79,39 +79,41 @@ export class AuthService {
 
   register(user: User) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['register'], { email: user.email, password: user.password, role: this.global.USER_ROLE }).subscribe((data) => {
-        if (data != null) {
-          this.converter.userJsonToObject(data).then((user) => {
-            resolve(user);
-          })
-        } else {
-          reject('Error has occure...');
-        }
-      }, (error) => {
-        reject(error);
-      });
+      this.http.post(this.global.urls['register'], {email: user.email, password: user.password, role: this.global.USER_ROLE})
+        .subscribe((data) => {
+          if (data != null) {
+            this.converter.userJsonToObject(data).then((user) => {
+              resolve(user);
+            })
+          } else {
+            reject('Error has occure...');
+          }
+        }, (error) => {
+          reject(error);
+        });
     });
   }
   registerAsBusiness(user: User, business: Business) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.global.urls['register'], { email: user.email, password: user.password, role: this.global.BUSINESS_ROLE }).subscribe((data) => {
-        if (data != null) {
-          this.converter.userJsonToObject(data).then((user: User) => {
-            var headers = new HttpHeaders({ 'authorization': 'Bearer ' + user.temporaryToken });
-            business.userId = user._id;
-            this.http.post(this.global.urls['add-business'], business, { headers: headers }).subscribe((d) => {
-              resolve(user);
-            }, (err) => {
-              reject(err);
-            })
+      this.http.post(this.global.urls['register'], {email: user.email, password: user.password, role: this.global.BUSINESS_ROLE})
+        .subscribe((data) => {
+          if (data != null) {
+            this.converter.userJsonToObject(data).then((user: User) => {
+              const headers = new HttpHeaders({'authorization': 'Bearer ' + user.temporaryToken});
+              business.userId = user._id;
+              this.http.post(this.global.urls['add-business'], business, {headers: headers}).subscribe((d) => {
+                resolve(user);
+              }, (err) => {
+                reject(err);
+              });
 
-          })
-        } else {
-          reject('Error has occure...');
-        }
-      }, (error) => {
-        reject(error);
-      });
+            });
+          } else {
+            reject('Error has occure...');
+          }
+        }, (error) => {
+          reject(error);
+        });
     });
   }
 
@@ -119,7 +121,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.currentUser = null;
       localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
-      localStorage.removeItem(this.global.TOKEN_KEY)
+      localStorage.removeItem(this.global.TOKEN_KEY);
       this.onUserLogout.emit(0);
       resolve();
     });
@@ -128,16 +130,16 @@ export class AuthService {
   backToLogin() {
     this.currentUser = null;
     localStorage.setItem(this.global.IS_LOGGED_IN, 'false');
-    localStorage.removeItem(this.global.TOKEN_KEY)
+    localStorage.removeItem(this.global.TOKEN_KEY);
     this.onUserLogout.emit(0);
     this.router.navigate[('/login')];
   }
   private getUserByToken(token: string): any {
-    var headers = new HttpHeaders(
-      { 'authorization': 'Bearer ' + token });
+    const headers = new HttpHeaders(
+      {'authorization': 'Bearer ' + token});
 
     return new Promise((resolve, reject) => {
-      this.http.get(this.global.urls['info'], { headers: headers }).subscribe((data) => {
+      this.http.get(this.global.urls['info'], {headers: headers}).subscribe((data) => {
         if (data != null) {
           this.converter.userJsonToObject(data).then((user: User) => {
             this.setCurrentUser(user);

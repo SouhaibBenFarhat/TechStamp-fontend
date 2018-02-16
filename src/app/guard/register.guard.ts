@@ -3,7 +3,7 @@ import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../services/auth-service/auth.service';
 import { Globals } from '../utils/global';
 import { Observable } from 'rxjs/Rx';
-import { ActivatedRoute, NavigationEnd } from "@angular/router";
+import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/pairwise';
 
 
@@ -24,12 +24,12 @@ export class RegisterGuard implements CanActivate {
                     resolve(false);
                     localStorage.removeItem(this.global.TK);
                     this.router.navigate(['login']);
-                })
+                });
             } else {
                 this.router.navigate(['login']);
                 resolve(false);
             }
-        })
+        });
     }
 
 }

@@ -22,7 +22,7 @@
         <sup>*</sup>
       </label>
       <div class="controls">
-        <input type="text" placeholder="region" (keyup)="error = false" name="region" #region="ngModel" [(ngModel)]="address.region"
+        <input type="text" placeholder="region" (keyup)="error = false" name="region" #region="ngModel" [(ngModel)]='address.region'
           required>
         <span *ngIf="region.errors?.required && region.touched" class="help-inline" style="color:red; margin-top: 10px;">
           region is required...
